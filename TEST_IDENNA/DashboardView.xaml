@@ -1,0 +1,54 @@
+﻿<UserControl x:Class="TEST_IDENNA.DashboardView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:vm="clr-namespace:TEST_IDENNA.ViewModels"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:TEST_IDENNA"
+             mc:Ignorable="d" 
+             d:DesignHeight="450" d:DesignWidth="800">
+
+    <UserControl.DataContext>
+        <vm:RegistroViewModel />
+    </UserControl.DataContext>
+
+
+    <Grid Margin="20" Background="White">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <TextBlock Text="Panel de Control General" 
+                   FontSize="26" FontWeight="SemiBold" 
+                   Foreground="#2C3E50" Margin="0,0,0,20"/>
+
+        <UniformGrid Grid.Row="1" Columns="3" VerticalAlignment="Top">
+
+            <Border Style="{StaticResource DashboardCardStyle}">
+                <StackPanel>
+                    <TextBlock Text="" Style="{StaticResource IconStyle}" Foreground="#2980B9"/>
+                    <TextBlock Text="Total Expedientes" Style="{StaticResource CardTitleStyle}"/>
+                    <TextBlock Text="124" Style="{StaticResource CardValueStyle}"/>
+                </StackPanel>
+            </Border>
+
+            <Border Style="{StaticResource DashboardCardStyle}">
+                <StackPanel>
+                    <TextBlock Text="" Style="{StaticResource IconStyle}" Foreground="#27AE60"/>
+                    <TextBlock Text="Actividades Hoy" Style="{StaticResource CardTitleStyle}"/>
+                    <TextBlock Text="12" Style="{StaticResource CardValueStyle}"/>
+                </StackPanel>
+            </Border>
+
+            <Border Style="{StaticResource DashboardCardStyle}">
+                <StackPanel>
+                    <TextBlock Text="" Style="{StaticResource IconStyle}" Foreground="#E74C3C"/>
+                    <TextBlock Text="Alertas Pendientes" Style="{StaticResource CardTitleStyle}"/>
+                    <TextBlock Text="3" Style="{StaticResource CardValueStyle}"/>
+                </StackPanel>
+            </Border>
+
+        </UniformGrid>
+    </Grid>
+</UserControl>

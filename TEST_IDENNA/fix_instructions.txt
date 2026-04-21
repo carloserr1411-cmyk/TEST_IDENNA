@@ -1,0 +1,12 @@
+Acciones sugeridas para corregir el error "Library e_sqlite3 not found" en proyecto .NET Framework 4.7.2 WPF
+
+1) Cambiar Platform Target a x86 o x64 en el archivo .csproj o desde Visual Studio.
+   - En Visual Studio: Project -> Properties -> Build -> Platform target: seleccionar x86 o x64.
+
+2) Añadir paquete NuGet "SQLitePCLRaw.bundle_e_sqlite3" o usar un paquete compatible con .NET Framework 4.7.2 que incluya los binarios nativos (ej. System.Data.SQLite o Microsoft.Data.Sqlite + bundle).
+
+3) Si usas paquetes antiguos que no soportan AnyCPU (SourceGear.sqlite3), asegúrate de usar la versión correcta (x86/x64) o cambiar PlatformTarget.
+
+4) Limpiar bin/obj y reconstruir. Verificar que en la salida exista e_sqlite3.dll dentro de runtimes\win-<arch>\native o directamente en bin.
+
+5) Si persiste, comparte el contenido de packages.config y el paso de salida del build (errores exactos).

@@ -1,0 +1,7 @@
+<Project>
+  <PropertyGroup>
+    <!-- Forzar PlatformTarget a x86 para asegurar que se copien y se usen los binarios nativos de SQLite que no soportan AnyCPU -->
+    <PlatformTarget>x86</PlatformTarget>
+    <Prefer32Bit>true</Prefer32Bit>
+  </PropertyGroup>
+</Project>

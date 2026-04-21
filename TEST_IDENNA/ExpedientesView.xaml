@@ -1,0 +1,35 @@
+﻿<UserControl x:Class="TEST_IDENNA.ExpedientesView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:vm="clr-namespace:TEST_IDENNA.ViewModels"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:TEST_IDENNA"
+             mc:Ignorable="d" 
+             d:DesignHeight="450" d:DesignWidth="800">
+
+    <UserControl.DataContext>
+        <vm:RegistroViewModel />
+    </UserControl.DataContext>
+    
+    <Grid>
+        <Grid Margin="20">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+
+            <StackPanel Orientation="Horizontal" Grid.Row="0" Margin="0,0,0,20">
+                <TextBox Text="{Binding NombreUsuario, UpdateSourceTrigger=PropertyChanged}" Width="250" Margin="0,0,10,0"/>
+                <Button Content="Registrar Niño/a" Command="{Binding RegistrarCommand}" Background="#2196F3" Foreground="White" Padding="10,0"/>
+            </StackPanel>
+
+            <DataGrid Grid.Row="1" ItemsSource="{Binding ListaNinos}" AutoGenerateColumns="False" IsReadOnly="True">
+                <DataGrid.Columns>
+                    <DataGridTextColumn Header="ID" Binding="{Binding Id}" Width="50"/>
+                    <DataGridTextColumn Header="Nombre Completo" Binding="{Binding Nombres}" Width="*"/>
+                </DataGrid.Columns>
+            </DataGrid>
+        </Grid>
+    </Grid>
+</UserControl>

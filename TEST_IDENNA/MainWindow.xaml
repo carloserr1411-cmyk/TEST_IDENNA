@@ -9,10 +9,6 @@
         mc:Ignorable="d"
         Title="Registro IDENNA" Height="480" Width="850">
 
-    <Window.DataContext>
-    <vm:RegistroViewModel />
-    </Window.DataContext>
-
     <Window.Resources>
         <Style x:Key="MenuButtonStyle" TargetType="Button">
             <Setter Property="Background" Value="White"/>
@@ -125,7 +121,7 @@
                         </b:Interaction.Triggers>
                     </ListBoxItem>
 
-                    <ListBoxItem Style="{StaticResource SidebarButtonStyle}">
+                    <ListBoxItem Style="{StaticResource SidebarButtonStyle}" Selected="ListBoxItem_Selected">
                         <ListBoxItem.Tag>
                             <materialDesign:PackIcon Kind="FolderOutline" Width="18" Height="18"/>
                         </ListBoxItem.Tag>

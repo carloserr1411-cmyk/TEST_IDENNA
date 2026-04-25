@@ -13,7 +13,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace TEST_IDENNA
+namespace TEST_IDENNA.Views
 {
     /// <summary>
     /// Lógica de interacción para ExpedientesView.xaml
@@ -23,6 +23,11 @@ namespace TEST_IDENNA
         public ExpedientesView()
         {
             InitializeComponent();
+        }
+
+        private void TextBox_TextChanged(object sender, TextChangedEventArgs e)
+        {
+
         }
     }
 }

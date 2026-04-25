@@ -1,8 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Data;
@@ -13,14 +11,14 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace TEST_IDENNA
+namespace TEST_IDENNA.Views
 {
     /// <summary>
-    /// Lógica de interacción para BitacoraView.xaml
+    /// Lógica de interacción para ReportesView.xaml
     /// </summary>
-    public partial class BitacoraView : UserControl
+    public partial class ReportesView : UserControl
     {
-        public BitacoraView()
+        public ReportesView()
         {
             InitializeComponent();
         }

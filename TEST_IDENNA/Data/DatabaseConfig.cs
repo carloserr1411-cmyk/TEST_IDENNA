@@ -10,7 +10,7 @@ using TEST_IDENNA.Models;
 
 namespace TEST_IDENNA.Data
 {
-internal class DatabaseConfig
+/*internal class DatabaseConfig
     {
         private const string ConnectionString = "Data Source=idenna.db";
 
@@ -64,7 +64,7 @@ internal class DatabaseConfig
             return lista;
         }
     }
-
+                    
     public partial class App : Application
     {
         protected override void OnStartup(StartupEventArgs e)
@@ -77,5 +77,5 @@ internal class DatabaseConfig
             DatabaseConfig.InitializeDatabase(); // Crea la DB al iniciar
 
         }
-    }
+    }*/
 }

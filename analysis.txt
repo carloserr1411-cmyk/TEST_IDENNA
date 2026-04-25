@@ -1,0 +1,1 @@
+Necesito abrir MainWindow.xaml y RegistrarBeneficiarioView.xaml para ver cómo se muestra CurrentView y qué contenedor se usa. También revisar RegistroBeneficiarioViewModel para ver dependencias. Abrir archivos relevantes.

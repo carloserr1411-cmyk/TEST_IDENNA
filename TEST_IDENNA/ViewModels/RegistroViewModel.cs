@@ -12,10 +12,12 @@ using System.Windows;
 using System.Windows.Input;
 using TEST_IDENNA.Data;
 using TEST_IDENNA.Models;
+using TEST_IDENNA.Services;
+using TEST_IDENNA.Views;
 
 namespace TEST_IDENNA.ViewModels
 {
-    public partial class RegistroViewModel : ObservableObject
+    /*public partial class RegistroViewModel : ObservableObject
     {
         private string nombreUsuario;
         public string NombreUsuario
@@ -43,10 +45,11 @@ namespace TEST_IDENNA.ViewModels
         {
             if (!string.IsNullOrWhiteSpace(NombreUsuario))
             {
-                DatabaseConfig.GuardarNino(NombreUsuario);
+                /*DatabaseConfig.GuardarNino(NombreUsuario);
                 CargarDatos(); // Refresca la tabla
                 MessageBox.Show($"¡{NombreUsuario} ha sido registrado en la base de datos!");
                 NombreUsuario = string.Empty; // Limpiar el campo
+
             }
             else
             {
@@ -62,7 +65,7 @@ namespace TEST_IDENNA.ViewModels
             CargarDatos();
         }
 
-        //[ObservableProperty]
+        [ObservableProperty]
         private ObservableCollection<Nino> _listaNinos;
 
         public ObservableCollection<Nino> ListaNinos
@@ -85,11 +88,11 @@ namespace TEST_IDENNA.ViewModels
             set => SetProperty(ref _currentView, value);
         }
 
-        //[RelayCommand]
-        /*public void ShowExpedientes()
+        [RelayCommand]
+        public void ShowExpedientes()
         {
             CurrentView = new ExpedientesView(); // Al cambiar esto, la interfaz cambia sola
-        }*/
+        }
 
         private ActionCommand showExpedientes;
 
@@ -108,7 +111,7 @@ namespace TEST_IDENNA.ViewModels
 
         private void PerformShowExpedientes()
         {
-            CurrentView = new ExpedientesView();
+            CurrentView = new RegistrarBeneficiarioView();
         }
 
         private ActionCommand showDashboard;
@@ -149,5 +152,5 @@ namespace TEST_IDENNA.ViewModels
         {
             CurrentView = new BitacoraView();
         }
-    }
+    }*/
 }

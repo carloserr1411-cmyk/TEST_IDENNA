@@ -3,9 +3,10 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:b="http://schemas.microsoft.com/xaml/behaviors"
         xmlns:vm="clr-namespace:TEST_IDENNA.ViewModels"
+        xmlns:views="clr-namespace:TEST_IDENNA.Views"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:TEST_IDENNA" xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+        xmlns:local="clr-namespace:TEST_IDENNA" xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes" d:DataContext="{d:DesignInstance Type=vm:MainWindowViewModel}"
         mc:Ignorable="d"
         Title="Registro IDENNA" Height="480" Width="850">
 
@@ -15,6 +16,30 @@
             <Setter Property="Foreground" Value="Black"/>
             <!-- More setters... -->
         </Style>
+
+        <DataTemplate DataType="{x:Type vm:DashboardViewModel}">
+            <views:DashboardView/>
+        </DataTemplate>
+
+        <DataTemplate DataType="{x:Type vm:ExpedientesViewModel}">
+            <views:ExpedientesView/>
+        </DataTemplate>
+
+        <DataTemplate DataType="{x:Type vm:RegistroBeneficiarioViewModel}">
+            <views:RegistrarBeneficiarioView />
+        </DataTemplate>
+
+        <DataTemplate DataType="{x:Type vm:BitacoraViewModel}">
+            <views:BitacoraView/>
+        </DataTemplate>
+
+        <DataTemplate DataType="{x:Type vm:ReportesViewModel}">
+            <views:ReportesView/>
+        </DataTemplate>
+
+        <DataTemplate DataType="{x:Type vm:ArchivosViewModel}">
+            <views:ArchivosView/>
+        </DataTemplate>
 
         <Style x:Key="SidebarButtonStyle" TargetType="ListBoxItem">
             <Setter Property="Background" Value="Transparent"/>
@@ -120,8 +145,8 @@
                             </b:EventTrigger>
                         </b:Interaction.Triggers>
                     </ListBoxItem>
-
-                    <ListBoxItem Style="{StaticResource SidebarButtonStyle}" Selected="ListBoxItem_Selected">
+                    
+                    <ListBoxItem Style="{StaticResource SidebarButtonStyle}">
                         <ListBoxItem.Tag>
                             <materialDesign:PackIcon Kind="FolderOutline" Width="18" Height="18"/>
                         </ListBoxItem.Tag>

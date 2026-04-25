@@ -1,0 +1,2713 @@
+{
+  "settings": {
+    "components": {
+      "code": true,
+      "binaries": false
+    },
+    "targetId": "net10.0",
+    "targetDisplayName": ".NETCoreApp,Version=v10.0"
+  },
+  "analysisStartTime": "2026-04-23T20:12:34.6388297Z",
+  "analysisEndTime": "2026-04-23T20:13:08.2677524Z",
+  "privacyModeHelpUrl": "https://go.microsoft.com/fwlink/?linkid=2270980",
+  "stats": {
+    "summary": {
+      "projects": 1,
+      "issues": 12,
+      "incidents": 110,
+      "effort": 110
+    },
+    "charts": {
+      "severity": {
+        "Mandatory": 59,
+        "Optional": 3,
+        "Potential": 48,
+        "Information": 0
+      },
+      "category": {
+        "NuGet": 45,
+        "Project": 2,
+        "Api": 63
+      }
+    }
+  },
+  "projects": [
+    {
+      "path": "TEST_IDENNA\\TEST_IDENNA.csproj",
+      "startingProject": true,
+      "issues": 10,
+      "storyPoints": 110,
+      "properties": {
+        "appName": "TEST_IDENNA",
+        "projectKind": "ClassicWpf",
+        "frameworks": [
+          "net48"
+        ],
+        "languages": [
+          "C#"
+        ],
+        "tools": [
+          "MSBuild"
+        ],
+        "isSdkStyle": false,
+        "numberOfFiles": 26,
+        "numberOfCodeFiles": 25,
+        "linesTotal": 1195,
+        "linesOfCode": 1078,
+        "totalApiScanned": 726,
+        "minLinesOfCodeToChange": 63,
+        "maxLinesOfCodeToChange": 63
+      },
+      "ruleInstances": [
+        {
+          "incidentId": "dbadfe4f-c460-4cd1-9359-ec024e6bd73c",
+          "ruleId": "NuGet.0001",
+          "projectPath": "TEST_IDENNA\\TEST_IDENNA.csproj",
+          "state": "Active",
+          "location": {
+            "snippetModel": {
+              "unrestricted": "MaterialDesignColors, 5.3.1\n\nRecomendaci\u00F3n:\n\nMaterialDesignColors, 5.2.1",
+              "protected": "MaterialDesignColors, 5.3.1\n\nRecomendaci\u00F3n:\n\nMaterialDesignColors, 5.2.1"
+            },
+            "kind": "File",
+            "path": "TEST_IDENNA\\TEST_IDENNA.csproj",
+            "snippet": "MaterialDesignColors, 5.3.1\n\nRecomendaci\u00F3n:\n\nMaterialDesignColors, 5.2.1",
+            "protectedSnippet": "MaterialDesignColors, 5.3.1\n\nRecomendaci\u00F3n:\n\nMaterialDesignColors, 5.2.1",
+            "label": "MaterialDesignColors 5.3.1",
+            "properties": {
+              "PackageId": "MaterialDesignColors",
+              "PackageVersion": "5.3.1",
+              "PackageNewVersion": "5.2.1",
+              "PackageReplacements": null
+            }
+          }
+        },
+        {
+          "incidentId": "210cb34c-aff9-4f62-a056-21031e08060f",
+          "ruleId": "NuGet.0001",
+          "projectPath": "TEST_IDENNA\\TEST_IDENNA.csproj",
+          "state": "Active",
+          "location": {
+            "snippetModel": {
+              "unrestricted": "MaterialDesignThemes, 5.3.1\n\nRecomendaci\u00F3n:\n\nMaterialDesignThemes, 5.2.1",
+              "protected": "MaterialDesignThemes, 5.3.1\n\nRecomendaci\u00F3n:\n\nMaterialDesignThemes, 5.2.1"
+            },
+            "kind": "File",
+            "path": "TEST_IDENNA\\TEST_IDENNA.csproj",
+            "snippet": "MaterialDesignThemes, 5.3.1\n\nRecomendaci\u00F3n:\n\nMaterialDesignThemes, 5.2.1",
+            "protectedSnippet": "MaterialDesignThemes, 5.3.1\n\nRecomendaci\u00F3n:\n\nMaterialDesignThemes, 5.2.1",
+            "label": "MaterialDesignThemes 5.3.1",
+            "properties": {
+              "PackageId": "MaterialDesignThemes",
+              "PackageVersion": "5.3.1",
+              "PackageNewVersion": "5.2.1",
+              "PackageReplacements": null
+            }
+          }
+        },
+        {
+          "incidentId": "ae24dcd1-9efb-4a48-93a8-94e171460839",
+          "ruleId": "NuGet.0002",
+          "projectPath": "TEST_IDENNA\\TEST_IDENNA.csproj",
+          "state": "Active",
+          "location": {
+            "snippetModel": {
+              "unrestricted": "Microsoft.Bcl.Cryptography, 10.0.6\n\nRecomendaci\u00F3n:\n\nRemove Microsoft.Bcl.Cryptography, and replace with new package Microsoft.Bcl.Cryptography 10.0.7",
+              "protected": "Microsoft.Bcl.Cryptography, 10.0.6\n\nRecomendaci\u00F3n:\n\nRemove Microsoft.Bcl.Cryptography, and replace with new package Microsoft.Bcl.Cryptography 10.0.7"
+            },
+            "kind": "File",
+            "path": "TEST_IDENNA\\TEST_IDENNA.csproj",
+            "snippet": "Microsoft.Bcl.Cryptography, 10.0.6\n\nRecomendaci\u00F3n:\n\nRemove Microsoft.Bcl.Cryptography, and replace with new package Microsoft.Bcl.Cryptography 10.0.7",
+            "protectedSnippet": "Microsoft.Bcl.Cryptography, 10.0.6\n\nRecomendaci\u00F3n:\n\nRemove Microsoft.Bcl.Cryptography, and replace with new package Microsoft.Bcl.Cryptography 10.0.7",
+            "label": "Microsoft.Bcl.Cryptography 10.0.6",
+            "properties": {
+              "PackageId": "Microsoft.Bcl.Cryptography",
+              "PackageVersion": "10.0.6",
+              "PackageNewVersion": "10.0.7",
+              "PackageReplacements": null
+            }
+          }
+        },
+        {
+          "incidentId": "537af4a5-5cec-4c33-b708-e768a8e69359",
+          "ruleId": "NuGet.0002",
+          "projectPath": "TEST_IDENNA\\TEST_IDENNA.csproj",
+          "state": "Active",
+          "location": {
+            "snippetModel": {
+              "unrestricted": "Microsoft.Bcl.HashCode, 1.1.1\n\nRecomendaci\u00F3n:\n\nRemove Microsoft.Bcl.HashCode, and replace with new package Microsoft.Bcl.HashCode 6.0.0",
+              "protected": "Microsoft.Bcl.HashCode, 1.1.1\n\nRecomendaci\u00F3n:\n\nRemove Microsoft.Bcl.HashCode, and replace with new package Microsoft.Bcl.HashCode 6.0.0"
+            },
+            "kind": "File",
+            "path": "TEST_IDENNA\\TEST_IDENNA.csproj",
+            "snippet": "Microsoft.Bcl.HashCode, 1.1.1\n\nRecomendaci\u00F3n:\n\nRemove Microsoft.Bcl.HashCode, and replace with new package Microsoft.Bcl.HashCode 6.0.0",
+            "protectedSnippet": "Microsoft.Bcl.HashCode, 1.1.1\n\nRecomendaci\u00F3n:\n\nRemove Microsoft.Bcl.HashCode, and replace with new package Microsoft.Bcl.HashCode 6.0.0",
+            "label": "Microsoft.Bcl.HashCode 1.1.1",
+            "properties": {
+              "PackageId": "Microsoft.Bcl.HashCode",
+              "PackageVersion": "1.1.1",
+              "PackageNewVersion": "6.0.0",
+              "PackageReplacements": null
+            }
+          }
+        },
+        {
+          "incidentId": "529c5023-cfb5-4592-9541-a5ae82985603",
+          "ruleId": "NuGet.0002",
+          "projectPath": "TEST_IDENNA\\TEST_IDENNA.csproj",
+          "state": "Active",
+          "location": {
+            "snippetModel": {
+              "unrestricted": "Microsoft.Bcl.TimeProvider, 10.0.6\n\nRecomendaci\u00F3n:\n\nRemove Microsoft.Bcl.TimeProvider, and replace with new package Microsoft.Bcl.TimeProvider 10.0.7",
+              "protected": "Microsoft.Bcl.TimeProvider, 10.0.6\n\nRecomendaci\u00F3n:\n\nRemove Microsoft.Bcl.TimeProvider, and replace with new package Microsoft.Bcl.TimeProvider 10.0.7"
+            },
+            "kind": "File",
+            "path": "TEST_IDENNA\\TEST_IDENNA.csproj",
+            "snippet": "Microsoft.Bcl.TimeProvider, 10.0.6\n\nRecomendaci\u00F3n:\n\nRemove Microsoft.Bcl.TimeProvider, and replace with new package Microsoft.Bcl.TimeProvider 10.0.7",
+            "protectedSnippet": "Microsoft.Bcl.TimeProvider, 10.0.6\n\nRecomendaci\u00F3n:\n\nRemove Microsoft.Bcl.TimeProvider, and replace with new package Microsoft.Bcl.TimeProvider 10.0.7",
+            "label": "Microsoft.Bcl.TimeProvider 10.0.6",
+            "properties": {
+              "PackageId": "Microsoft.Bcl.TimeProvider",
+              "PackageVersion": "10.0.6",
+              "PackageNewVersion": "10.0.7",
+              "PackageReplacements": null
+            }
+          }
+        },
+        {
+          "incidentId": "7be7d5b3-685c-4c2a-b453-85bca8092b87",
+          "ruleId": "NuGet.0001",
+          "projectPath": "TEST_IDENNA\\TEST_IDENNA.csproj",
+          "state": "Active",
+          "location": {
+            "snippetModel": {
+              "unrestricted": "Microsoft.Data.SqlClient.SNI, 6.0.2\n\nRecomendaci\u00F3n:\n\nNo se encontr\u00F3 ninguna versi\u00F3n compatible",
+              "protected": "Microsoft.Data.SqlClient.SNI, 6.0.2\n\nRecomendaci\u00F3n:\n\nNo se encontr\u00F3 ninguna versi\u00F3n compatible"
+            },
+            "kind": "File",
+            "path": "TEST_IDENNA\\TEST_IDENNA.csproj",
+            "snippet": "Microsoft.Data.SqlClient.SNI, 6.0.2\n\nRecomendaci\u00F3n:\n\nNo se encontr\u00F3 ninguna versi\u00F3n compatible",
+            "protectedSnippet": "Microsoft.Data.SqlClient.SNI, 6.0.2\n\nRecomendaci\u00F3n:\n\nNo se encontr\u00F3 ninguna versi\u00F3n compatible",
+            "label": "Microsoft.Data.SqlClient.SNI 6.0.2",
+            "properties": {
+              "PackageId": "Microsoft.Data.SqlClient.SNI",
+              "PackageVersion": "6.0.2",
+              "PackageNewVersion": null,
+              "PackageReplacements": null
+            }
+          }
+        },
+        {
+          "incidentId": "f9b2f6b7-f6b6-4ffc-895b-eee8c3d4f87b",
+          "ruleId": "NuGet.0002",
+          "projectPath": "TEST_IDENNA\\TEST_IDENNA.csproj",
+          "state": "Active",
+          "location": {
+            "snippetModel": {
+              "unrestricted": "Microsoft.Data.Sqlite.Core, 10.0.6\n\nRecomendaci\u00F3n:\n\nRemove Microsoft.Data.Sqlite.Core, and replace with new package Microsoft.Data.Sqlite.Core 10.0.7",
+              "protected": "Microsoft.Data.Sqlite.Core, 10.0.6\n\nRecomendaci\u00F3n:\n\nRemove Microsoft.Data.Sqlite.Core, and replace with new package Microsoft.Data.Sqlite.Core 10.0.7"
+            },
+            "kind": "File",
+            "path": "TEST_IDENNA\\TEST_IDENNA.csproj",
+            "snippet": "Microsoft.Data.Sqlite.Core, 10.0.6\n\nRecomendaci\u00F3n:\n\nRemove Microsoft.Data.Sqlite.Core, and replace with new package Microsoft.Data.Sqlite.Core 10.0.7",
+            "protectedSnippet": "Microsoft.Data.Sqlite.Core, 10.0.6\n\nRecomendaci\u00F3n:\n\nRemove Microsoft.Data.Sqlite.Core, and replace with new package Microsoft.Data.Sqlite.Core 10.0.7",
+            "label": "Microsoft.Data.Sqlite.Core 10.0.6",
+            "properties": {
+              "PackageId": "Microsoft.Data.Sqlite.Core",
+              "PackageVersion": "10.0.6",
+              "PackageNewVersion": "10.0.7",
+              "PackageReplacements": null
+            }
+          }
+        },
+        {
+          "incidentId": "0634f5a7-4a2d-491f-8981-2ad42909afba",
+          "ruleId": "NuGet.0002",
+          "projectPath": "TEST_IDENNA\\TEST_IDENNA.csproj",
+          "state": "Active",
+          "location": {
+            "snippetModel": {
+              "unrestricted": "Microsoft.EntityFrameworkCore, 3.1.32\n\nRecomendaci\u00F3n:\n\nRemove Microsoft.EntityFrameworkCore, and replace with new package Microsoft.EntityFrameworkCore 10.0.7",
+              "protected": "Microsoft.EntityFrameworkCore, 3.1.32\n\nRecomendaci\u00F3n:\n\nRemove Microsoft.EntityFrameworkCore, and replace with new package Microsoft.EntityFrameworkCore 10.0.7"
+            },
+            "kind": "File",
+            "path": "TEST_IDENNA\\TEST_IDENNA.csproj",
+            "snippet": "Microsoft.EntityFrameworkCore, 3.1.32\n\nRecomendaci\u00F3n:\n\nRemove Microsoft.EntityFrameworkCore, and replace with new package Microsoft.EntityFrameworkCore 10.0.7",
+            "protectedSnippet": "Microsoft.EntityFrameworkCore, 3.1.32\n\nRecomendaci\u00F3n:\n\nRemove Microsoft.EntityFrameworkCore, and replace with new package Microsoft.EntityFrameworkCore 10.0.7",
+            "label": "Microsoft.EntityFrameworkCore 3.1.32",
+            "properties": {
+              "PackageId": "Microsoft.EntityFrameworkCore",
+              "PackageVersion": "3.1.32",
+              "PackageNewVersion": "10.0.7",
+              "PackageReplacements": null
+            }
+          }
+        },
+        {
+          "incidentId": "3ca3b1c1-2f4d-4e4d-afde-568bd2e7b716",
+          "ruleId": "NuGet.0002",
+          "projectPath": "TEST_IDENNA\\TEST_IDENNA.csproj",
+          "state": "Active",
+          "location": {
+            "snippetModel": {
+              "unrestricted": "Microsoft.EntityFrameworkCore.Abstractions, 3.1.32\n\nRecomendaci\u00F3n:\n\nRemove Microsoft.EntityFrameworkCore.Abstractions, and replace with new package Microsoft.EntityFrameworkCore.Abstractions 10.0.7",
+              "protected": "Microsoft.EntityFrameworkCore.Abstractions, 3.1.32\n\nRecomendaci\u00F3n:\n\nRemove Microsoft.EntityFrameworkCore.Abstractions, and replace with new package Microsoft.EntityFrameworkCore.Abstractions 10.0.7"
+            },
+            "kind": "File",
+            "path": "TEST_IDENNA\\TEST_IDENNA.csproj",
+            "snippet": "Microsoft.EntityFrameworkCore.Abstractions, 3.1.32\n\nRecomendaci\u00F3n:\n\nRemove Microsoft.EntityFrameworkCore.Abstractions, and replace with new package Microsoft.EntityFrameworkCore.Abstractions 10.0.7",
+            "protectedSnippet": "Microsoft.EntityFrameworkCore.Abstractions, 3.1.32\n\nRecomendaci\u00F3n:\n\nRemove Microsoft.EntityFrameworkCore.Abstractions, and replace with new package Microsoft.EntityFrameworkCore.Abstractions 10.0.7",
+            "label": "Microsoft.EntityFrameworkCore.Abstractions 3.1.32",
+            "properties": {
+              "PackageId": "Microsoft.EntityFrameworkCore.Abstractions",
+              "PackageVersion": "3.1.32",
+              "PackageNewVersion": "10.0.7",
+              "PackageReplacements": null
+            }
+          }
+        },
+        {
+          "incidentId": "c591ce17-421f-4a8d-afae-e6481c7dffe0",
+          "ruleId": "NuGet.0002",
+          "projectPath": "TEST_IDENNA\\TEST_IDENNA.csproj",
+          "state": "Active",
+          "location": {
+            "snippetModel": {
+              "unrestricted": "Microsoft.EntityFrameworkCore.Analyzers, 3.1.32\n\nRecomendaci\u00F3n:\n\nRemove Microsoft.EntityFrameworkCore.Analyzers, and replace with new package Microsoft.EntityFrameworkCore.Analyzers 10.0.7",
+              "protected": "Microsoft.EntityFrameworkCore.Analyzers, 3.1.32\n\nRecomendaci\u00F3n:\n\nRemove Microsoft.EntityFrameworkCore.Analyzers, and replace with new package Microsoft.EntityFrameworkCore.Analyzers 10.0.7"
+            },
+            "kind": "File",
+            "path": "TEST_IDENNA\\TEST_IDENNA.csproj",
+            "snippet": "Microsoft.EntityFrameworkCore.Analyzers, 3.1.32\n\nRecomendaci\u00F3n:\n\nRemove Microsoft.EntityFrameworkCore.Analyzers, and replace with new package Microsoft.EntityFrameworkCore.Analyzers 10.0.7",
+            "protectedSnippet": "Microsoft.EntityFrameworkCore.Analyzers, 3.1.32\n\nRecomendaci\u00F3n:\n\nRemove Microsoft.EntityFrameworkCore.Analyzers, and replace with new package Microsoft.EntityFrameworkCore.Analyzers 10.0.7",
+            "label": "Microsoft.EntityFrameworkCore.Analyzers 3.1.32",
+            "properties": {
+              "PackageId": "Microsoft.EntityFrameworkCore.Analyzers",
+              "PackageVersion": "3.1.32",
+              "PackageNewVersion": "10.0.7",
+              "PackageReplacements": null
+            }
+          }
+        },
+        {
+          "incidentId": "385f0203-a15e-4e8c-99bc-7337783cf9f1",
+          "ruleId": "NuGet.0002",
+          "projectPath": "TEST_IDENNA\\TEST_IDENNA.csproj",
+          "state": "Active",
+          "location": {
+            "snippetModel": {
+              "unrestricted": "Microsoft.EntityFrameworkCore.Design, 3.1.32\n\nRecomendaci\u00F3n:\n\nRemove Microsoft.EntityFrameworkCore.Design, and replace with new package Microsoft.EntityFrameworkCore.Design 10.0.7",
+              "protected": "Microsoft.EntityFrameworkCore.Design, 3.1.32\n\nRecomendaci\u00F3n:\n\nRemove Microsoft.EntityFrameworkCore.Design, and replace with new package Microsoft.EntityFrameworkCore.Design 10.0.7"
+            },
+            "kind": "File",
+            "path": "TEST_IDENNA\\TEST_IDENNA.csproj",
+            "snippet": "Microsoft.EntityFrameworkCore.Design, 3.1.32\n\nRecomendaci\u00F3n:\n\nRemove Microsoft.EntityFrameworkCore.Design, and replace with new package Microsoft.EntityFrameworkCore.Design 10.0.7",
+            "protectedSnippet": "Microsoft.EntityFrameworkCore.Design, 3.1.32\n\nRecomendaci\u00F3n:\n\nRemove Microsoft.EntityFrameworkCore.Design, and replace with new package Microsoft.EntityFrameworkCore.Design 10.0.7",
+            "label": "Microsoft.EntityFrameworkCore.Design 3.1.32",
+            "properties": {
+              "PackageId": "Microsoft.EntityFrameworkCore.Design",
+              "PackageVersion": "3.1.32",
+              "PackageNewVersion": "10.0.7",
+              "PackageReplacements": null
+            }
+          }
+        },
+        {
+          "incidentId": "f0875a4c-d54d-4f95-a905-3aca44d655f2",
+          "ruleId": "NuGet.0002",
+          "projectPath": "TEST_IDENNA\\TEST_IDENNA.csproj",
+          "state": "Active",
+          "location": {
+            "snippetModel": {
+              "unrestricted": "Microsoft.EntityFrameworkCore.Relational, 3.1.32\n\nRecomendaci\u00F3n:\n\nRemove Microsoft.EntityFrameworkCore.Relational, and replace with new package Microsoft.EntityFrameworkCore.Relational 10.0.7",
+              "protected": "Microsoft.EntityFrameworkCore.Relational, 3.1.32\n\nRecomendaci\u00F3n:\n\nRemove Microsoft.EntityFrameworkCore.Relational, and replace with new package Microsoft.EntityFrameworkCore.Relational 10.0.7"
+            },
+            "kind": "File",
+            "path": "TEST_IDENNA\\TEST_IDENNA.csproj",
+            "snippet": "Microsoft.EntityFrameworkCore.Relational, 3.1.32\n\nRecomendaci\u00F3n:\n\nRemove Microsoft.EntityFrameworkCore.Relational, and replace with new package Microsoft.EntityFrameworkCore.Relational 10.0.7",
+            "protectedSnippet": "Microsoft.EntityFrameworkCore.Relational, 3.1.32\n\nRecomendaci\u00F3n:\n\nRemove Microsoft.EntityFrameworkCore.Relational, and replace with new package Microsoft.EntityFrameworkCore.Relational 10.0.7",
+            "label": "Microsoft.EntityFrameworkCore.Relational 3.1.32",
+            "properties": {
+              "PackageId": "Microsoft.EntityFrameworkCore.Relational",
+              "PackageVersion": "3.1.32",
+              "PackageNewVersion": "10.0.7",
+              "PackageReplacements": null
+            }
+          }
+        },
+        {
+          "incidentId": "e1e208c2-3069-4772-b19d-4de0dcdb24f2",
+          "ruleId": "NuGet.0002",
+          "projectPath": "TEST_IDENNA\\TEST_IDENNA.csproj",
+          "state": "Active",
+          "location": {
+            "snippetModel": {
+              "unrestricted": "Microsoft.EntityFrameworkCore.Sqlite, 3.1.32\n\nRecomendaci\u00F3n:\n\nRemove Microsoft.EntityFrameworkCore.Sqlite, and replace with new package Microsoft.EntityFrameworkCore.Sqlite 10.0.7",
+              "protected": "Microsoft.EntityFrameworkCore.Sqlite, 3.1.32\n\nRecomendaci\u00F3n:\n\nRemove Microsoft.EntityFrameworkCore.Sqlite, and replace with new package Microsoft.EntityFrameworkCore.Sqlite 10.0.7"
+            },
+            "kind": "File",
+            "path": "TEST_IDENNA\\TEST_IDENNA.csproj",
+            "snippet": "Microsoft.EntityFrameworkCore.Sqlite, 3.1.32\n\nRecomendaci\u00F3n:\n\nRemove Microsoft.EntityFrameworkCore.Sqlite, and replace with new package Microsoft.EntityFrameworkCore.Sqlite 10.0.7",
+            "protectedSnippet": "Microsoft.EntityFrameworkCore.Sqlite, 3.1.32\n\nRecomendaci\u00F3n:\n\nRemove Microsoft.EntityFrameworkCore.Sqlite, and replace with new package Microsoft.EntityFrameworkCore.Sqlite 10.0.7",
+            "label": "Microsoft.EntityFrameworkCore.Sqlite 3.1.32",
+            "properties": {
+              "PackageId": "Microsoft.EntityFrameworkCore.Sqlite",
+              "PackageVersion": "3.1.32",
+              "PackageNewVersion": "10.0.7",
+              "PackageReplacements": null
+            }
+          }
+        },
+        {
+          "incidentId": "22591d0c-5f0b-4ac6-905c-354b06fa0b8b",
+          "ruleId": "NuGet.0002",
+          "projectPath": "TEST_IDENNA\\TEST_IDENNA.csproj",
+          "state": "Active",
+          "location": {
+            "snippetModel": {
+              "unrestricted": "Microsoft.EntityFrameworkCore.Sqlite.Core, 3.1.32\n\nRecomendaci\u00F3n:\n\nRemove Microsoft.EntityFrameworkCore.Sqlite.Core, and replace with new package Microsoft.EntityFrameworkCore.Sqlite.Core 10.0.7",
+              "protected": "Microsoft.EntityFrameworkCore.Sqlite.Core, 3.1.32\n\nRecomendaci\u00F3n:\n\nRemove Microsoft.EntityFrameworkCore.Sqlite.Core, and replace with new package Microsoft.EntityFrameworkCore.Sqlite.Core 10.0.7"
+            },
+            "kind": "File",
+            "path": "TEST_IDENNA\\TEST_IDENNA.csproj",
+            "snippet": "Microsoft.EntityFrameworkCore.Sqlite.Core, 3.1.32\n\nRecomendaci\u00F3n:\n\nRemove Microsoft.EntityFrameworkCore.Sqlite.Core, and replace with new package Microsoft.EntityFrameworkCore.Sqlite.Core 10.0.7",
+            "protectedSnippet": "Microsoft.EntityFrameworkCore.Sqlite.Core, 3.1.32\n\nRecomendaci\u00F3n:\n\nRemove Microsoft.EntityFrameworkCore.Sqlite.Core, and replace with new package Microsoft.EntityFrameworkCore.Sqlite.Core 10.0.7",
+            "label": "Microsoft.EntityFrameworkCore.Sqlite.Core 3.1.32",
+            "properties": {
+              "PackageId": "Microsoft.EntityFrameworkCore.Sqlite.Core",
+              "PackageVersion": "3.1.32",
+              "PackageNewVersion": "10.0.7",
+              "PackageReplacements": null
+            }
+          }
+        },
+        {
+          "incidentId": "bf6c75ad-64ae-479a-8194-49c27fa153ac",
+          "ruleId": "NuGet.0002",
+          "projectPath": "TEST_IDENNA\\TEST_IDENNA.csproj",
+          "state": "Active",
+          "location": {
+            "snippetModel": {
+              "unrestricted": "Microsoft.EntityFrameworkCore.Tools, 3.1.32\n\nRecomendaci\u00F3n:\n\nRemove Microsoft.EntityFrameworkCore.Tools, and replace with new package Microsoft.EntityFrameworkCore.Tools 10.0.7",
+              "protected": "Microsoft.EntityFrameworkCore.Tools, 3.1.32\n\nRecomendaci\u00F3n:\n\nRemove Microsoft.EntityFrameworkCore.Tools, and replace with new package Microsoft.EntityFrameworkCore.Tools 10.0.7"
+            },
+            "kind": "File",
+            "path": "TEST_IDENNA\\TEST_IDENNA.csproj",
+            "snippet": "Microsoft.EntityFrameworkCore.Tools, 3.1.32\n\nRecomendaci\u00F3n:\n\nRemove Microsoft.EntityFrameworkCore.Tools, and replace with new package Microsoft.EntityFrameworkCore.Tools 10.0.7",
+            "protectedSnippet": "Microsoft.EntityFrameworkCore.Tools, 3.1.32\n\nRecomendaci\u00F3n:\n\nRemove Microsoft.EntityFrameworkCore.Tools, and replace with new package Microsoft.EntityFrameworkCore.Tools 10.0.7",
+            "label": "Microsoft.EntityFrameworkCore.Tools 3.1.32",
+            "properties": {
+              "PackageId": "Microsoft.EntityFrameworkCore.Tools",
+              "PackageVersion": "3.1.32",
+              "PackageNewVersion": "10.0.7",
+              "PackageReplacements": null
+            }
+          }
+        },
+        {
+          "incidentId": "a172d3a7-cc6a-4de0-be2f-2e25757ced24",
+          "ruleId": "NuGet.0002",
+          "projectPath": "TEST_IDENNA\\TEST_IDENNA.csproj",
+          "state": "Active",
+          "location": {
+            "snippetModel": {
+              "unrestricted": "Microsoft.Extensions.Caching.Abstractions, 10.0.6\n\nRecomendaci\u00F3n:\n\nRemove Microsoft.Extensions.Caching.Abstractions, and replace with new package Microsoft.Extensions.Caching.Abstractions 10.0.7",
+              "protected": "Microsoft.Extensions.Caching.Abstractions, 10.0.6\n\nRecomendaci\u00F3n:\n\nRemove Microsoft.Extensions.Caching.Abstractions, and replace with new package Microsoft.Extensions.Caching.Abstractions 10.0.7"
+            },
+            "kind": "File",
+            "path": "TEST_IDENNA\\TEST_IDENNA.csproj",
+            "snippet": "Microsoft.Extensions.Caching.Abstractions, 10.0.6\n\nRecomendaci\u00F3n:\n\nRemove Microsoft.Extensions.Caching.Abstractions, and replace with new package Microsoft.Extensions.Caching.Abstractions 10.0.7",
+            "protectedSnippet": "Microsoft.Extensions.Caching.Abstractions, 10.0.6\n\nRecomendaci\u00F3n:\n\nRemove Microsoft.Extensions.Caching.Abstractions, and replace with new package Microsoft.Extensions.Caching.Abstractions 10.0.7",
+            "label": "Microsoft.Extensions.Caching.Abstractions 10.0.6",
+            "properties": {
+              "PackageId": "Microsoft.Extensions.Caching.Abstractions",
+              "PackageVersion": "10.0.6",
+              "PackageNewVersion": "10.0.7",
+              "PackageReplacements": null
+            }
+          }
+        },
+        {
+          "incidentId": "9536bdd2-9c65-42e5-9e20-8a9366fd3cd7",
+          "ruleId": "NuGet.0002",
+          "projectPath": "TEST_IDENNA\\TEST_IDENNA.csproj",
+          "state": "Active",
+          "location": {
+            "snippetModel": {
+              "unrestricted": "Microsoft.Extensions.Caching.Memory, 10.0.6\n\nRecomendaci\u00F3n:\n\nRemove Microsoft.Extensions.Caching.Memory, and replace with new package Microsoft.Extensions.Caching.Memory 10.0.7",
+              "protected": "Microsoft.Extensions.Caching.Memory, 10.0.6\n\nRecomendaci\u00F3n:\n\nRemove Microsoft.Extensions.Caching.Memory, and replace with new package Microsoft.Extensions.Caching.Memory 10.0.7"
+            },
+            "kind": "File",
+            "path": "TEST_IDENNA\\TEST_IDENNA.csproj",
+            "snippet": "Microsoft.Extensions.Caching.Memory, 10.0.6\n\nRecomendaci\u00F3n:\n\nRemove Microsoft.Extensions.Caching.Memory, and replace with new package Microsoft.Extensions.Caching.Memory 10.0.7",
+            "protectedSnippet": "Microsoft.Extensions.Caching.Memory, 10.0.6\n\nRecomendaci\u00F3n:\n\nRemove Microsoft.Extensions.Caching.Memory, and replace with new package Microsoft.Extensions.Caching.Memory 10.0.7",
+            "label": "Microsoft.Extensions.Caching.Memory 10.0.6",
+            "properties": {
+              "PackageId": "Microsoft.Extensions.Caching.Memory",
+              "PackageVersion": "10.0.6",
+              "PackageNewVersion": "10.0.7",
+              "PackageReplacements": null
+            }
+          }
+        },
+        {
+          "incidentId": "81f660ae-9cb7-4ae0-9550-dc2440b9245e",
+          "ruleId": "NuGet.0002",
+          "projectPath": "TEST_IDENNA\\TEST_IDENNA.csproj",
+          "state": "Active",
+          "location": {
+            "snippetModel": {
+              "unrestricted": "Microsoft.Extensions.Configuration, 3.1.32\n\nRecomendaci\u00F3n:\n\nRemove Microsoft.Extensions.Configuration, and replace with new package Microsoft.Extensions.Configuration 10.0.7",
+              "protected": "Microsoft.Extensions.Configuration, 3.1.32\n\nRecomendaci\u00F3n:\n\nRemove Microsoft.Extensions.Configuration, and replace with new package Microsoft.Extensions.Configuration 10.0.7"
+            },
+            "kind": "File",
+            "path": "TEST_IDENNA\\TEST_IDENNA.csproj",
+            "snippet": "Microsoft.Extensions.Configuration, 3.1.32\n\nRecomendaci\u00F3n:\n\nRemove Microsoft.Extensions.Configuration, and replace with new package Microsoft.Extensions.Configuration 10.0.7",
+            "protectedSnippet": "Microsoft.Extensions.Configuration, 3.1.32\n\nRecomendaci\u00F3n:\n\nRemove Microsoft.Extensions.Configuration, and replace with new package Microsoft.Extensions.Configuration 10.0.7",
+            "label": "Microsoft.Extensions.Configuration 3.1.32",
+            "properties": {
+              "PackageId": "Microsoft.Extensions.Configuration",
+              "PackageVersion": "3.1.32",
+              "PackageNewVersion": "10.0.7",
+              "PackageReplacements": null
+            }
+          }
+        },
+        {
+          "incidentId": "e1fdfa18-4653-4200-927a-1c00d88a9d09",
+          "ruleId": "NuGet.0002",
+          "projectPath": "TEST_IDENNA\\TEST_IDENNA.csproj",
+          "state": "Active",
+          "location": {
+            "snippetModel": {
+              "unrestricted": "Microsoft.Extensions.Configuration.Abstractions, 3.1.32\n\nRecomendaci\u00F3n:\n\nRemove Microsoft.Extensions.Configuration.Abstractions, and replace with new package Microsoft.Extensions.Configuration.Abstractions 10.0.7",
+              "protected": "Microsoft.Extensions.Configuration.Abstractions, 3.1.32\n\nRecomendaci\u00F3n:\n\nRemove Microsoft.Extensions.Configuration.Abstractions, and replace with new package Microsoft.Extensions.Configuration.Abstractions 10.0.7"
+            },
+            "kind": "File",
+            "path": "TEST_IDENNA\\TEST_IDENNA.csproj",
+            "snippet": "Microsoft.Extensions.Configuration.Abstractions, 3.1.32\n\nRecomendaci\u00F3n:\n\nRemove Microsoft.Extensions.Configuration.Abstractions, and replace with new package Microsoft.Extensions.Configuration.Abstractions 10.0.7",
+            "protectedSnippet": "Microsoft.Extensions.Configuration.Abstractions, 3.1.32\n\nRecomendaci\u00F3n:\n\nRemove Microsoft.Extensions.Configuration.Abstractions, and replace with new package Microsoft.Extensions.Configuration.Abstractions 10.0.7",
+            "label": "Microsoft.Extensions.Configuration.Abstractions 3.1.32",
+            "properties": {
+              "PackageId": "Microsoft.Extensions.Configuration.Abstractions",
+              "PackageVersion": "3.1.32",
+              "PackageNewVersion": "10.0.7",
+              "PackageReplacements": null
+            }
+          }
+        },
+        {
+          "incidentId": "890e941f-d745-4ca6-b2f1-563116c6010c",
+          "ruleId": "NuGet.0002",
+          "projectPath": "TEST_IDENNA\\TEST_IDENNA.csproj",
+          "state": "Active",
+          "location": {
+            "snippetModel": {
+              "unrestricted": "Microsoft.Extensions.Configuration.Binder, 3.1.32\n\nRecomendaci\u00F3n:\n\nRemove Microsoft.Extensions.Configuration.Binder, and replace with new package Microsoft.Extensions.Configuration.Binder 10.0.7",
+              "protected": "Microsoft.Extensions.Configuration.Binder, 3.1.32\n\nRecomendaci\u00F3n:\n\nRemove Microsoft.Extensions.Configuration.Binder, and replace with new package Microsoft.Extensions.Configuration.Binder 10.0.7"
+            },
+            "kind": "File",
+            "path": "TEST_IDENNA\\TEST_IDENNA.csproj",
+            "snippet": "Microsoft.Extensions.Configuration.Binder, 3.1.32\n\nRecomendaci\u00F3n:\n\nRemove Microsoft.Extensions.Configuration.Binder, and replace with new package Microsoft.Extensions.Configuration.Binder 10.0.7",
+            "protectedSnippet": "Microsoft.Extensions.Configuration.Binder, 3.1.32\n\nRecomendaci\u00F3n:\n\nRemove Microsoft.Extensions.Configuration.Binder, and replace with new package Microsoft.Extensions.Configuration.Binder 10.0.7",
+            "label": "Microsoft.Extensions.Configuration.Binder 3.1.32",
+            "properties": {
+              "PackageId": "Microsoft.Extensions.Configuration.Binder",
+              "PackageVersion": "3.1.32",
+              "PackageNewVersion": "10.0.7",
+              "PackageReplacements": null
+            }
+          }
+        },
+        {
+          "incidentId": "90a93874-2ab5-46da-bcf8-a5a352352a2c",
+          "ruleId": "NuGet.0002",
+          "projectPath": "TEST_IDENNA\\TEST_IDENNA.csproj",
+          "state": "Active",
+          "location": {
+            "snippetModel": {
+              "unrestricted": "Microsoft.Extensions.DependencyModel, 3.1.25\n\nRecomendaci\u00F3n:\n\nRemove Microsoft.Extensions.DependencyModel, and replace with new package Microsoft.Extensions.DependencyModel 10.0.7",
+              "protected": "Microsoft.Extensions.DependencyModel, 3.1.25\n\nRecomendaci\u00F3n:\n\nRemove Microsoft.Extensions.DependencyModel, and replace with new package Microsoft.Extensions.DependencyModel 10.0.7"
+            },
+            "kind": "File",
+            "path": "TEST_IDENNA\\TEST_IDENNA.csproj",
+            "snippet": "Microsoft.Extensions.DependencyModel, 3.1.25\n\nRecomendaci\u00F3n:\n\nRemove Microsoft.Extensions.DependencyModel, and replace with new package Microsoft.Extensions.DependencyModel 10.0.7",
+            "protectedSnippet": "Microsoft.Extensions.DependencyModel, 3.1.25\n\nRecomendaci\u00F3n:\n\nRemove Microsoft.Extensions.DependencyModel, and replace with new package Microsoft.Extensions.DependencyModel 10.0.7",
+            "label": "Microsoft.Extensions.DependencyModel 3.1.25",
+            "properties": {
+              "PackageId": "Microsoft.Extensions.DependencyModel",
+              "PackageVersion": "3.1.25",
+              "PackageNewVersion": "10.0.7",
+              "PackageReplacements": null
+            }
+          }
+        },
+        {
+          "incidentId": "79805924-e4e2-4647-bc87-46f4295555b1",
+          "ruleId": "NuGet.0002",
+          "projectPath": "TEST_IDENNA\\TEST_IDENNA.csproj",
+          "state": "Active",
+          "location": {
+            "snippetModel": {
+              "unrestricted": "Microsoft.Extensions.Logging, 3.1.32\n\nRecomendaci\u00F3n:\n\nRemove Microsoft.Extensions.Logging, and replace with new package Microsoft.Extensions.Logging 10.0.7",
+              "protected": "Microsoft.Extensions.Logging, 3.1.32\n\nRecomendaci\u00F3n:\n\nRemove Microsoft.Extensions.Logging, and replace with new package Microsoft.Extensions.Logging 10.0.7"
+            },
+            "kind": "File",
+            "path": "TEST_IDENNA\\TEST_IDENNA.csproj",
+            "snippet": "Microsoft.Extensions.Logging, 3.1.32\n\nRecomendaci\u00F3n:\n\nRemove Microsoft.Extensions.Logging, and replace with new package Microsoft.Extensions.Logging 10.0.7",
+            "protectedSnippet": "Microsoft.Extensions.Logging, 3.1.32\n\nRecomendaci\u00F3n:\n\nRemove Microsoft.Extensions.Logging, and replace with new package Microsoft.Extensions.Logging 10.0.7",
+            "label": "Microsoft.Extensions.Logging 3.1.32",
+            "properties": {
+              "PackageId": "Microsoft.Extensions.Logging",
+              "PackageVersion": "3.1.32",
+              "PackageNewVersion": "10.0.7",
+              "PackageReplacements": null
+            }
+          }
+        },
+        {
+          "incidentId": "a2a01ead-db92-4a31-b977-b81d9bacfbbb",
+          "ruleId": "NuGet.0002",
+          "projectPath": "TEST_IDENNA\\TEST_IDENNA.csproj",
+          "state": "Active",
+          "location": {
+            "snippetModel": {
+              "unrestricted": "Microsoft.Extensions.Logging.Abstractions, 10.0.6\n\nRecomendaci\u00F3n:\n\nRemove Microsoft.Extensions.Logging.Abstractions, and replace with new package Microsoft.Extensions.Logging.Abstractions 10.0.7",
+              "protected": "Microsoft.Extensions.Logging.Abstractions, 10.0.6\n\nRecomendaci\u00F3n:\n\nRemove Microsoft.Extensions.Logging.Abstractions, and replace with new package Microsoft.Extensions.Logging.Abstractions 10.0.7"
+            },
+            "kind": "File",
+            "path": "TEST_IDENNA\\TEST_IDENNA.csproj",
+            "snippet": "Microsoft.Extensions.Logging.Abstractions, 10.0.6\n\nRecomendaci\u00F3n:\n\nRemove Microsoft.Extensions.Logging.Abstractions, and replace with new package Microsoft.Extensions.Logging.Abstractions 10.0.7",
+            "protectedSnippet": "Microsoft.Extensions.Logging.Abstractions, 10.0.6\n\nRecomendaci\u00F3n:\n\nRemove Microsoft.Extensions.Logging.Abstractions, and replace with new package Microsoft.Extensions.Logging.Abstractions 10.0.7",
+            "label": "Microsoft.Extensions.Logging.Abstractions 10.0.6",
+            "properties": {
+              "PackageId": "Microsoft.Extensions.Logging.Abstractions",
+              "PackageVersion": "10.0.6",
+              "PackageNewVersion": "10.0.7",
+              "PackageReplacements": null
+            }
+          }
+        },
+        {
+          "incidentId": "3f3d5e03-3101-48b0-aded-63aebeb54f36",
+          "ruleId": "NuGet.0002",
+          "projectPath": "TEST_IDENNA\\TEST_IDENNA.csproj",
+          "state": "Active",
+          "location": {
+            "snippetModel": {
+              "unrestricted": "Microsoft.Extensions.Options, 10.0.6\n\nRecomendaci\u00F3n:\n\nRemove Microsoft.Extensions.Options, and replace with new package Microsoft.Extensions.Options 10.0.7",
+              "protected": "Microsoft.Extensions.Options, 10.0.6\n\nRecomendaci\u00F3n:\n\nRemove Microsoft.Extensions.Options, and replace with new package Microsoft.Extensions.Options 10.0.7"
+            },
+            "kind": "File",
+            "path": "TEST_IDENNA\\TEST_IDENNA.csproj",
+            "snippet": "Microsoft.Extensions.Options, 10.0.6\n\nRecomendaci\u00F3n:\n\nRemove Microsoft.Extensions.Options, and replace with new package Microsoft.Extensions.Options 10.0.7",
+            "protectedSnippet": "Microsoft.Extensions.Options, 10.0.6\n\nRecomendaci\u00F3n:\n\nRemove Microsoft.Extensions.Options, and replace with new package Microsoft.Extensions.Options 10.0.7",
+            "label": "Microsoft.Extensions.Options 10.0.6",
+            "properties": {
+              "PackageId": "Microsoft.Extensions.Options",
+              "PackageVersion": "10.0.6",
+              "PackageNewVersion": "10.0.7",
+              "PackageReplacements": null
+            }
+          }
+        },
+        {
+          "incidentId": "021a3ce9-bde8-4940-998c-0841f4445076",
+          "ruleId": "NuGet.0002",
+          "projectPath": "TEST_IDENNA\\TEST_IDENNA.csproj",
+          "state": "Active",
+          "location": {
+            "snippetModel": {
+              "unrestricted": "Microsoft.Extensions.Primitives, 10.0.6\n\nRecomendaci\u00F3n:\n\nRemove Microsoft.Extensions.Primitives, and replace with new package Microsoft.Extensions.Primitives 10.0.7",
+              "protected": "Microsoft.Extensions.Primitives, 10.0.6\n\nRecomendaci\u00F3n:\n\nRemove Microsoft.Extensions.Primitives, and replace with new package Microsoft.Extensions.Primitives 10.0.7"
+            },
+            "kind": "File",
+            "path": "TEST_IDENNA\\TEST_IDENNA.csproj",
+            "snippet": "Microsoft.Extensions.Primitives, 10.0.6\n\nRecomendaci\u00F3n:\n\nRemove Microsoft.Extensions.Primitives, and replace with new package Microsoft.Extensions.Primitives 10.0.7",
+            "protectedSnippet": "Microsoft.Extensions.Primitives, 10.0.6\n\nRecomendaci\u00F3n:\n\nRemove Microsoft.Extensions.Primitives, and replace with new package Microsoft.Extensions.Primitives 10.0.7",
+            "label": "Microsoft.Extensions.Primitives 10.0.6",
+            "properties": {
+              "PackageId": "Microsoft.Extensions.Primitives",
+              "PackageVersion": "10.0.6",
+              "PackageNewVersion": "10.0.7",
+              "PackageReplacements": null
+            }
+          }
+        },
+        {
+          "incidentId": "327648e9-6c3f-4f58-8065-7048b4340f5d",
+          "ruleId": "NuGet.0001",
+          "projectPath": "TEST_IDENNA\\TEST_IDENNA.csproj",
+          "state": "Active",
+          "location": {
+            "snippetModel": {
+              "unrestricted": "Microsoft.Xaml.Behaviors.Wpf, 1.1.142\n\nRecomendaci\u00F3n:\n\nMicrosoft.Xaml.Behaviors.Wpf, 1.1.39",
+              "protected": "Microsoft.Xaml.Behaviors.Wpf, 1.1.142\n\nRecomendaci\u00F3n:\n\nMicrosoft.Xaml.Behaviors.Wpf, 1.1.39"
+            },
+            "kind": "File",
+            "path": "TEST_IDENNA\\TEST_IDENNA.csproj",
+            "snippet": "Microsoft.Xaml.Behaviors.Wpf, 1.1.142\n\nRecomendaci\u00F3n:\n\nMicrosoft.Xaml.Behaviors.Wpf, 1.1.39",
+            "protectedSnippet": "Microsoft.Xaml.Behaviors.Wpf, 1.1.142\n\nRecomendaci\u00F3n:\n\nMicrosoft.Xaml.Behaviors.Wpf, 1.1.39",
+            "label": "Microsoft.Xaml.Behaviors.Wpf 1.1.142",
+            "properties": {
+              "PackageId": "Microsoft.Xaml.Behaviors.Wpf",
+              "PackageVersion": "1.1.142",
+              "PackageNewVersion": "1.1.39",
+              "PackageReplacements": null
+            }
+          }
+        },
+        {
+          "incidentId": "3783f377-4bab-46f4-9639-e6c6fb02ef21",
+          "ruleId": "NuGet.0002",
+          "projectPath": "TEST_IDENNA\\TEST_IDENNA.csproj",
+          "state": "Active",
+          "location": {
+            "snippetModel": {
+              "unrestricted": "Newtonsoft.Json, 9.0.1\n\nRecomendaci\u00F3n:\n\nRemove Newtonsoft.Json, and replace with new package Newtonsoft.Json 13.0.4",
+              "protected": "Newtonsoft.Json, 9.0.1\n\nRecomendaci\u00F3n:\n\nRemove Newtonsoft.Json, and replace with new package Newtonsoft.Json 13.0.4"
+            },
+            "kind": "File",
+            "path": "TEST_IDENNA\\TEST_IDENNA.csproj",
+            "snippet": "Newtonsoft.Json, 9.0.1\n\nRecomendaci\u00F3n:\n\nRemove Newtonsoft.Json, and replace with new package Newtonsoft.Json 13.0.4",
+            "protectedSnippet": "Newtonsoft.Json, 9.0.1\n\nRecomendaci\u00F3n:\n\nRemove Newtonsoft.Json, and replace with new package Newtonsoft.Json 13.0.4",
+            "label": "Newtonsoft.Json 9.0.1",
+            "properties": {
+              "PackageId": "Newtonsoft.Json",
+              "PackageVersion": "9.0.1",
+              "PackageNewVersion": "13.0.4",
+              "PackageReplacements": null
+            }
+          }
+        },
+        {
+          "incidentId": "72516f58-42f1-41ec-b868-dabf5c44ef21",
+          "ruleId": "NuGet.0003",
+          "projectPath": "TEST_IDENNA\\TEST_IDENNA.csproj",
+          "state": "Active",
+          "location": {
+            "snippetModel": {
+              "unrestricted": "System.Buffers, 4.6.1\n\nRecomendaci\u00F3n:\n\nFuncionalidad de paquete incluida con la nueva referencia de marco",
+              "protected": "System.Buffers, 4.6.1\n\nRecomendaci\u00F3n:\n\nFuncionalidad de paquete incluida con la nueva referencia de marco"
+            },
+            "kind": "File",
+            "path": "TEST_IDENNA\\TEST_IDENNA.csproj",
+            "snippet": "System.Buffers, 4.6.1\n\nRecomendaci\u00F3n:\n\nFuncionalidad de paquete incluida con la nueva referencia de marco",
+            "protectedSnippet": "System.Buffers, 4.6.1\n\nRecomendaci\u00F3n:\n\nFuncionalidad de paquete incluida con la nueva referencia de marco",
+            "label": "System.Buffers 4.6.1",
+            "properties": {
+              "PackageId": "System.Buffers",
+              "PackageVersion": "4.6.1",
+              "PackageNewVersion": null,
+              "PackageReplacements": null
+            }
+          }
+        },
+        {
+          "incidentId": "be177a2a-e4a3-47cb-a350-258874fc627e",
+          "ruleId": "NuGet.0002",
+          "projectPath": "TEST_IDENNA\\TEST_IDENNA.csproj",
+          "state": "Active",
+          "location": {
+            "snippetModel": {
+              "unrestricted": "System.Collections.Immutable, 1.7.1\n\nRecomendaci\u00F3n:\n\nRemove System.Collections.Immutable, and replace with new package System.Collections.Immutable 10.0.7",
+              "protected": "System.Collections.Immutable, 1.7.1\n\nRecomendaci\u00F3n:\n\nRemove System.Collections.Immutable, and replace with new package System.Collections.Immutable 10.0.7"
+            },
+            "kind": "File",
+            "path": "TEST_IDENNA\\TEST_IDENNA.csproj",
+            "snippet": "System.Collections.Immutable, 1.7.1\n\nRecomendaci\u00F3n:\n\nRemove System.Collections.Immutable, and replace with new package System.Collections.Immutable 10.0.7",
+            "protectedSnippet": "System.Collections.Immutable, 1.7.1\n\nRecomendaci\u00F3n:\n\nRemove System.Collections.Immutable, and replace with new package System.Collections.Immutable 10.0.7",
+            "label": "System.Collections.Immutable 1.7.1",
+            "properties": {
+              "PackageId": "System.Collections.Immutable",
+              "PackageVersion": "1.7.1",
+              "PackageNewVersion": "10.0.7",
+              "PackageReplacements": null
+            }
+          }
+        },
+        {
+          "incidentId": "9d8b2e5d-0666-4488-af28-e6ca8c5ae5f7",
+          "ruleId": "NuGet.0003",
+          "projectPath": "TEST_IDENNA\\TEST_IDENNA.csproj",
+          "state": "Active",
+          "location": {
+            "snippetModel": {
+              "unrestricted": "System.ComponentModel.Annotations, 4.7.0\n\nRecomendaci\u00F3n:\n\nFuncionalidad de paquete incluida con la nueva referencia de marco",
+              "protected": "System.ComponentModel.Annotations, 4.7.0\n\nRecomendaci\u00F3n:\n\nFuncionalidad de paquete incluida con la nueva referencia de marco"
+            },
+            "kind": "File",
+            "path": "TEST_IDENNA\\TEST_IDENNA.csproj",
+            "snippet": "System.ComponentModel.Annotations, 4.7.0\n\nRecomendaci\u00F3n:\n\nFuncionalidad de paquete incluida con la nueva referencia de marco",
+            "protectedSnippet": "System.ComponentModel.Annotations, 4.7.0\n\nRecomendaci\u00F3n:\n\nFuncionalidad de paquete incluida con la nueva referencia de marco",
+            "label": "System.ComponentModel.Annotations 4.7.0",
+            "properties": {
+              "PackageId": "System.ComponentModel.Annotations",
+              "PackageVersion": "4.7.0",
+              "PackageNewVersion": null,
+              "PackageReplacements": null
+            }
+          }
+        },
+        {
+          "incidentId": "4e6d8c73-0287-40e9-b3a1-7c459092bfdb",
+          "ruleId": "NuGet.0002",
+          "projectPath": "TEST_IDENNA\\TEST_IDENNA.csproj",
+          "state": "Active",
+          "location": {
+            "snippetModel": {
+              "unrestricted": "System.Diagnostics.DiagnosticSource, 10.0.6\n\nRecomendaci\u00F3n:\n\nRemove System.Diagnostics.DiagnosticSource, and replace with new package System.Diagnostics.DiagnosticSource 10.0.7",
+              "protected": "System.Diagnostics.DiagnosticSource, 10.0.6\n\nRecomendaci\u00F3n:\n\nRemove System.Diagnostics.DiagnosticSource, and replace with new package System.Diagnostics.DiagnosticSource 10.0.7"
+            },
+            "kind": "File",
+            "path": "TEST_IDENNA\\TEST_IDENNA.csproj",
+            "snippet": "System.Diagnostics.DiagnosticSource, 10.0.6\n\nRecomendaci\u00F3n:\n\nRemove System.Diagnostics.DiagnosticSource, and replace with new package System.Diagnostics.DiagnosticSource 10.0.7",
+            "protectedSnippet": "System.Diagnostics.DiagnosticSource, 10.0.6\n\nRecomendaci\u00F3n:\n\nRemove System.Diagnostics.DiagnosticSource, and replace with new package System.Diagnostics.DiagnosticSource 10.0.7",
+            "label": "System.Diagnostics.DiagnosticSource 10.0.6",
+            "properties": {
+              "PackageId": "System.Diagnostics.DiagnosticSource",
+              "PackageVersion": "10.0.6",
+              "PackageNewVersion": "10.0.7",
+              "PackageReplacements": null
+            }
+          }
+        },
+        {
+          "incidentId": "64e6aecb-0964-4470-9037-193b9277262e",
+          "ruleId": "NuGet.0002",
+          "projectPath": "TEST_IDENNA\\TEST_IDENNA.csproj",
+          "state": "Active",
+          "location": {
+            "snippetModel": {
+              "unrestricted": "System.Formats.Asn1, 10.0.6\n\nRecomendaci\u00F3n:\n\nRemove System.Formats.Asn1, and replace with new package System.Formats.Asn1 10.0.7",
+              "protected": "System.Formats.Asn1, 10.0.6\n\nRecomendaci\u00F3n:\n\nRemove System.Formats.Asn1, and replace with new package System.Formats.Asn1 10.0.7"
+            },
+            "kind": "File",
+            "path": "TEST_IDENNA\\TEST_IDENNA.csproj",
+            "snippet": "System.Formats.Asn1, 10.0.6\n\nRecomendaci\u00F3n:\n\nRemove System.Formats.Asn1, and replace with new package System.Formats.Asn1 10.0.7",
+            "protectedSnippet": "System.Formats.Asn1, 10.0.6\n\nRecomendaci\u00F3n:\n\nRemove System.Formats.Asn1, and replace with new package System.Formats.Asn1 10.0.7",
+            "label": "System.Formats.Asn1 10.0.6",
+            "properties": {
+              "PackageId": "System.Formats.Asn1",
+              "PackageVersion": "10.0.6",
+              "PackageNewVersion": "10.0.7",
+              "PackageReplacements": null
+            }
+          }
+        },
+        {
+          "incidentId": "a5baee59-ac16-4a3b-886c-d0ecc3b1a5f4",
+          "ruleId": "NuGet.0002",
+          "projectPath": "TEST_IDENNA\\TEST_IDENNA.csproj",
+          "state": "Active",
+          "location": {
+            "snippetModel": {
+              "unrestricted": "System.IO.Pipelines, 10.0.6\n\nRecomendaci\u00F3n:\n\nRemove System.IO.Pipelines, and replace with new package System.IO.Pipelines 10.0.7",
+              "protected": "System.IO.Pipelines, 10.0.6\n\nRecomendaci\u00F3n:\n\nRemove System.IO.Pipelines, and replace with new package System.IO.Pipelines 10.0.7"
+            },
+            "kind": "File",
+            "path": "TEST_IDENNA\\TEST_IDENNA.csproj",
+            "snippet": "System.IO.Pipelines, 10.0.6\n\nRecomendaci\u00F3n:\n\nRemove System.IO.Pipelines, and replace with new package System.IO.Pipelines 10.0.7",
+            "protectedSnippet": "System.IO.Pipelines, 10.0.6\n\nRecomendaci\u00F3n:\n\nRemove System.IO.Pipelines, and replace with new package System.IO.Pipelines 10.0.7",
+            "label": "System.IO.Pipelines 10.0.6",
+            "properties": {
+              "PackageId": "System.IO.Pipelines",
+              "PackageVersion": "10.0.6",
+              "PackageNewVersion": "10.0.7",
+              "PackageReplacements": null
+            }
+          }
+        },
+        {
+          "incidentId": "b516f7a0-90c1-4c2f-8d06-ddf1b64b3d4d",
+          "ruleId": "NuGet.0003",
+          "projectPath": "TEST_IDENNA\\TEST_IDENNA.csproj",
+          "state": "Active",
+          "location": {
+            "snippetModel": {
+              "unrestricted": "System.Memory, 4.6.3\n\nRecomendaci\u00F3n:\n\nFuncionalidad de paquete incluida con la nueva referencia de marco",
+              "protected": "System.Memory, 4.6.3\n\nRecomendaci\u00F3n:\n\nFuncionalidad de paquete incluida con la nueva referencia de marco"
+            },
+            "kind": "File",
+            "path": "TEST_IDENNA\\TEST_IDENNA.csproj",
+            "snippet": "System.Memory, 4.6.3\n\nRecomendaci\u00F3n:\n\nFuncionalidad de paquete incluida con la nueva referencia de marco",
+            "protectedSnippet": "System.Memory, 4.6.3\n\nRecomendaci\u00F3n:\n\nFuncionalidad de paquete incluida con la nueva referencia de marco",
+            "label": "System.Memory 4.6.3",
+            "properties": {
+              "PackageId": "System.Memory",
+              "PackageVersion": "4.6.3",
+              "PackageNewVersion": null,
+              "PackageReplacements": null
+            }
+          }
+        },
+        {
+          "incidentId": "6a9bae7a-e63d-4d9c-ae33-1b3e7b03c6ed",
+          "ruleId": "NuGet.0003",
+          "projectPath": "TEST_IDENNA\\TEST_IDENNA.csproj",
+          "state": "Active",
+          "location": {
+            "snippetModel": {
+              "unrestricted": "System.Numerics.Vectors, 4.6.1\n\nRecomendaci\u00F3n:\n\nFuncionalidad de paquete incluida con la nueva referencia de marco",
+              "protected": "System.Numerics.Vectors, 4.6.1\n\nRecomendaci\u00F3n:\n\nFuncionalidad de paquete incluida con la nueva referencia de marco"
+            },
+            "kind": "File",
+            "path": "TEST_IDENNA\\TEST_IDENNA.csproj",
+            "snippet": "System.Numerics.Vectors, 4.6.1\n\nRecomendaci\u00F3n:\n\nFuncionalidad de paquete incluida con la nueva referencia de marco",
+            "protectedSnippet": "System.Numerics.Vectors, 4.6.1\n\nRecomendaci\u00F3n:\n\nFuncionalidad de paquete incluida con la nueva referencia de marco",
+            "label": "System.Numerics.Vectors 4.6.1",
+            "properties": {
+              "PackageId": "System.Numerics.Vectors",
+              "PackageVersion": "4.6.1",
+              "PackageNewVersion": null,
+              "PackageReplacements": null
+            }
+          }
+        },
+        {
+          "incidentId": "5765a8ef-606e-44d5-be1f-57c61d93690c",
+          "ruleId": "NuGet.0003",
+          "projectPath": "TEST_IDENNA\\TEST_IDENNA.csproj",
+          "state": "Active",
+          "location": {
+            "snippetModel": {
+              "unrestricted": "System.Runtime.InteropServices.RuntimeInformation, 4.3.0\n\nRecomendaci\u00F3n:\n\nFuncionalidad de paquete incluida con la nueva referencia de marco",
+              "protected": "System.Runtime.InteropServices.RuntimeInformation, 4.3.0\n\nRecomendaci\u00F3n:\n\nFuncionalidad de paquete incluida con la nueva referencia de marco"
+            },
+            "kind": "File",
+            "path": "TEST_IDENNA\\TEST_IDENNA.csproj",
+            "snippet": "System.Runtime.InteropServices.RuntimeInformation, 4.3.0\n\nRecomendaci\u00F3n:\n\nFuncionalidad de paquete incluida con la nueva referencia de marco",
+            "protectedSnippet": "System.Runtime.InteropServices.RuntimeInformation, 4.3.0\n\nRecomendaci\u00F3n:\n\nFuncionalidad de paquete incluida con la nueva referencia de marco",
+            "label": "System.Runtime.InteropServices.RuntimeInformation 4.3.0",
+            "properties": {
+              "PackageId": "System.Runtime.InteropServices.RuntimeInformation",
+              "PackageVersion": "4.3.0",
+              "PackageNewVersion": null,
+              "PackageReplacements": null
+            }
+          }
+        },
+        {
+          "incidentId": "ec94e04d-8143-4314-b683-fa6e2fc7f51b",
+          "ruleId": "NuGet.0002",
+          "projectPath": "TEST_IDENNA\\TEST_IDENNA.csproj",
+          "state": "Active",
+          "location": {
+            "snippetModel": {
+              "unrestricted": "System.Security.Cryptography.Pkcs, 10.0.6\n\nRecomendaci\u00F3n:\n\nRemove System.Security.Cryptography.Pkcs, and replace with new package System.Security.Cryptography.Pkcs 10.0.7",
+              "protected": "System.Security.Cryptography.Pkcs, 10.0.6\n\nRecomendaci\u00F3n:\n\nRemove System.Security.Cryptography.Pkcs, and replace with new package System.Security.Cryptography.Pkcs 10.0.7"
+            },
+            "kind": "File",
+            "path": "TEST_IDENNA\\TEST_IDENNA.csproj",
+            "snippet": "System.Security.Cryptography.Pkcs, 10.0.6\n\nRecomendaci\u00F3n:\n\nRemove System.Security.Cryptography.Pkcs, and replace with new package System.Security.Cryptography.Pkcs 10.0.7",
+            "protectedSnippet": "System.Security.Cryptography.Pkcs, 10.0.6\n\nRecomendaci\u00F3n:\n\nRemove System.Security.Cryptography.Pkcs, and replace with new package System.Security.Cryptography.Pkcs 10.0.7",
+            "label": "System.Security.Cryptography.Pkcs 10.0.6",
+            "properties": {
+              "PackageId": "System.Security.Cryptography.Pkcs",
+              "PackageVersion": "10.0.6",
+              "PackageNewVersion": "10.0.7",
+              "PackageReplacements": null
+            }
+          }
+        },
+        {
+          "incidentId": "2d02759a-868e-4760-ba70-1d580e7f2dce",
+          "ruleId": "NuGet.0002",
+          "projectPath": "TEST_IDENNA\\TEST_IDENNA.csproj",
+          "state": "Active",
+          "location": {
+            "snippetModel": {
+              "unrestricted": "System.Text.Encodings.Web, 10.0.6\n\nRecomendaci\u00F3n:\n\nRemove System.Text.Encodings.Web, and replace with new package System.Text.Encodings.Web 10.0.7",
+              "protected": "System.Text.Encodings.Web, 10.0.6\n\nRecomendaci\u00F3n:\n\nRemove System.Text.Encodings.Web, and replace with new package System.Text.Encodings.Web 10.0.7"
+            },
+            "kind": "File",
+            "path": "TEST_IDENNA\\TEST_IDENNA.csproj",
+            "snippet": "System.Text.Encodings.Web, 10.0.6\n\nRecomendaci\u00F3n:\n\nRemove System.Text.Encodings.Web, and replace with new package System.Text.Encodings.Web 10.0.7",
+            "protectedSnippet": "System.Text.Encodings.Web, 10.0.6\n\nRecomendaci\u00F3n:\n\nRemove System.Text.Encodings.Web, and replace with new package System.Text.Encodings.Web 10.0.7",
+            "label": "System.Text.Encodings.Web 10.0.6",
+            "properties": {
+              "PackageId": "System.Text.Encodings.Web",
+              "PackageVersion": "10.0.6",
+              "PackageNewVersion": "10.0.7",
+              "PackageReplacements": null
+            }
+          }
+        },
+        {
+          "incidentId": "d7286e9b-0245-4960-9890-c7ce690a44c5",
+          "ruleId": "NuGet.0002",
+          "projectPath": "TEST_IDENNA\\TEST_IDENNA.csproj",
+          "state": "Active",
+          "location": {
+            "snippetModel": {
+              "unrestricted": "System.Text.Json, 10.0.6\n\nRecomendaci\u00F3n:\n\nRemove System.Text.Json, and replace with new package System.Text.Json 10.0.7",
+              "protected": "System.Text.Json, 10.0.6\n\nRecomendaci\u00F3n:\n\nRemove System.Text.Json, and replace with new package System.Text.Json 10.0.7"
+            },
+            "kind": "File",
+            "path": "TEST_IDENNA\\TEST_IDENNA.csproj",
+            "snippet": "System.Text.Json, 10.0.6\n\nRecomendaci\u00F3n:\n\nRemove System.Text.Json, and replace with new package System.Text.Json 10.0.7",
+            "protectedSnippet": "System.Text.Json, 10.0.6\n\nRecomendaci\u00F3n:\n\nRemove System.Text.Json, and replace with new package System.Text.Json 10.0.7",
+            "label": "System.Text.Json 10.0.6",
+            "properties": {
+              "PackageId": "System.Text.Json",
+              "PackageVersion": "10.0.6",
+              "PackageNewVersion": "10.0.7",
+              "PackageReplacements": null
+            }
+          }
+        },
+        {
+          "incidentId": "ec147f17-44a3-4a1e-8894-9b17c1f71a03",
+          "ruleId": "NuGet.0002",
+          "projectPath": "TEST_IDENNA\\TEST_IDENNA.csproj",
+          "state": "Active",
+          "location": {
+            "snippetModel": {
+              "unrestricted": "System.Threading.Channels, 10.0.6\n\nRecomendaci\u00F3n:\n\nRemove System.Threading.Channels, and replace with new package System.Threading.Channels 10.0.7",
+              "protected": "System.Threading.Channels, 10.0.6\n\nRecomendaci\u00F3n:\n\nRemove System.Threading.Channels, and replace with new package System.Threading.Channels 10.0.7"
+            },
+            "kind": "File",
+            "path": "TEST_IDENNA\\TEST_IDENNA.csproj",
+            "snippet": "System.Threading.Channels, 10.0.6\n\nRecomendaci\u00F3n:\n\nRemove System.Threading.Channels, and replace with new package System.Threading.Channels 10.0.7",
+            "protectedSnippet": "System.Threading.Channels, 10.0.6\n\nRecomendaci\u00F3n:\n\nRemove System.Threading.Channels, and replace with new package System.Threading.Channels 10.0.7",
+            "label": "System.Threading.Channels 10.0.6",
+            "properties": {
+              "PackageId": "System.Threading.Channels",
+              "PackageVersion": "10.0.6",
+              "PackageNewVersion": "10.0.7",
+              "PackageReplacements": null
+            }
+          }
+        },
+        {
+          "incidentId": "1abcc885-1d8c-47cb-995e-53cc6f1af090",
+          "ruleId": "NuGet.0003",
+          "projectPath": "TEST_IDENNA\\TEST_IDENNA.csproj",
+          "state": "Active",
+          "location": {
+            "snippetModel": {
+              "unrestricted": "System.Threading.Tasks.Extensions, 4.6.3\n\nRecomendaci\u00F3n:\n\nFuncionalidad de paquete incluida con la nueva referencia de marco",
+              "protected": "System.Threading.Tasks.Extensions, 4.6.3\n\nRecomendaci\u00F3n:\n\nFuncionalidad de paquete incluida con la nueva referencia de marco"
+            },
+            "kind": "File",
+            "path": "TEST_IDENNA\\TEST_IDENNA.csproj",
+            "snippet": "System.Threading.Tasks.Extensions, 4.6.3\n\nRecomendaci\u00F3n:\n\nFuncionalidad de paquete incluida con la nueva referencia de marco",
+            "protectedSnippet": "System.Threading.Tasks.Extensions, 4.6.3\n\nRecomendaci\u00F3n:\n\nFuncionalidad de paquete incluida con la nueva referencia de marco",
+            "label": "System.Threading.Tasks.Extensions 4.6.3",
+            "properties": {
+              "PackageId": "System.Threading.Tasks.Extensions",
+              "PackageVersion": "4.6.3",
+              "PackageNewVersion": null,
+              "PackageReplacements": null
+            }
+          }
+        },
+        {
+          "incidentId": "9a3a7ea0-fa1e-444d-b502-bbc805090ad1",
+          "ruleId": "NuGet.0003",
+          "projectPath": "TEST_IDENNA\\TEST_IDENNA.csproj",
+          "state": "Active",
+          "location": {
+            "snippetModel": {
+              "unrestricted": "System.ValueTuple, 4.6.2\n\nRecomendaci\u00F3n:\n\nFuncionalidad de paquete incluida con la nueva referencia de marco",
+              "protected": "System.ValueTuple, 4.6.2\n\nRecomendaci\u00F3n:\n\nFuncionalidad de paquete incluida con la nueva referencia de marco"
+            },
+            "kind": "File",
+            "path": "TEST_IDENNA\\TEST_IDENNA.csproj",
+            "snippet": "System.ValueTuple, 4.6.2\n\nRecomendaci\u00F3n:\n\nFuncionalidad de paquete incluida con la nueva referencia de marco",
+            "protectedSnippet": "System.ValueTuple, 4.6.2\n\nRecomendaci\u00F3n:\n\nFuncionalidad de paquete incluida con la nueva referencia de marco",
+            "label": "System.ValueTuple 4.6.2",
+            "properties": {
+              "PackageId": "System.ValueTuple",
+              "PackageVersion": "4.6.2",
+              "PackageNewVersion": null,
+              "PackageReplacements": null
+            }
+          }
+        },
+        {
+          "incidentId": "36c70bcd-eb90-4a60-8d87-be1b3ad10c80",
+          "ruleId": "NuGet.0004",
+          "projectPath": "TEST_IDENNA\\TEST_IDENNA.csproj",
+          "state": "Active",
+          "location": {
+            "snippetModel": {
+              "unrestricted": "Newtonsoft.Json, 9.0.1\n\nRecomendaci\u00F3n:\n\nNewtonsoft.Json, 13.0.4",
+              "protected": "Newtonsoft.Json, 9.0.1\n\nRecomendaci\u00F3n:\n\nNewtonsoft.Json, 13.0.4"
+            },
+            "kind": "File",
+            "path": "TEST_IDENNA\\TEST_IDENNA.csproj",
+            "snippet": "Newtonsoft.Json, 9.0.1\n\nRecomendaci\u00F3n:\n\nNewtonsoft.Json, 13.0.4",
+            "protectedSnippet": "Newtonsoft.Json, 9.0.1\n\nRecomendaci\u00F3n:\n\nNewtonsoft.Json, 13.0.4",
+            "label": "Newtonsoft.Json 9.0.1",
+            "properties": {
+              "PackageId": "Newtonsoft.Json",
+              "PackageVersion": "9.0.1",
+              "PackageNewVersion": "13.0.4",
+              "PackageReplacements": null
+            }
+          }
+        },
+        {
+          "incidentId": "d14d3790-d374-491f-819d-c6b933940101",
+          "ruleId": "NuGet.0005",
+          "projectPath": "TEST_IDENNA\\TEST_IDENNA.csproj",
+          "state": "Active",
+          "location": {
+            "snippetModel": {
+              "unrestricted": "SQLitePCLRaw.lib.e_sqlite3, 2.1.11\n\nRecomendaci\u00F3n:\n\nThe ID of this package has changed to SourceGear.sqlite3.\nRemove SQLitePCLRaw.lib.e_sqlite3, and replace with new package SQLitePCLRaw.lib.e_sqlite3, 2.1.11",
+              "protected": "SQLitePCLRaw.lib.e_sqlite3, 2.1.11\n\nRecomendaci\u00F3n:\n\nThe ID of this package has changed to SourceGear.sqlite3.\nRemove SQLitePCLRaw.lib.e_sqlite3, and replace with new package SQLitePCLRaw.lib.e_sqlite3, 2.1.11"
+            },
+            "kind": "File",
+            "path": "TEST_IDENNA\\TEST_IDENNA.csproj",
+            "snippet": "SQLitePCLRaw.lib.e_sqlite3, 2.1.11\n\nRecomendaci\u00F3n:\n\nThe ID of this package has changed to SourceGear.sqlite3.\nRemove SQLitePCLRaw.lib.e_sqlite3, and replace with new package SQLitePCLRaw.lib.e_sqlite3, 2.1.11",
+            "protectedSnippet": "SQLitePCLRaw.lib.e_sqlite3, 2.1.11\n\nRecomendaci\u00F3n:\n\nThe ID of this package has changed to SourceGear.sqlite3.\nRemove SQLitePCLRaw.lib.e_sqlite3, and replace with new package SQLitePCLRaw.lib.e_sqlite3, 2.1.11",
+            "label": "SQLitePCLRaw.lib.e_sqlite3 2.1.11",
+            "properties": {
+              "PackageId": "SQLitePCLRaw.lib.e_sqlite3",
+              "PackageVersion": "2.1.11",
+              "PackageNewVersion": null,
+              "PackageReplacements": null
+            }
+          }
+        },
+        {
+          "incidentId": "d60cac0e-e2c7-41ca-b501-135e6dadf316",
+          "ruleId": "NuGet.0005",
+          "projectPath": "TEST_IDENNA\\TEST_IDENNA.csproj",
+          "state": "Active",
+          "location": {
+            "snippetModel": {
+              "unrestricted": "System.Collections.Immutable, 1.7.1\n\nRecomendaci\u00F3n:\n\nVersions targeting out-of-support .NET versions\nRemove System.Collections.Immutable, and replace with new package System.Collections.Immutable, 10.0.7",
+              "protected": "System.Collections.Immutable, 1.7.1\n\nRecomendaci\u00F3n:\n\nVersions targeting out-of-support .NET versions\nRemove System.Collections.Immutable, and replace with new package System.Collections.Immutable, 10.0.7"
+            },
+            "kind": "File",
+            "path": "TEST_IDENNA\\TEST_IDENNA.csproj",
+            "snippet": "System.Collections.Immutable, 1.7.1\n\nRecomendaci\u00F3n:\n\nVersions targeting out-of-support .NET versions\nRemove System.Collections.Immutable, and replace with new package System.Collections.Immutable, 10.0.7",
+            "protectedSnippet": "System.Collections.Immutable, 1.7.1\n\nRecomendaci\u00F3n:\n\nVersions targeting out-of-support .NET versions\nRemove System.Collections.Immutable, and replace with new package System.Collections.Immutable, 10.0.7",
+            "label": "System.Collections.Immutable 1.7.1",
+            "properties": {
+              "PackageId": "System.Collections.Immutable",
+              "PackageVersion": "1.7.1",
+              "PackageNewVersion": null,
+              "PackageReplacements": null
+            }
+          }
+        },
+        {
+          "incidentId": "75c1da98-4e32-4fb7-8c2f-57114fb435d8",
+          "ruleId": "Project.0001",
+          "projectPath": "TEST_IDENNA\\TEST_IDENNA.csproj",
+          "state": "Active",
+          "location": {
+            "kind": "File",
+            "path": "TEST_IDENNA\\TEST_IDENNA.csproj"
+          }
+        },
+        {
+          "incidentId": "2e7d2951-3b75-4336-a022-c9ae0ce165f7",
+          "ruleId": "Project.0002",
+          "projectPath": "TEST_IDENNA\\TEST_IDENNA.csproj",
+          "state": "Active",
+          "location": {
+            "snippetModel": {
+              "unrestricted": "Marco de destino actual: .NETFramework,Version=v4.8\nMarco de destino recomendado: net10.0-windows",
+              "protected": "Marco de destino actual: .NETFramework,Version=v4.8\nMarco de destino recomendado: net10.0-windows"
+            },
+            "kind": "File",
+            "path": "TEST_IDENNA\\TEST_IDENNA.csproj",
+            "snippet": "Marco de destino actual: .NETFramework,Version=v4.8\nMarco de destino recomendado: net10.0-windows",
+            "protectedSnippet": "Marco de destino actual: .NETFramework,Version=v4.8\nMarco de destino recomendado: net10.0-windows",
+            "properties": {
+              "CurrentTargetFramework": ".NETFramework,Version=v4.8",
+              "RecommendedTargetFramework": "net10.0-windows"
+            }
+          }
+        },
+        {
+          "incidentId": "c506e263-7592-41d1-8e5a-8f0f2da92812",
+          "ruleId": "Api.0001",
+          "description": "API is unavailable in net8.0 ",
+          "projectPath": "TEST_IDENNA\\TEST_IDENNA.csproj",
+          "state": "Active",
+          "location": {
+            "snippetModel": {
+              "unrestricted": "InternalTypeHelper",
+              "protected": "M:System.Windows.Markup.InternalTypeHelper.#ctor"
+            },
+            "kind": "File",
+            "path": "TEST_IDENNA\\obj\\x86\\Debug\\GeneratedInternalTypeHelper.g.cs",
+            "snippet": "InternalTypeHelper",
+            "protectedSnippet": "M:System.Windows.Markup.InternalTypeHelper.#ctor",
+            "label": "M:System.Windows.Markup.InternalTypeHelper.#ctor",
+            "line": 19,
+            "column": 76
+          }
+        },
+        {
+          "incidentId": "8f0a8240-e479-450a-8457-4a0d310ee412",
+          "ruleId": "Api.0001",
+          "description": "API is unavailable in net8.0 ",
+          "projectPath": "TEST_IDENNA\\TEST_IDENNA.csproj",
+          "state": "Active",
+          "location": {
+            "snippetModel": {
+              "unrestricted": "InternalTypeHelper",
+              "protected": "T:System.Windows.Markup.InternalTypeHelper"
+            },
+            "kind": "File",
+            "path": "TEST_IDENNA\\obj\\x86\\Debug\\GeneratedInternalTypeHelper.g.cs",
+            "snippet": "InternalTypeHelper",
+            "protectedSnippet": "T:System.Windows.Markup.InternalTypeHelper",
+            "label": "T:System.Windows.Markup.InternalTypeHelper",
+            "line": 19,
+            "column": 76
+          }
+        },
+        {
+          "incidentId": "f76cf9cc-fdd2-4b52-b89d-bcdf656d6a66",
+          "ruleId": "Api.0001",
+          "description": "API is unavailable in net8.0 ",
+          "projectPath": "TEST_IDENNA\\TEST_IDENNA.csproj",
+          "state": "Active",
+          "location": {
+            "snippetModel": {
+              "unrestricted": "System.Windows.Application.LoadComponent(this, resourceLocater);",
+              "protected": "T:System.Windows.Application"
+            },
+            "kind": "File",
+            "path": "TEST_IDENNA\\obj\\x86\\Debug\\Views\\RegistrarBeneficiarioView.g.cs",
+            "snippet": "System.Windows.Application.LoadComponent(this, resourceLocater);",
+            "protectedSnippet": "T:System.Windows.Application",
+            "label": "T:System.Windows.Application",
+            "line": 58,
+            "column": 12
+          }
+        },
+        {
+          "incidentId": "e36c85ed-0d75-4330-8c73-42a8ba11936f",
+          "ruleId": "Api.0001",
+          "description": "API is unavailable in net8.0 ",
+          "projectPath": "TEST_IDENNA\\TEST_IDENNA.csproj",
+          "state": "Active",
+          "location": {
+            "snippetModel": {
+              "unrestricted": "System.Windows.Application.LoadComponent(this, resourceLocater);",
+              "protected": "M:System.Windows.Application.LoadComponent(System.Object,System.Uri)"
+            },
+            "kind": "File",
+            "path": "TEST_IDENNA\\obj\\x86\\Debug\\Views\\RegistrarBeneficiarioView.g.cs",
+            "snippet": "System.Windows.Application.LoadComponent(this, resourceLocater);",
+            "protectedSnippet": "M:System.Windows.Application.LoadComponent(System.Object,System.Uri)",
+            "label": "M:System.Windows.Application.LoadComponent(System.Object,System.Uri)",
+            "line": 58,
+            "column": 12
+          }
+        },
+        {
+          "incidentId": "b21b2a2e-20ea-47d2-9e66-5e996b2c3c98",
+          "ruleId": "Api.0003",
+          "description": "Breaking change: URI length limits removed ",
+          "projectPath": "TEST_IDENNA\\TEST_IDENNA.csproj",
+          "state": "Active",
+          "location": {
+            "snippetModel": {
+              "unrestricted": "System.Uri resourceLocater = new System.Uri(\u0022/TEST_IDENNA;component/views/registrarbeneficiarioview.xaml\u0022, System.UriKind.Relative);",
+              "protected": "T:System.Uri"
+            },
+            "kind": "File",
+            "path": "TEST_IDENNA\\obj\\x86\\Debug\\Views\\RegistrarBeneficiarioView.g.cs",
+            "snippet": "System.Uri resourceLocater = new System.Uri(\u0022/TEST_IDENNA;component/views/registrarbeneficiarioview.xaml\u0022, System.UriKind.Relative);",
+            "protectedSnippet": "T:System.Uri",
+            "label": "T:System.Uri",
+            "links": [
+              {
+                "title": "Documentaci\u00F3n de la API",
+                "url": "https://github.com/dotnet/docs/blob/main/docs/core/compatibility/networking/10.0/uri-length-limits-removed.md",
+                "isCustom": false
+              }
+            ],
+            "line": 55,
+            "column": 12
+          }
+        },
+        {
+          "incidentId": "c56038c5-e187-4dcf-8263-9e6fa5d11ec9",
+          "ruleId": "Api.0003",
+          "description": "Breaking change: URI length limits removed ",
+          "projectPath": "TEST_IDENNA\\TEST_IDENNA.csproj",
+          "state": "Active",
+          "location": {
+            "snippetModel": {
+              "unrestricted": "System.Uri resourceLocater = new System.Uri(\u0022/TEST_IDENNA;component/views/registrarbeneficiarioview.xaml\u0022, System.UriKind.Relative);",
+              "protected": "M:System.Uri.#ctor(System.String,System.UriKind)"
+            },
+            "kind": "File",
+            "path": "TEST_IDENNA\\obj\\x86\\Debug\\Views\\RegistrarBeneficiarioView.g.cs",
+            "snippet": "System.Uri resourceLocater = new System.Uri(\u0022/TEST_IDENNA;component/views/registrarbeneficiarioview.xaml\u0022, System.UriKind.Relative);",
+            "protectedSnippet": "M:System.Uri.#ctor(System.String,System.UriKind)",
+            "label": "M:System.Uri.#ctor(System.String,System.UriKind)",
+            "links": [
+              {
+                "title": "Documentaci\u00F3n de la API",
+                "url": "https://github.com/dotnet/docs/blob/main/docs/core/compatibility/networking/10.0/uri-length-limits-removed.md",
+                "isCustom": false
+              }
+            ],
+            "line": 55,
+            "column": 12
+          }
+        },
+        {
+          "incidentId": "42cd0706-449e-4861-a024-d58b74e90aa8",
+          "ruleId": "Api.0001",
+          "description": "API is unavailable in net8.0 ",
+          "projectPath": "TEST_IDENNA\\TEST_IDENNA.csproj",
+          "state": "Active",
+          "location": {
+            "snippetModel": {
+              "unrestricted": "public RegistrarBeneficiarioView()\r\n        {\r\n            InitializeComponent();\r\n        }",
+              "protected": "M:System.Windows.Controls.UserControl.#ctor"
+            },
+            "kind": "File",
+            "path": "TEST_IDENNA\\Views\\RegistrarBeneficiarioView.xaml.cs",
+            "snippet": "public RegistrarBeneficiarioView()\r\n        {\r\n            InitializeComponent();\r\n        }",
+            "protectedSnippet": "M:System.Windows.Controls.UserControl.#ctor",
+            "label": "M:System.Windows.Controls.UserControl.#ctor",
+            "line": 22,
+            "column": 8
+          }
+        },
+        {
+          "incidentId": "09d0997d-934b-4ecc-86f1-b982a1caa0e2",
+          "ruleId": "Api.0001",
+          "description": "API is unavailable in net8.0 ",
+          "projectPath": "TEST_IDENNA\\TEST_IDENNA.csproj",
+          "state": "Active",
+          "location": {
+            "snippetModel": {
+              "unrestricted": "public RegistrarBeneficiarioView()\r\n        {\r\n            InitializeComponent();\r\n        }",
+              "protected": "M:System.Windows.Controls.UserControl.#ctor"
+            },
+            "kind": "File",
+            "path": "TEST_IDENNA\\Views\\RegistrarBeneficiarioView.xaml.cs",
+            "snippet": "public RegistrarBeneficiarioView()\r\n        {\r\n            InitializeComponent();\r\n        }",
+            "protectedSnippet": "M:System.Windows.Controls.UserControl.#ctor",
+            "label": "M:System.Windows.Controls.UserControl.#ctor",
+            "line": 22,
+            "column": 8
+          }
+        },
+        {
+          "incidentId": "3e19bd8b-ea14-4bc9-8fcc-4506ecc74c26",
+          "ruleId": "Api.0001",
+          "description": "API is unavailable in net8.0 ",
+          "projectPath": "TEST_IDENNA\\TEST_IDENNA.csproj",
+          "state": "Active",
+          "location": {
+            "snippetModel": {
+              "unrestricted": "IComponentConnector",
+              "protected": "T:System.Windows.Markup.IComponentConnector"
+            },
+            "kind": "File",
+            "path": "TEST_IDENNA\\obj\\x86\\Debug\\Views\\RegistrarBeneficiarioView.g.cs",
+            "snippet": "IComponentConnector",
+            "protectedSnippet": "T:System.Windows.Markup.IComponentConnector",
+            "label": "T:System.Windows.Markup.IComponentConnector",
+            "line": 41,
+            "column": 112
+          }
+        },
+        {
+          "incidentId": "e9cb757e-89e3-4b5a-8e0c-290c544e4f41",
+          "ruleId": "Api.0001",
+          "description": "API is unavailable in net8.0 ",
+          "projectPath": "TEST_IDENNA\\TEST_IDENNA.csproj",
+          "state": "Active",
+          "location": {
+            "snippetModel": {
+              "unrestricted": "UserControl",
+              "protected": "T:System.Windows.Controls.UserControl"
+            },
+            "kind": "File",
+            "path": "TEST_IDENNA\\Views\\RegistrarBeneficiarioView.xaml.cs",
+            "snippet": "UserControl",
+            "protectedSnippet": "T:System.Windows.Controls.UserControl",
+            "label": "T:System.Windows.Controls.UserControl",
+            "line": 20,
+            "column": 53
+          }
+        },
+        {
+          "incidentId": "62f563c6-6a97-45b8-8aab-d1a6ea718250",
+          "ruleId": "Api.0001",
+          "description": "API is unavailable in net8.0 ",
+          "projectPath": "TEST_IDENNA\\TEST_IDENNA.csproj",
+          "state": "Active",
+          "location": {
+            "snippetModel": {
+              "unrestricted": "CommandManager.RequerySuggested",
+              "protected": "E:System.Windows.Input.CommandManager.RequerySuggested"
+            },
+            "kind": "File",
+            "path": "TEST_IDENNA\\ViewModels\\MainWindowViewModel.cs",
+            "snippet": "CommandManager.RequerySuggested",
+            "protectedSnippet": "E:System.Windows.Input.CommandManager.RequerySuggested",
+            "label": "E:System.Windows.Input.CommandManager.RequerySuggested",
+            "line": 94,
+            "column": 22
+          }
+        },
+        {
+          "incidentId": "dc2500da-aa08-4c8c-8afd-ae1881b5100f",
+          "ruleId": "Api.0001",
+          "description": "API is unavailable in net8.0 ",
+          "projectPath": "TEST_IDENNA\\TEST_IDENNA.csproj",
+          "state": "Active",
+          "location": {
+            "snippetModel": {
+              "unrestricted": "CommandManager.RequerySuggested",
+              "protected": "E:System.Windows.Input.CommandManager.RequerySuggested"
+            },
+            "kind": "File",
+            "path": "TEST_IDENNA\\ViewModels\\MainWindowViewModel.cs",
+            "snippet": "CommandManager.RequerySuggested",
+            "protectedSnippet": "E:System.Windows.Input.CommandManager.RequerySuggested",
+            "label": "E:System.Windows.Input.CommandManager.RequerySuggested",
+            "line": 93,
+            "column": 19
+          }
+        },
+        {
+          "incidentId": "eb08ec31-8463-49fe-a4aa-b1dc4a35ae83",
+          "ruleId": "Api.0002",
+          "description": "API is available in package System.Configuration.ConfigurationManager, 9.0.0-preview.6.24302.3. Add package reference to System.Configuration.ConfigurationManager, 9.0.0-preview.6.24302.3",
+          "projectPath": "TEST_IDENNA\\TEST_IDENNA.csproj",
+          "state": "Active",
+          "location": {
+            "snippetModel": {
+              "unrestricted": "ApplicationSettingsBase",
+              "protected": "M:System.Configuration.ApplicationSettingsBase.#ctor"
+            },
+            "kind": "File",
+            "path": "TEST_IDENNA\\Properties\\Settings.Designer.cs",
+            "snippet": "ApplicationSettingsBase",
+            "protectedSnippet": "M:System.Configuration.ApplicationSettingsBase.#ctor",
+            "label": "M:System.Configuration.ApplicationSettingsBase.#ctor",
+            "properties": {
+              "PackageId": "System.Configuration.ConfigurationManager",
+              "PackageNewVersion": "9.0.0-preview.6.24302.3"
+            },
+            "line": 15,
+            "column": 74
+          }
+        },
+        {
+          "incidentId": "92f3e4cc-db83-47dd-ab61-959ecb9e782b",
+          "ruleId": "Api.0002",
+          "description": "API is available in package System.Configuration.ConfigurationManager, 9.0.0-preview.6.24302.3. Add package reference to System.Configuration.ConfigurationManager, 9.0.0-preview.6.24302.3",
+          "projectPath": "TEST_IDENNA\\TEST_IDENNA.csproj",
+          "state": "Active",
+          "location": {
+            "snippetModel": {
+              "unrestricted": "ApplicationSettingsBase",
+              "protected": "T:System.Configuration.ApplicationSettingsBase"
+            },
+            "kind": "File",
+            "path": "TEST_IDENNA\\Properties\\Settings.Designer.cs",
+            "snippet": "ApplicationSettingsBase",
+            "protectedSnippet": "T:System.Configuration.ApplicationSettingsBase",
+            "label": "T:System.Configuration.ApplicationSettingsBase",
+            "properties": {
+              "PackageId": "System.Configuration.ConfigurationManager",
+              "PackageNewVersion": "9.0.0-preview.6.24302.3"
+            },
+            "line": 15,
+            "column": 74
+          }
+        },
+        {
+          "incidentId": "1dcdb13f-3d1a-4c24-9d31-b56bca7e91fb",
+          "ruleId": "Api.0001",
+          "description": "API is unavailable in net8.0 ",
+          "projectPath": "TEST_IDENNA\\TEST_IDENNA.csproj",
+          "state": "Active",
+          "location": {
+            "snippetModel": {
+              "unrestricted": "public ExpedientesView()\r\n        {\r\n            InitializeComponent();\r\n        }",
+              "protected": "M:System.Windows.Controls.UserControl.#ctor"
+            },
+            "kind": "File",
+            "path": "TEST_IDENNA\\ExpedientesView.xaml.cs",
+            "snippet": "public ExpedientesView()\r\n        {\r\n            InitializeComponent();\r\n        }",
+            "protectedSnippet": "M:System.Windows.Controls.UserControl.#ctor",
+            "label": "M:System.Windows.Controls.UserControl.#ctor",
+            "line": 22,
+            "column": 8
+          }
+        },
+        {
+          "incidentId": "e274500c-b6e9-496e-888b-e4853ef39c72",
+          "ruleId": "Api.0001",
+          "description": "API is unavailable in net8.0 ",
+          "projectPath": "TEST_IDENNA\\TEST_IDENNA.csproj",
+          "state": "Active",
+          "location": {
+            "snippetModel": {
+              "unrestricted": "System.Windows.Application.LoadComponent(this, resourceLocater);",
+              "protected": "T:System.Windows.Application"
+            },
+            "kind": "File",
+            "path": "TEST_IDENNA\\obj\\x86\\Debug\\ExpedientesView.g.cs",
+            "snippet": "System.Windows.Application.LoadComponent(this, resourceLocater);",
+            "protectedSnippet": "T:System.Windows.Application",
+            "label": "T:System.Windows.Application",
+            "line": 58,
+            "column": 12
+          }
+        },
+        {
+          "incidentId": "de594c18-38bf-4ad2-b592-c2c411074380",
+          "ruleId": "Api.0001",
+          "description": "API is unavailable in net8.0 ",
+          "projectPath": "TEST_IDENNA\\TEST_IDENNA.csproj",
+          "state": "Active",
+          "location": {
+            "snippetModel": {
+              "unrestricted": "System.Windows.Application.LoadComponent(this, resourceLocater);",
+              "protected": "M:System.Windows.Application.LoadComponent(System.Object,System.Uri)"
+            },
+            "kind": "File",
+            "path": "TEST_IDENNA\\obj\\x86\\Debug\\ExpedientesView.g.cs",
+            "snippet": "System.Windows.Application.LoadComponent(this, resourceLocater);",
+            "protectedSnippet": "M:System.Windows.Application.LoadComponent(System.Object,System.Uri)",
+            "label": "M:System.Windows.Application.LoadComponent(System.Object,System.Uri)",
+            "line": 58,
+            "column": 12
+          }
+        },
+        {
+          "incidentId": "9c542bcc-500b-49ef-a9ba-3d5973b567ca",
+          "ruleId": "Api.0003",
+          "description": "Breaking change: URI length limits removed ",
+          "projectPath": "TEST_IDENNA\\TEST_IDENNA.csproj",
+          "state": "Active",
+          "location": {
+            "snippetModel": {
+              "unrestricted": "System.Uri resourceLocater = new System.Uri(\u0022/TEST_IDENNA;component/expedientesview.xaml\u0022, System.UriKind.Relative);",
+              "protected": "T:System.Uri"
+            },
+            "kind": "File",
+            "path": "TEST_IDENNA\\obj\\x86\\Debug\\ExpedientesView.g.cs",
+            "snippet": "System.Uri resourceLocater = new System.Uri(\u0022/TEST_IDENNA;component/expedientesview.xaml\u0022, System.UriKind.Relative);",
+            "protectedSnippet": "T:System.Uri",
+            "label": "T:System.Uri",
+            "links": [
+              {
+                "title": "Documentaci\u00F3n de la API",
+                "url": "https://github.com/dotnet/docs/blob/main/docs/core/compatibility/networking/10.0/uri-length-limits-removed.md",
+                "isCustom": false
+              }
+            ],
+            "line": 55,
+            "column": 12
+          }
+        },
+        {
+          "incidentId": "b6a0e2fd-fe40-490c-a191-a31c0d1ec0e9",
+          "ruleId": "Api.0003",
+          "description": "Breaking change: URI length limits removed ",
+          "projectPath": "TEST_IDENNA\\TEST_IDENNA.csproj",
+          "state": "Active",
+          "location": {
+            "snippetModel": {
+              "unrestricted": "System.Uri resourceLocater = new System.Uri(\u0022/TEST_IDENNA;component/expedientesview.xaml\u0022, System.UriKind.Relative);",
+              "protected": "M:System.Uri.#ctor(System.String,System.UriKind)"
+            },
+            "kind": "File",
+            "path": "TEST_IDENNA\\obj\\x86\\Debug\\ExpedientesView.g.cs",
+            "snippet": "System.Uri resourceLocater = new System.Uri(\u0022/TEST_IDENNA;component/expedientesview.xaml\u0022, System.UriKind.Relative);",
+            "protectedSnippet": "M:System.Uri.#ctor(System.String,System.UriKind)",
+            "label": "M:System.Uri.#ctor(System.String,System.UriKind)",
+            "links": [
+              {
+                "title": "Documentaci\u00F3n de la API",
+                "url": "https://github.com/dotnet/docs/blob/main/docs/core/compatibility/networking/10.0/uri-length-limits-removed.md",
+                "isCustom": false
+              }
+            ],
+            "line": 55,
+            "column": 12
+          }
+        },
+        {
+          "incidentId": "b53b5c2d-7e99-49f7-b3df-4904f51f4f2f",
+          "ruleId": "Api.0001",
+          "description": "API is unavailable in net8.0 ",
+          "projectPath": "TEST_IDENNA\\TEST_IDENNA.csproj",
+          "state": "Active",
+          "location": {
+            "snippetModel": {
+              "unrestricted": "public ExpedientesView()\r\n        {\r\n            InitializeComponent();\r\n        }",
+              "protected": "M:System.Windows.Controls.UserControl.#ctor"
+            },
+            "kind": "File",
+            "path": "TEST_IDENNA\\ExpedientesView.xaml.cs",
+            "snippet": "public ExpedientesView()\r\n        {\r\n            InitializeComponent();\r\n        }",
+            "protectedSnippet": "M:System.Windows.Controls.UserControl.#ctor",
+            "label": "M:System.Windows.Controls.UserControl.#ctor",
+            "line": 22,
+            "column": 8
+          }
+        },
+        {
+          "incidentId": "b39ab127-1823-4daa-b9e8-cf7cae0e85e7",
+          "ruleId": "Api.0001",
+          "description": "API is unavailable in net8.0 ",
+          "projectPath": "TEST_IDENNA\\TEST_IDENNA.csproj",
+          "state": "Active",
+          "location": {
+            "snippetModel": {
+              "unrestricted": "IComponentConnector",
+              "protected": "T:System.Windows.Markup.IComponentConnector"
+            },
+            "kind": "File",
+            "path": "TEST_IDENNA\\obj\\x86\\Debug\\ExpedientesView.g.cs",
+            "snippet": "IComponentConnector",
+            "protectedSnippet": "T:System.Windows.Markup.IComponentConnector",
+            "label": "T:System.Windows.Markup.IComponentConnector",
+            "line": 41,
+            "column": 102
+          }
+        },
+        {
+          "incidentId": "7646e924-86d2-48a8-b653-16c396e4a48e",
+          "ruleId": "Api.0001",
+          "description": "API is unavailable in net8.0 ",
+          "projectPath": "TEST_IDENNA\\TEST_IDENNA.csproj",
+          "state": "Active",
+          "location": {
+            "snippetModel": {
+              "unrestricted": "UserControl",
+              "protected": "T:System.Windows.Controls.UserControl"
+            },
+            "kind": "File",
+            "path": "TEST_IDENNA\\obj\\x86\\Debug\\ExpedientesView.g.cs",
+            "snippet": "UserControl",
+            "protectedSnippet": "T:System.Windows.Controls.UserControl",
+            "label": "T:System.Windows.Controls.UserControl",
+            "line": 41,
+            "column": 67
+          }
+        },
+        {
+          "incidentId": "cf302e21-50cf-41e3-8f8e-f71a759bfb84",
+          "ruleId": "Api.0001",
+          "description": "API is unavailable in net8.0 ",
+          "projectPath": "TEST_IDENNA\\TEST_IDENNA.csproj",
+          "state": "Active",
+          "location": {
+            "snippetModel": {
+              "unrestricted": "System.Windows.Application.LoadComponent(this, resourceLocater);",
+              "protected": "T:System.Windows.Application"
+            },
+            "kind": "File",
+            "path": "TEST_IDENNA\\obj\\x86\\Debug\\BitacoraView.g.cs",
+            "snippet": "System.Windows.Application.LoadComponent(this, resourceLocater);",
+            "protectedSnippet": "T:System.Windows.Application",
+            "label": "T:System.Windows.Application",
+            "line": 57,
+            "column": 12
+          }
+        },
+        {
+          "incidentId": "a8156539-b3aa-48fa-9861-065d19aa6f17",
+          "ruleId": "Api.0001",
+          "description": "API is unavailable in net8.0 ",
+          "projectPath": "TEST_IDENNA\\TEST_IDENNA.csproj",
+          "state": "Active",
+          "location": {
+            "snippetModel": {
+              "unrestricted": "System.Windows.Application.LoadComponent(this, resourceLocater);",
+              "protected": "M:System.Windows.Application.LoadComponent(System.Object,System.Uri)"
+            },
+            "kind": "File",
+            "path": "TEST_IDENNA\\obj\\x86\\Debug\\BitacoraView.g.cs",
+            "snippet": "System.Windows.Application.LoadComponent(this, resourceLocater);",
+            "protectedSnippet": "M:System.Windows.Application.LoadComponent(System.Object,System.Uri)",
+            "label": "M:System.Windows.Application.LoadComponent(System.Object,System.Uri)",
+            "line": 57,
+            "column": 12
+          }
+        },
+        {
+          "incidentId": "56c69c94-0a63-4567-9566-0ad1996987e6",
+          "ruleId": "Api.0003",
+          "description": "Breaking change: URI length limits removed ",
+          "projectPath": "TEST_IDENNA\\TEST_IDENNA.csproj",
+          "state": "Active",
+          "location": {
+            "snippetModel": {
+              "unrestricted": "System.Uri resourceLocater = new System.Uri(\u0022/TEST_IDENNA;component/bitacoraview.xaml\u0022, System.UriKind.Relative);",
+              "protected": "T:System.Uri"
+            },
+            "kind": "File",
+            "path": "TEST_IDENNA\\obj\\x86\\Debug\\BitacoraView.g.cs",
+            "snippet": "System.Uri resourceLocater = new System.Uri(\u0022/TEST_IDENNA;component/bitacoraview.xaml\u0022, System.UriKind.Relative);",
+            "protectedSnippet": "T:System.Uri",
+            "label": "T:System.Uri",
+            "links": [
+              {
+                "title": "Documentaci\u00F3n de la API",
+                "url": "https://github.com/dotnet/docs/blob/main/docs/core/compatibility/networking/10.0/uri-length-limits-removed.md",
+                "isCustom": false
+              }
+            ],
+            "line": 54,
+            "column": 12
+          }
+        },
+        {
+          "incidentId": "ce068bcc-5ab1-40d9-b8e8-06235949b96c",
+          "ruleId": "Api.0003",
+          "description": "Breaking change: URI length limits removed ",
+          "projectPath": "TEST_IDENNA\\TEST_IDENNA.csproj",
+          "state": "Active",
+          "location": {
+            "snippetModel": {
+              "unrestricted": "System.Uri resourceLocater = new System.Uri(\u0022/TEST_IDENNA;component/bitacoraview.xaml\u0022, System.UriKind.Relative);",
+              "protected": "M:System.Uri.#ctor(System.String,System.UriKind)"
+            },
+            "kind": "File",
+            "path": "TEST_IDENNA\\obj\\x86\\Debug\\BitacoraView.g.cs",
+            "snippet": "System.Uri resourceLocater = new System.Uri(\u0022/TEST_IDENNA;component/bitacoraview.xaml\u0022, System.UriKind.Relative);",
+            "protectedSnippet": "M:System.Uri.#ctor(System.String,System.UriKind)",
+            "label": "M:System.Uri.#ctor(System.String,System.UriKind)",
+            "links": [
+              {
+                "title": "Documentaci\u00F3n de la API",
+                "url": "https://github.com/dotnet/docs/blob/main/docs/core/compatibility/networking/10.0/uri-length-limits-removed.md",
+                "isCustom": false
+              }
+            ],
+            "line": 54,
+            "column": 12
+          }
+        },
+        {
+          "incidentId": "0108ff32-e4e5-4c1f-a372-a05b300cd062",
+          "ruleId": "Api.0001",
+          "description": "API is unavailable in net8.0 ",
+          "projectPath": "TEST_IDENNA\\TEST_IDENNA.csproj",
+          "state": "Active",
+          "location": {
+            "snippetModel": {
+              "unrestricted": "public BitacoraView()\r\n        {\r\n            InitializeComponent();\r\n        }",
+              "protected": "M:System.Windows.Controls.UserControl.#ctor"
+            },
+            "kind": "File",
+            "path": "TEST_IDENNA\\BitacoraView.xaml.cs",
+            "snippet": "public BitacoraView()\r\n        {\r\n            InitializeComponent();\r\n        }",
+            "protectedSnippet": "M:System.Windows.Controls.UserControl.#ctor",
+            "label": "M:System.Windows.Controls.UserControl.#ctor",
+            "line": 22,
+            "column": 8
+          }
+        },
+        {
+          "incidentId": "4443dc73-b700-489a-af4c-abb8b65b5d45",
+          "ruleId": "Api.0001",
+          "description": "API is unavailable in net8.0 ",
+          "projectPath": "TEST_IDENNA\\TEST_IDENNA.csproj",
+          "state": "Active",
+          "location": {
+            "snippetModel": {
+              "unrestricted": "public BitacoraView()\r\n        {\r\n            InitializeComponent();\r\n        }",
+              "protected": "M:System.Windows.Controls.UserControl.#ctor"
+            },
+            "kind": "File",
+            "path": "TEST_IDENNA\\BitacoraView.xaml.cs",
+            "snippet": "public BitacoraView()\r\n        {\r\n            InitializeComponent();\r\n        }",
+            "protectedSnippet": "M:System.Windows.Controls.UserControl.#ctor",
+            "label": "M:System.Windows.Controls.UserControl.#ctor",
+            "line": 22,
+            "column": 8
+          }
+        },
+        {
+          "incidentId": "e40fb13e-2da4-4e7b-ba01-62b099f146ae",
+          "ruleId": "Api.0001",
+          "description": "API is unavailable in net8.0 ",
+          "projectPath": "TEST_IDENNA\\TEST_IDENNA.csproj",
+          "state": "Active",
+          "location": {
+            "snippetModel": {
+              "unrestricted": "IComponentConnector",
+              "protected": "T:System.Windows.Markup.IComponentConnector"
+            },
+            "kind": "File",
+            "path": "TEST_IDENNA\\obj\\x86\\Debug\\BitacoraView.g.cs",
+            "snippet": "IComponentConnector",
+            "protectedSnippet": "T:System.Windows.Markup.IComponentConnector",
+            "label": "T:System.Windows.Markup.IComponentConnector",
+            "line": 40,
+            "column": 99
+          }
+        },
+        {
+          "incidentId": "44ad3c6c-a75e-42b1-bdc0-7d125aa28381",
+          "ruleId": "Api.0001",
+          "description": "API is unavailable in net8.0 ",
+          "projectPath": "TEST_IDENNA\\TEST_IDENNA.csproj",
+          "state": "Active",
+          "location": {
+            "snippetModel": {
+              "unrestricted": "UserControl",
+              "protected": "T:System.Windows.Controls.UserControl"
+            },
+            "kind": "File",
+            "path": "TEST_IDENNA\\BitacoraView.xaml.cs",
+            "snippet": "UserControl",
+            "protectedSnippet": "T:System.Windows.Controls.UserControl",
+            "label": "T:System.Windows.Controls.UserControl",
+            "line": 20,
+            "column": 40
+          }
+        },
+        {
+          "incidentId": "11b97563-5695-4a0b-ae83-c0fb3d779bee",
+          "ruleId": "Api.0001",
+          "description": "API is unavailable in net8.0 ",
+          "projectPath": "TEST_IDENNA\\TEST_IDENNA.csproj",
+          "state": "Active",
+          "location": {
+            "snippetModel": {
+              "unrestricted": "System.Windows.Application.LoadComponent(this, resourceLocater);",
+              "protected": "T:System.Windows.Application"
+            },
+            "kind": "File",
+            "path": "TEST_IDENNA\\obj\\x86\\Debug\\DashboardView.g.cs",
+            "snippet": "System.Windows.Application.LoadComponent(this, resourceLocater);",
+            "protectedSnippet": "T:System.Windows.Application",
+            "label": "T:System.Windows.Application",
+            "line": 58,
+            "column": 12
+          }
+        },
+        {
+          "incidentId": "40726602-02f0-4c29-99bd-286f1af7dbe6",
+          "ruleId": "Api.0001",
+          "description": "API is unavailable in net8.0 ",
+          "projectPath": "TEST_IDENNA\\TEST_IDENNA.csproj",
+          "state": "Active",
+          "location": {
+            "snippetModel": {
+              "unrestricted": "System.Windows.Application.LoadComponent(this, resourceLocater);",
+              "protected": "M:System.Windows.Application.LoadComponent(System.Object,System.Uri)"
+            },
+            "kind": "File",
+            "path": "TEST_IDENNA\\obj\\x86\\Debug\\DashboardView.g.cs",
+            "snippet": "System.Windows.Application.LoadComponent(this, resourceLocater);",
+            "protectedSnippet": "M:System.Windows.Application.LoadComponent(System.Object,System.Uri)",
+            "label": "M:System.Windows.Application.LoadComponent(System.Object,System.Uri)",
+            "line": 58,
+            "column": 12
+          }
+        },
+        {
+          "incidentId": "6d4fb183-5785-4a68-a0af-16f08285069c",
+          "ruleId": "Api.0003",
+          "description": "Breaking change: URI length limits removed ",
+          "projectPath": "TEST_IDENNA\\TEST_IDENNA.csproj",
+          "state": "Active",
+          "location": {
+            "snippetModel": {
+              "unrestricted": "System.Uri resourceLocater = new System.Uri(\u0022/TEST_IDENNA;component/dashboardview.xaml\u0022, System.UriKind.Relative);",
+              "protected": "T:System.Uri"
+            },
+            "kind": "File",
+            "path": "TEST_IDENNA\\obj\\x86\\Debug\\DashboardView.g.cs",
+            "snippet": "System.Uri resourceLocater = new System.Uri(\u0022/TEST_IDENNA;component/dashboardview.xaml\u0022, System.UriKind.Relative);",
+            "protectedSnippet": "T:System.Uri",
+            "label": "T:System.Uri",
+            "links": [
+              {
+                "title": "Documentaci\u00F3n de la API",
+                "url": "https://github.com/dotnet/docs/blob/main/docs/core/compatibility/networking/10.0/uri-length-limits-removed.md",
+                "isCustom": false
+              }
+            ],
+            "line": 55,
+            "column": 12
+          }
+        },
+        {
+          "incidentId": "40f11fc8-8888-471a-9dc2-7a44951d1817",
+          "ruleId": "Api.0003",
+          "description": "Breaking change: URI length limits removed ",
+          "projectPath": "TEST_IDENNA\\TEST_IDENNA.csproj",
+          "state": "Active",
+          "location": {
+            "snippetModel": {
+              "unrestricted": "System.Uri resourceLocater = new System.Uri(\u0022/TEST_IDENNA;component/dashboardview.xaml\u0022, System.UriKind.Relative);",
+              "protected": "M:System.Uri.#ctor(System.String,System.UriKind)"
+            },
+            "kind": "File",
+            "path": "TEST_IDENNA\\obj\\x86\\Debug\\DashboardView.g.cs",
+            "snippet": "System.Uri resourceLocater = new System.Uri(\u0022/TEST_IDENNA;component/dashboardview.xaml\u0022, System.UriKind.Relative);",
+            "protectedSnippet": "M:System.Uri.#ctor(System.String,System.UriKind)",
+            "label": "M:System.Uri.#ctor(System.String,System.UriKind)",
+            "links": [
+              {
+                "title": "Documentaci\u00F3n de la API",
+                "url": "https://github.com/dotnet/docs/blob/main/docs/core/compatibility/networking/10.0/uri-length-limits-removed.md",
+                "isCustom": false
+              }
+            ],
+            "line": 55,
+            "column": 12
+          }
+        },
+        {
+          "incidentId": "7c3e1205-8623-480b-b071-cf37632c4876",
+          "ruleId": "Api.0001",
+          "description": "API is unavailable in net8.0 ",
+          "projectPath": "TEST_IDENNA\\TEST_IDENNA.csproj",
+          "state": "Active",
+          "location": {
+            "snippetModel": {
+              "unrestricted": "public DashboardView()\r\n        {\r\n            InitializeComponent();\r\n        }",
+              "protected": "M:System.Windows.Controls.UserControl.#ctor"
+            },
+            "kind": "File",
+            "path": "TEST_IDENNA\\DashboardView.xaml.cs",
+            "snippet": "public DashboardView()\r\n        {\r\n            InitializeComponent();\r\n        }",
+            "protectedSnippet": "M:System.Windows.Controls.UserControl.#ctor",
+            "label": "M:System.Windows.Controls.UserControl.#ctor",
+            "line": 22,
+            "column": 8
+          }
+        },
+        {
+          "incidentId": "023d485b-1b3a-44ae-8930-f8598bcafd9a",
+          "ruleId": "Api.0001",
+          "description": "API is unavailable in net8.0 ",
+          "projectPath": "TEST_IDENNA\\TEST_IDENNA.csproj",
+          "state": "Active",
+          "location": {
+            "snippetModel": {
+              "unrestricted": "public DashboardView()\r\n        {\r\n            InitializeComponent();\r\n        }",
+              "protected": "M:System.Windows.Controls.UserControl.#ctor"
+            },
+            "kind": "File",
+            "path": "TEST_IDENNA\\DashboardView.xaml.cs",
+            "snippet": "public DashboardView()\r\n        {\r\n            InitializeComponent();\r\n        }",
+            "protectedSnippet": "M:System.Windows.Controls.UserControl.#ctor",
+            "label": "M:System.Windows.Controls.UserControl.#ctor",
+            "line": 22,
+            "column": 8
+          }
+        },
+        {
+          "incidentId": "fecca561-15c2-438e-bad1-888f939bb18b",
+          "ruleId": "Api.0001",
+          "description": "API is unavailable in net8.0 ",
+          "projectPath": "TEST_IDENNA\\TEST_IDENNA.csproj",
+          "state": "Active",
+          "location": {
+            "snippetModel": {
+              "unrestricted": "IComponentConnector",
+              "protected": "T:System.Windows.Markup.IComponentConnector"
+            },
+            "kind": "File",
+            "path": "TEST_IDENNA\\obj\\x86\\Debug\\DashboardView.g.cs",
+            "snippet": "IComponentConnector",
+            "protectedSnippet": "T:System.Windows.Markup.IComponentConnector",
+            "label": "T:System.Windows.Markup.IComponentConnector",
+            "line": 41,
+            "column": 100
+          }
+        },
+        {
+          "incidentId": "ac36f5d3-56e7-49c4-83ca-1b57f403bb12",
+          "ruleId": "Api.0001",
+          "description": "API is unavailable in net8.0 ",
+          "projectPath": "TEST_IDENNA\\TEST_IDENNA.csproj",
+          "state": "Active",
+          "location": {
+            "snippetModel": {
+              "unrestricted": "UserControl",
+              "protected": "T:System.Windows.Controls.UserControl"
+            },
+            "kind": "File",
+            "path": "TEST_IDENNA\\DashboardView.xaml.cs",
+            "snippet": "UserControl",
+            "protectedSnippet": "T:System.Windows.Controls.UserControl",
+            "label": "T:System.Windows.Controls.UserControl",
+            "line": 20,
+            "column": 41
+          }
+        },
+        {
+          "incidentId": "7739c317-071b-4fb1-9fdc-e75804b539c2",
+          "ruleId": "Api.0001",
+          "description": "API is unavailable in net8.0 ",
+          "projectPath": "TEST_IDENNA\\TEST_IDENNA.csproj",
+          "state": "Active",
+          "location": {
+            "snippetModel": {
+              "unrestricted": "app.Run();",
+              "protected": "M:System.Windows.Application.Run"
+            },
+            "kind": "File",
+            "path": "TEST_IDENNA\\obj\\x86\\Debug\\App.g.cs",
+            "snippet": "app.Run();",
+            "protectedSnippet": "M:System.Windows.Application.Run",
+            "label": "M:System.Windows.Application.Run",
+            "line": 78,
+            "column": 12
+          }
+        },
+        {
+          "incidentId": "b6d1876f-833b-446d-bf68-4d679c301f3c",
+          "ruleId": "Api.0001",
+          "description": "API is unavailable in net8.0 ",
+          "projectPath": "TEST_IDENNA\\TEST_IDENNA.csproj",
+          "state": "Active",
+          "location": {
+            "snippetModel": {
+              "unrestricted": "System.Windows.Application.LoadComponent(this, resourceLocater);",
+              "protected": "T:System.Windows.Application"
+            },
+            "kind": "File",
+            "path": "TEST_IDENNA\\obj\\x86\\Debug\\App.g.cs",
+            "snippet": "System.Windows.Application.LoadComponent(this, resourceLocater);",
+            "protectedSnippet": "T:System.Windows.Application",
+            "label": "T:System.Windows.Application",
+            "line": 63,
+            "column": 12
+          }
+        },
+        {
+          "incidentId": "26b216ea-c7ae-4812-b705-3bfbb3401d1c",
+          "ruleId": "Api.0001",
+          "description": "API is unavailable in net8.0 ",
+          "projectPath": "TEST_IDENNA\\TEST_IDENNA.csproj",
+          "state": "Active",
+          "location": {
+            "snippetModel": {
+              "unrestricted": "System.Windows.Application.LoadComponent(this, resourceLocater);",
+              "protected": "M:System.Windows.Application.LoadComponent(System.Object,System.Uri)"
+            },
+            "kind": "File",
+            "path": "TEST_IDENNA\\obj\\x86\\Debug\\App.g.cs",
+            "snippet": "System.Windows.Application.LoadComponent(this, resourceLocater);",
+            "protectedSnippet": "M:System.Windows.Application.LoadComponent(System.Object,System.Uri)",
+            "label": "M:System.Windows.Application.LoadComponent(System.Object,System.Uri)",
+            "line": 63,
+            "column": 12
+          }
+        },
+        {
+          "incidentId": "fb207270-0db9-4534-9753-9d3d4a81b147",
+          "ruleId": "Api.0003",
+          "description": "Breaking change: URI length limits removed ",
+          "projectPath": "TEST_IDENNA\\TEST_IDENNA.csproj",
+          "state": "Active",
+          "location": {
+            "snippetModel": {
+              "unrestricted": "System.Uri resourceLocater = new System.Uri(\u0022/TEST_IDENNA;component/app.xaml\u0022, System.UriKind.Relative);",
+              "protected": "T:System.Uri"
+            },
+            "kind": "File",
+            "path": "TEST_IDENNA\\obj\\x86\\Debug\\App.g.cs",
+            "snippet": "System.Uri resourceLocater = new System.Uri(\u0022/TEST_IDENNA;component/app.xaml\u0022, System.UriKind.Relative);",
+            "protectedSnippet": "T:System.Uri",
+            "label": "T:System.Uri",
+            "links": [
+              {
+                "title": "Documentaci\u00F3n de la API",
+                "url": "https://github.com/dotnet/docs/blob/main/docs/core/compatibility/networking/10.0/uri-length-limits-removed.md",
+                "isCustom": false
+              }
+            ],
+            "line": 60,
+            "column": 12
+          }
+        },
+        {
+          "incidentId": "f63d534f-64a3-4429-9055-669a384a74aa",
+          "ruleId": "Api.0003",
+          "description": "Breaking change: URI length limits removed ",
+          "projectPath": "TEST_IDENNA\\TEST_IDENNA.csproj",
+          "state": "Active",
+          "location": {
+            "snippetModel": {
+              "unrestricted": "System.Uri resourceLocater = new System.Uri(\u0022/TEST_IDENNA;component/app.xaml\u0022, System.UriKind.Relative);",
+              "protected": "M:System.Uri.#ctor(System.String,System.UriKind)"
+            },
+            "kind": "File",
+            "path": "TEST_IDENNA\\obj\\x86\\Debug\\App.g.cs",
+            "snippet": "System.Uri resourceLocater = new System.Uri(\u0022/TEST_IDENNA;component/app.xaml\u0022, System.UriKind.Relative);",
+            "protectedSnippet": "M:System.Uri.#ctor(System.String,System.UriKind)",
+            "label": "M:System.Uri.#ctor(System.String,System.UriKind)",
+            "links": [
+              {
+                "title": "Documentaci\u00F3n de la API",
+                "url": "https://github.com/dotnet/docs/blob/main/docs/core/compatibility/networking/10.0/uri-length-limits-removed.md",
+                "isCustom": false
+              }
+            ],
+            "line": 60,
+            "column": 12
+          }
+        },
+        {
+          "incidentId": "b5c806c3-fb45-4be1-b306-90f7da4c3996",
+          "ruleId": "Api.0003",
+          "description": "Breaking change: URI length limits removed ",
+          "projectPath": "TEST_IDENNA\\TEST_IDENNA.csproj",
+          "state": "Active",
+          "location": {
+            "snippetModel": {
+              "unrestricted": "this.StartupUri = new System.Uri(\u0022MainWindow.xaml\u0022, System.UriKind.Relative);",
+              "protected": "T:System.Uri"
+            },
+            "kind": "File",
+            "path": "TEST_IDENNA\\obj\\x86\\Debug\\App.g.cs",
+            "snippet": "this.StartupUri = new System.Uri(\u0022MainWindow.xaml\u0022, System.UriKind.Relative);",
+            "protectedSnippet": "T:System.Uri",
+            "label": "T:System.Uri",
+            "links": [
+              {
+                "title": "Documentaci\u00F3n de la API",
+                "url": "https://github.com/dotnet/docs/blob/main/docs/core/compatibility/networking/10.0/uri-length-limits-removed.md",
+                "isCustom": false
+              }
+            ],
+            "line": 56,
+            "column": 12
+          }
+        },
+        {
+          "incidentId": "23a8f3b1-962b-48a5-ad89-f73477065dab",
+          "ruleId": "Api.0003",
+          "description": "Breaking change: URI length limits removed ",
+          "projectPath": "TEST_IDENNA\\TEST_IDENNA.csproj",
+          "state": "Active",
+          "location": {
+            "snippetModel": {
+              "unrestricted": "this.StartupUri = new System.Uri(\u0022MainWindow.xaml\u0022, System.UriKind.Relative);",
+              "protected": "M:System.Uri.#ctor(System.String,System.UriKind)"
+            },
+            "kind": "File",
+            "path": "TEST_IDENNA\\obj\\x86\\Debug\\App.g.cs",
+            "snippet": "this.StartupUri = new System.Uri(\u0022MainWindow.xaml\u0022, System.UriKind.Relative);",
+            "protectedSnippet": "M:System.Uri.#ctor(System.String,System.UriKind)",
+            "label": "M:System.Uri.#ctor(System.String,System.UriKind)",
+            "links": [
+              {
+                "title": "Documentaci\u00F3n de la API",
+                "url": "https://github.com/dotnet/docs/blob/main/docs/core/compatibility/networking/10.0/uri-length-limits-removed.md",
+                "isCustom": false
+              }
+            ],
+            "line": 56,
+            "column": 12
+          }
+        },
+        {
+          "incidentId": "c92433e6-c560-4c18-9568-35a45ed10304",
+          "ruleId": "Api.0003",
+          "description": "Breaking change: URI length limits removed ",
+          "projectPath": "TEST_IDENNA\\TEST_IDENNA.csproj",
+          "state": "Active",
+          "location": {
+            "snippetModel": {
+              "unrestricted": "this.StartupUri = new System.Uri(\u0022MainWindow.xaml\u0022, System.UriKind.Relative);",
+              "protected": "T:System.Uri"
+            },
+            "kind": "File",
+            "path": "TEST_IDENNA\\obj\\x86\\Debug\\App.g.cs",
+            "snippet": "this.StartupUri = new System.Uri(\u0022MainWindow.xaml\u0022, System.UriKind.Relative);",
+            "protectedSnippet": "T:System.Uri",
+            "label": "T:System.Uri",
+            "links": [
+              {
+                "title": "Documentaci\u00F3n de la API",
+                "url": "https://github.com/dotnet/docs/blob/main/docs/core/compatibility/networking/10.0/uri-length-limits-removed.md",
+                "isCustom": false
+              }
+            ],
+            "line": 56,
+            "column": 12
+          }
+        },
+        {
+          "incidentId": "251bfe7c-8118-4e5d-807f-e823738f9434",
+          "ruleId": "Api.0001",
+          "description": "API is unavailable in net8.0 ",
+          "projectPath": "TEST_IDENNA\\TEST_IDENNA.csproj",
+          "state": "Active",
+          "location": {
+            "snippetModel": {
+              "unrestricted": "this.StartupUri = new System.Uri(\u0022MainWindow.xaml\u0022, System.UriKind.Relative);",
+              "protected": "P:System.Windows.Application.StartupUri"
+            },
+            "kind": "File",
+            "path": "TEST_IDENNA\\obj\\x86\\Debug\\App.g.cs",
+            "snippet": "this.StartupUri = new System.Uri(\u0022MainWindow.xaml\u0022, System.UriKind.Relative);",
+            "protectedSnippet": "P:System.Windows.Application.StartupUri",
+            "label": "P:System.Windows.Application.StartupUri",
+            "line": 56,
+            "column": 12
+          }
+        },
+        {
+          "incidentId": "11cefb0d-8f9b-4cd5-a1cc-63c4f994af59",
+          "ruleId": "Api.0001",
+          "description": "API is unavailable in net8.0 ",
+          "projectPath": "TEST_IDENNA\\TEST_IDENNA.csproj",
+          "state": "Active",
+          "location": {
+            "snippetModel": {
+              "unrestricted": "protected override void OnStartup(StartupEventArgs e)",
+              "protected": "T:System.Windows.StartupEventArgs"
+            },
+            "kind": "File",
+            "path": "TEST_IDENNA\\App.xaml.cs",
+            "snippet": "protected override void OnStartup(StartupEventArgs e)",
+            "protectedSnippet": "T:System.Windows.StartupEventArgs",
+            "label": "T:System.Windows.StartupEventArgs",
+            "line": 42,
+            "column": 8
+          }
+        },
+        {
+          "incidentId": "5250b873-51a8-4fda-978d-47f438564a4f",
+          "ruleId": "Api.0001",
+          "description": "API is unavailable in net8.0 ",
+          "projectPath": "TEST_IDENNA\\TEST_IDENNA.csproj",
+          "state": "Active",
+          "location": {
+            "snippetModel": {
+              "unrestricted": "public App()\r\n        {\r\n            var services = new ServiceCollection();\r\n            ConfigureServices(services);\r\n            ServiceProvider = services.BuildServiceProvider();\r\n        }",
+              "protected": "M:System.Windows.Application.#ctor"
+            },
+            "kind": "File",
+            "path": "TEST_IDENNA\\App.xaml.cs",
+            "snippet": "public App()\r\n        {\r\n            var services = new ServiceCollection();\r\n            ConfigureServices(services);\r\n            ServiceProvider = services.BuildServiceProvider();\r\n        }",
+            "protectedSnippet": "M:System.Windows.Application.#ctor",
+            "label": "M:System.Windows.Application.#ctor",
+            "line": 22,
+            "column": 8
+          }
+        },
+        {
+          "incidentId": "08bcd442-d18a-4922-92bf-4aaefcfa04de",
+          "ruleId": "Api.0001",
+          "description": "API is unavailable in net8.0 ",
+          "projectPath": "TEST_IDENNA\\TEST_IDENNA.csproj",
+          "state": "Active",
+          "location": {
+            "snippetModel": {
+              "unrestricted": "public App()\r\n        {\r\n            var services = new ServiceCollection();\r\n            ConfigureServices(services);\r\n            ServiceProvider = services.BuildServiceProvider();\r\n        }",
+              "protected": "M:System.Windows.Application.#ctor"
+            },
+            "kind": "File",
+            "path": "TEST_IDENNA\\App.xaml.cs",
+            "snippet": "public App()\r\n        {\r\n            var services = new ServiceCollection();\r\n            ConfigureServices(services);\r\n            ServiceProvider = services.BuildServiceProvider();\r\n        }",
+            "protectedSnippet": "M:System.Windows.Application.#ctor",
+            "label": "M:System.Windows.Application.#ctor",
+            "line": 22,
+            "column": 8
+          }
+        },
+        {
+          "incidentId": "159671e8-d5cb-4933-884c-d34b101d28ea",
+          "ruleId": "Api.0001",
+          "description": "API is unavailable in net8.0 ",
+          "projectPath": "TEST_IDENNA\\TEST_IDENNA.csproj",
+          "state": "Active",
+          "location": {
+            "snippetModel": {
+              "unrestricted": "Application",
+              "protected": "T:System.Windows.Application"
+            },
+            "kind": "File",
+            "path": "TEST_IDENNA\\App.xaml.cs",
+            "snippet": "Application",
+            "protectedSnippet": "T:System.Windows.Application",
+            "label": "T:System.Windows.Application",
+            "line": 18,
+            "column": 31
+          }
+        },
+        {
+          "incidentId": "02d95ca9-509b-443c-b9b6-c1e1713351f3",
+          "ruleId": "Api.0001",
+          "description": "API is unavailable in net8.0 ",
+          "projectPath": "TEST_IDENNA\\TEST_IDENNA.csproj",
+          "state": "Active",
+          "location": {
+            "snippetModel": {
+              "unrestricted": "private void ListBoxItem_Selected(object sender, RoutedEventArgs e)",
+              "protected": "T:System.Windows.RoutedEventArgs"
+            },
+            "kind": "File",
+            "path": "TEST_IDENNA\\MainWindow.xaml.cs",
+            "snippet": "private void ListBoxItem_Selected(object sender, RoutedEventArgs e)",
+            "protectedSnippet": "T:System.Windows.RoutedEventArgs",
+            "label": "T:System.Windows.RoutedEventArgs",
+            "line": 33,
+            "column": 8
+          }
+        },
+        {
+          "incidentId": "e8e6a7b0-ec1a-44ee-a47d-d9588ee9e568",
+          "ruleId": "Api.0001",
+          "description": "API is unavailable in net8.0 ",
+          "projectPath": "TEST_IDENNA\\TEST_IDENNA.csproj",
+          "state": "Active",
+          "location": {
+            "snippetModel": {
+              "unrestricted": "public MainWindow()\r\n        {\r\n            InitializeComponent();\r\n            // Pedimos al contenedor que nos d\u00E9 el MainViewModel con todo incluido\r\n            //this.DataContext = App.ServiceProvider.GetRequiredService\u003CMainWindow\u003E();\r\n            /*var registroVm = new RegistroViewModel();\r\n            registroVm.CargarDatos();*/\r\n        }",
+              "protected": "M:System.Windows.Window.#ctor"
+            },
+            "kind": "File",
+            "path": "TEST_IDENNA\\MainWindow.xaml.cs",
+            "snippet": "public MainWindow()\r\n        {\r\n            InitializeComponent();\r\n            // Pedimos al contenedor que nos d\u00E9 el MainViewModel con todo incluido\r\n            //this.DataContext = App.ServiceProvider.GetRequiredService\u003CMainWindow\u003E();\r\n            /*var registroVm = new RegistroViewModel();\r\n            registroVm.CargarDatos();*/\r\n        }",
+            "protectedSnippet": "M:System.Windows.Window.#ctor",
+            "label": "M:System.Windows.Window.#ctor",
+            "line": 24,
+            "column": 8
+          }
+        },
+        {
+          "incidentId": "796329f4-0b29-456e-9d06-af1414bd6723",
+          "ruleId": "Api.0001",
+          "description": "API is unavailable in net8.0 ",
+          "projectPath": "TEST_IDENNA\\TEST_IDENNA.csproj",
+          "state": "Active",
+          "location": {
+            "snippetModel": {
+              "unrestricted": "((System.Windows.Controls.ListBoxItem)(target)).Selected \u002B= new System.Windows.RoutedEventHandler(this.ListBoxItem_Selected);",
+              "protected": "T:System.Windows.RoutedEventHandler"
+            },
+            "kind": "File",
+            "path": "TEST_IDENNA\\obj\\x86\\Debug\\MainWindow.g.cs",
+            "snippet": "((System.Windows.Controls.ListBoxItem)(target)).Selected \u002B= new System.Windows.RoutedEventHandler(this.ListBoxItem_Selected);",
+            "protectedSnippet": "T:System.Windows.RoutedEventHandler",
+            "label": "T:System.Windows.RoutedEventHandler",
+            "line": 84,
+            "column": 12
+          }
+        },
+        {
+          "incidentId": "e1dfac3d-b103-4fab-84df-cb113bf57717",
+          "ruleId": "Api.0001",
+          "description": "API is unavailable in net8.0 ",
+          "projectPath": "TEST_IDENNA\\TEST_IDENNA.csproj",
+          "state": "Active",
+          "location": {
+            "snippetModel": {
+              "unrestricted": "((System.Windows.Controls.ListBoxItem)(target)).Selected \u002B= new System.Windows.RoutedEventHandler(this.ListBoxItem_Selected);",
+              "protected": "T:System.Windows.RoutedEventHandler"
+            },
+            "kind": "File",
+            "path": "TEST_IDENNA\\obj\\x86\\Debug\\MainWindow.g.cs",
+            "snippet": "((System.Windows.Controls.ListBoxItem)(target)).Selected \u002B= new System.Windows.RoutedEventHandler(this.ListBoxItem_Selected);",
+            "protectedSnippet": "T:System.Windows.RoutedEventHandler",
+            "label": "T:System.Windows.RoutedEventHandler",
+            "line": 84,
+            "column": 12
+          }
+        },
+        {
+          "incidentId": "1a7b50f9-e6f5-4fb9-89ba-5069e9b58f96",
+          "ruleId": "Api.0001",
+          "description": "API is unavailable in net8.0 ",
+          "projectPath": "TEST_IDENNA\\TEST_IDENNA.csproj",
+          "state": "Active",
+          "location": {
+            "snippetModel": {
+              "unrestricted": "((System.Windows.Controls.ListBoxItem)(target)).Selected \u002B= new System.Windows.RoutedEventHandler(this.ListBoxItem_Selected);",
+              "protected": "E:System.Windows.Controls.ListBoxItem.Selected"
+            },
+            "kind": "File",
+            "path": "TEST_IDENNA\\obj\\x86\\Debug\\MainWindow.g.cs",
+            "snippet": "((System.Windows.Controls.ListBoxItem)(target)).Selected \u002B= new System.Windows.RoutedEventHandler(this.ListBoxItem_Selected);",
+            "protectedSnippet": "E:System.Windows.Controls.ListBoxItem.Selected",
+            "label": "E:System.Windows.Controls.ListBoxItem.Selected",
+            "line": 84,
+            "column": 12
+          }
+        },
+        {
+          "incidentId": "276234d0-dcf6-4b2d-9c43-2706c60a9124",
+          "ruleId": "Api.0001",
+          "description": "API is unavailable in net8.0 ",
+          "projectPath": "TEST_IDENNA\\TEST_IDENNA.csproj",
+          "state": "Active",
+          "location": {
+            "snippetModel": {
+              "unrestricted": "System.Windows.Application.LoadComponent(this, resourceLocater);",
+              "protected": "T:System.Windows.Application"
+            },
+            "kind": "File",
+            "path": "TEST_IDENNA\\obj\\x86\\Debug\\MainWindow.g.cs",
+            "snippet": "System.Windows.Application.LoadComponent(this, resourceLocater);",
+            "protectedSnippet": "T:System.Windows.Application",
+            "label": "T:System.Windows.Application",
+            "line": 66,
+            "column": 12
+          }
+        },
+        {
+          "incidentId": "01d24a41-1579-4178-91cb-f4e0cff4a0f8",
+          "ruleId": "Api.0001",
+          "description": "API is unavailable in net8.0 ",
+          "projectPath": "TEST_IDENNA\\TEST_IDENNA.csproj",
+          "state": "Active",
+          "location": {
+            "snippetModel": {
+              "unrestricted": "System.Windows.Application.LoadComponent(this, resourceLocater);",
+              "protected": "M:System.Windows.Application.LoadComponent(System.Object,System.Uri)"
+            },
+            "kind": "File",
+            "path": "TEST_IDENNA\\obj\\x86\\Debug\\MainWindow.g.cs",
+            "snippet": "System.Windows.Application.LoadComponent(this, resourceLocater);",
+            "protectedSnippet": "M:System.Windows.Application.LoadComponent(System.Object,System.Uri)",
+            "label": "M:System.Windows.Application.LoadComponent(System.Object,System.Uri)",
+            "line": 66,
+            "column": 12
+          }
+        },
+        {
+          "incidentId": "7caacb2a-95ab-4f1c-86ad-f2fcbc78a141",
+          "ruleId": "Api.0003",
+          "description": "Breaking change: URI length limits removed ",
+          "projectPath": "TEST_IDENNA\\TEST_IDENNA.csproj",
+          "state": "Active",
+          "location": {
+            "snippetModel": {
+              "unrestricted": "System.Uri resourceLocater = new System.Uri(\u0022/TEST_IDENNA;component/mainwindow.xaml\u0022, System.UriKind.Relative);",
+              "protected": "T:System.Uri"
+            },
+            "kind": "File",
+            "path": "TEST_IDENNA\\obj\\x86\\Debug\\MainWindow.g.cs",
+            "snippet": "System.Uri resourceLocater = new System.Uri(\u0022/TEST_IDENNA;component/mainwindow.xaml\u0022, System.UriKind.Relative);",
+            "protectedSnippet": "T:System.Uri",
+            "label": "T:System.Uri",
+            "links": [
+              {
+                "title": "Documentaci\u00F3n de la API",
+                "url": "https://github.com/dotnet/docs/blob/main/docs/core/compatibility/networking/10.0/uri-length-limits-removed.md",
+                "isCustom": false
+              }
+            ],
+            "line": 63,
+            "column": 12
+          }
+        },
+        {
+          "incidentId": "afce5b02-4c29-4de9-a0e0-560db6467269",
+          "ruleId": "Api.0003",
+          "description": "Breaking change: URI length limits removed ",
+          "projectPath": "TEST_IDENNA\\TEST_IDENNA.csproj",
+          "state": "Active",
+          "location": {
+            "snippetModel": {
+              "unrestricted": "System.Uri resourceLocater = new System.Uri(\u0022/TEST_IDENNA;component/mainwindow.xaml\u0022, System.UriKind.Relative);",
+              "protected": "M:System.Uri.#ctor(System.String,System.UriKind)"
+            },
+            "kind": "File",
+            "path": "TEST_IDENNA\\obj\\x86\\Debug\\MainWindow.g.cs",
+            "snippet": "System.Uri resourceLocater = new System.Uri(\u0022/TEST_IDENNA;component/mainwindow.xaml\u0022, System.UriKind.Relative);",
+            "protectedSnippet": "M:System.Uri.#ctor(System.String,System.UriKind)",
+            "label": "M:System.Uri.#ctor(System.String,System.UriKind)",
+            "links": [
+              {
+                "title": "Documentaci\u00F3n de la API",
+                "url": "https://github.com/dotnet/docs/blob/main/docs/core/compatibility/networking/10.0/uri-length-limits-removed.md",
+                "isCustom": false
+              }
+            ],
+            "line": 63,
+            "column": 12
+          }
+        },
+        {
+          "incidentId": "8c394d48-2fd1-4e68-abf6-3119164c584a",
+          "ruleId": "Api.0001",
+          "description": "API is unavailable in net8.0 ",
+          "projectPath": "TEST_IDENNA\\TEST_IDENNA.csproj",
+          "state": "Active",
+          "location": {
+            "snippetModel": {
+              "unrestricted": "public MainWindow()\r\n        {\r\n            InitializeComponent();\r\n            // Pedimos al contenedor que nos d\u00E9 el MainViewModel con todo incluido\r\n            //this.DataContext = App.ServiceProvider.GetRequiredService\u003CMainWindow\u003E();\r\n            /*var registroVm = new RegistroViewModel();\r\n            registroVm.CargarDatos();*/\r\n        }",
+              "protected": "M:System.Windows.Window.#ctor"
+            },
+            "kind": "File",
+            "path": "TEST_IDENNA\\MainWindow.xaml.cs",
+            "snippet": "public MainWindow()\r\n        {\r\n            InitializeComponent();\r\n            // Pedimos al contenedor que nos d\u00E9 el MainViewModel con todo incluido\r\n            //this.DataContext = App.ServiceProvider.GetRequiredService\u003CMainWindow\u003E();\r\n            /*var registroVm = new RegistroViewModel();\r\n            registroVm.CargarDatos();*/\r\n        }",
+            "protectedSnippet": "M:System.Windows.Window.#ctor",
+            "label": "M:System.Windows.Window.#ctor",
+            "line": 24,
+            "column": 8
+          }
+        },
+        {
+          "incidentId": "72f979bd-f0fd-4f31-bc95-6dc6046b5e34",
+          "ruleId": "Api.0001",
+          "description": "API is unavailable in net8.0 ",
+          "projectPath": "TEST_IDENNA\\TEST_IDENNA.csproj",
+          "state": "Active",
+          "location": {
+            "snippetModel": {
+              "unrestricted": "IComponentConnector",
+              "protected": "T:System.Windows.Markup.IComponentConnector"
+            },
+            "kind": "File",
+            "path": "TEST_IDENNA\\obj\\x86\\Debug\\MainWindow.g.cs",
+            "snippet": "IComponentConnector",
+            "protectedSnippet": "T:System.Windows.Markup.IComponentConnector",
+            "label": "T:System.Windows.Markup.IComponentConnector",
+            "line": 49,
+            "column": 83
+          }
+        },
+        {
+          "incidentId": "ed3c7199-09d2-49c6-8127-b84cf9ff53e6",
+          "ruleId": "Api.0001",
+          "description": "API is unavailable in net8.0 ",
+          "projectPath": "TEST_IDENNA\\TEST_IDENNA.csproj",
+          "state": "Active",
+          "location": {
+            "snippetModel": {
+              "unrestricted": "Window",
+              "protected": "T:System.Windows.Window"
+            },
+            "kind": "File",
+            "path": "TEST_IDENNA\\obj\\x86\\Debug\\MainWindow.g.cs",
+            "snippet": "Window",
+            "protectedSnippet": "T:System.Windows.Window",
+            "label": "T:System.Windows.Window",
+            "line": 49,
+            "column": 53
+          }
+        }
+      ],
+      "features": [
+        {
+          "featureId": "LegacyConfiguration",
+          "incidents": [
+            "92f3e4cc-db83-47dd-ab61-959ecb9e782b",
+            "eb08ec31-8463-49fe-a4aa-b1dc4a35ae83"
+          ]
+        },
+        {
+          "featureId": "Wpf",
+          "incidents": [
+            "72f979bd-f0fd-4f31-bc95-6dc6046b5e34",
+            "1a7b50f9-e6f5-4fb9-89ba-5069e9b58f96",
+            "ac36f5d3-56e7-49c4-83ca-1b57f403bb12",
+            "fecca561-15c2-438e-bad1-888f939bb18b",
+            "023d485b-1b3a-44ae-8930-f8598bcafd9a",
+            "7c3e1205-8623-480b-b071-cf37632c4876",
+            "44ad3c6c-a75e-42b1-bdc0-7d125aa28381",
+            "e40fb13e-2da4-4e7b-ba01-62b099f146ae",
+            "4443dc73-b700-489a-af4c-abb8b65b5d45",
+            "0108ff32-e4e5-4c1f-a372-a05b300cd062",
+            "7646e924-86d2-48a8-b653-16c396e4a48e",
+            "b39ab127-1823-4daa-b9e8-cf7cae0e85e7",
+            "b53b5c2d-7e99-49f7-b3df-4904f51f4f2f",
+            "1dcdb13f-3d1a-4c24-9d31-b56bca7e91fb",
+            "dc2500da-aa08-4c8c-8afd-ae1881b5100f",
+            "62f563c6-6a97-45b8-8aab-d1a6ea718250",
+            "e9cb757e-89e3-4b5a-8e0c-290c544e4f41",
+            "3e19bd8b-ea14-4bc9-8fcc-4506ecc74c26",
+            "09d0997d-934b-4ecc-86f1-b982a1caa0e2",
+            "42cd0706-449e-4861-a024-d58b74e90aa8",
+            "8f0a8240-e479-450a-8457-4a0d310ee412",
+            "c506e263-7592-41d1-8e5a-8f0f2da92812"
+          ]
+        }
+      ]
+    }
+  ],
+  "rules": {
+    "NuGet.0001": {
+      "id": "NuGet.0001",
+      "isFeature": false,
+      "description": "El paquete NuGet no es compatible con la plataforma de destino seleccionada.\n\nEl paquete debe actualizarse a una versi\u00F3n compatible con la plataforma de destino del proyecto seleccionada. Si no hay nuevas versiones de paquete que admitan la nueva plataforma de destino, es necesario usar un paquete diferente y todo el c\u00F3digo debe actualizarse a la nueva API.",
+      "label": "El paquete NuGet no es compatible",
+      "severity": "Mandatory",
+      "effort": 1,
+      "links": [
+        {
+          "url": "https://go.microsoft.com/fwlink/?linkid=2262529",
+          "isCustom": false
+        }
+      ]
+    },
+    "NuGet.0002": {
+      "id": "NuGet.0002",
+      "isFeature": false,
+      "description": "Se recomienda actualizar el paquete NuGet para la plataforma de destino seleccionada.\n\nSe recomienda que los paquetes .NET est\u00E1ndar tengan versiones que coincidan con la versi\u00F3n de .NET de destino del proyecto.\n\nTambi\u00E9n se sabe que otros paquetes funcionan mejor para las plataformas de destino seleccionadas.",
+      "label": "Se recomienda actualizar el paquete NuGet",
+      "severity": "Potential",
+      "effort": 1,
+      "links": [
+        {
+          "url": "https://go.microsoft.com/fwlink/?linkid=2262530",
+          "isCustom": false
+        }
+      ]
+    },
+    "NuGet.0003": {
+      "id": "NuGet.0003",
+      "isFeature": false,
+      "description": "La funcionalidad del paquete NuGet se incluye con la referencia del marco.\n\nEs necesario quitar el paquete.",
+      "label": "La funcionalidad del paquete NuGet se incluye con la referencia del marco",
+      "severity": "Mandatory",
+      "effort": 1,
+      "links": [
+        {
+          "url": "https://go.microsoft.com/fwlink/?linkid=2262609",
+          "isCustom": false
+        }
+      ]
+    },
+    "NuGet.0004": {
+      "id": "NuGet.0004",
+      "isFeature": false,
+      "description": "El paquete NuGet contiene vulnerabilidades de seguridad.\n\nEl paquete debe actualizarse a una versi\u00F3n m\u00E1s reciente que solucione vulnerabilidades de seguridad conocidas.",
+      "label": "El paquete NuGet contiene una vulnerabilidad de seguridad.",
+      "severity": "Optional",
+      "effort": 1
+    },
+    "NuGet.0005": {
+      "id": "NuGet.0005",
+      "isFeature": false,
+      "description": "El paquete NuGet est\u00E1 en desuso.\n\nVaya a su documentaci\u00F3n y compruebe si hay una gu\u00EDa para reemplazar la funcionalidad proporcionada por este paquete.",
+      "label": "El paquete NuGet est\u00E1 en desuso",
+      "severity": "Optional",
+      "effort": 1,
+      "links": [
+        {
+          "url": "https://go.microsoft.com/fwlink/?linkid=2262531",
+          "isCustom": false
+        }
+      ]
+    },
+    "Project.0001": {
+      "id": "Project.0001",
+      "isFeature": false,
+      "description": "El archivo de proyecto debe convertirse al estilo SDK. Los proyectos modernos de .NET Framework requieren un cambio en el formato de archivo del proyecto y usan el SDK correspondiente al tipo y la funcionalidad del proyecto.",
+      "label": "El archivo de proyecto debe convertirse al estilo SDK",
+      "severity": "Mandatory",
+      "effort": 1,
+      "links": [
+        {
+          "title": "Informaci\u00F3n general sobre la portabilidad de .NET Framework a .NET",
+          "url": "https://go.microsoft.com/fwlink/?linkid=2265227",
+          "isCustom": false
+        },
+        {
+          "title": "SDK de proyecto .NET",
+          "url": "https://go.microsoft.com/fwlink/?linkid=2265226",
+          "isCustom": false
+        }
+      ]
+    },
+    "Project.0002": {
+      "id": "Project.0002",
+      "isFeature": false,
+      "description": "El marco de destino del proyecto deben cambiarse al nuevo marco de destino que seleccion\u00F3 para esta actualizaci\u00F3n.\n\nDurante la actualizaci\u00F3n, el marco de destino se ajustar\u00E1 a la plataforma correspondiente cuando proceda. En algunos casos, el proyecto dar\u00EDa como resultado varios marcos de destino despu\u00E9s de la actualizaci\u00F3n si usara caracter\u00EDsticas que ahora tienen sus propias plataformas en marcos de .NET modernos (windows, iOS, Android, etc.).",
+      "label": "Es necesario cambiar el marco de destino del proyecto",
+      "severity": "Mandatory",
+      "effort": 1,
+      "links": [
+        {
+          "title": "Informaci\u00F3n general sobre la portabilidad de .NET Framework a .NET",
+          "url": "https://go.microsoft.com/fwlink/?linkid=2265227",
+          "isCustom": false
+        },
+        {
+          "title": "SDK de proyecto .NET",
+          "url": "https://go.microsoft.com/fwlink/?linkid=2265226",
+          "isCustom": false
+        }
+      ]
+    },
+    "Api.0001": {
+      "id": "Api.0001",
+      "isFeature": false,
+      "description": "La API es binariamente incompatible con la versi\u00F3n de .NET seleccionada: afecta a los archivos binarios existentes y suele requerir recompilaci\u00F3n, porque la API ha cambiado de forma que impide que los binarios antiguos se carguen o ejecuten.",
+      "label": "Binario incompatible para la versi\u00F3n de .NET seleccionada",
+      "severity": "Mandatory",
+      "effort": 1,
+      "links": [
+        {
+          "title": "Cambios importantes en .NET",
+          "url": "https://go.microsoft.com/fwlink/?linkid=2262679",
+          "isCustom": false
+        }
+      ]
+    },
+    "Api.0003": {
+      "id": "Api.0003",
+      "isFeature": false,
+      "description": "La API tiene un cambio de comportamiento en la versi\u00F3n de .NET seleccionada: el c\u00F3digo y los archivos binarios pueden comportarse de forma diferente en el runtime sin necesidad de recompilaci\u00F3n, pero el nuevo comportamiento podr\u00EDa no ser deseable y requerir actualizaciones.",
+      "label": "Cambio de comportamiento en la versi\u00F3n de .NET seleccionada",
+      "severity": "Potential",
+      "effort": 1
+    },
+    "Api.0002": {
+      "id": "Api.0002",
+      "isFeature": false,
+      "description": "La API es incompatible a nivel de origen para la versi\u00F3n de .NET seleccionada: requiere cambios en el c\u00F3digo para compilarse correctamente cuando se dirige a una nueva versi\u00F3n, como eliminar API obsoletas o cambiar las firmas de los m\u00E9todos.",
+      "label": "El origen no es compatible con la versi\u00F3n de .NET seleccionada",
+      "severity": "Potential",
+      "effort": 1,
+      "links": [
+        {
+          "title": "Cambios importantes en .NET",
+          "url": "https://go.microsoft.com/fwlink/?linkid=2262679",
+          "isCustom": false
+        }
+      ]
+    },
+    "LegacyConfiguration": {
+      "id": "LegacyConfiguration",
+      "isFeature": false,
+      "description": "Legacy XML-based configuration system (app.config/web.config) that has been replaced by a more flexible configuration model in .NET Core. The old system was rigid and XML-based. Migrate to Microsoft.Extensions.Configuration with JSON/environment variables; use System.Configuration.ConfigurationManager NuGet package as interim bridge if needed.",
+      "label": "Legacy Configuration System",
+      "severity": "Mandatory",
+      "effort": 2,
+      "links": [
+        {
+          "title": "Configuration in .NET",
+          "url": "https://go.microsoft.com/fwlink/?linkid=2341702",
+          "isCustom": false
+        }
+      ]
+    },
+    "Wpf": {
+      "id": "Wpf",
+      "isFeature": false,
+      "description": "WPF APIs for building Windows desktop applications with XAML-based UI that are available in .NET on Windows. WPF provides rich desktop UI capabilities with data binding and styling. Enable Windows Desktop support: Option 1 (Recommended): Target net9.0-windows; Option 2: Add \u003CUseWindowsDesktop\u003Etrue\u003C/UseWindowsDesktop\u003E.",
+      "label": "WPF (Windows Presentation Foundation)",
+      "severity": "Mandatory",
+      "effort": 1,
+      "links": [
+        {
+          "title": "WPF on .NET",
+          "url": "https://go.microsoft.com/fwlink/?linkid=2342008",
+          "isCustom": false
+        }
+      ]
+    }
+  }
+}

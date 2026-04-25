@@ -1,0 +1,1 @@
+Solicitando abrir MainWindow.xaml, RegistrarBeneficiarioView.xaml y RegistroBeneficiarioViewModel para revisar CurrentView y DataTemplates.

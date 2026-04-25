@@ -13,7 +13,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace TEST_IDENNA
+namespace TEST_IDENNA.Views
 {
     /// <summary>
     /// Lógica de interacción para DashboardView.xaml

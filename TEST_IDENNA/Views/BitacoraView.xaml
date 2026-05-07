@@ -4,9 +4,67 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:TEST_IDENNA"
+             xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+             xmlns:vm="clr-namespace:TEST_IDENNA.ViewModels" xmlns:i="http://schemas.microsoft.com/xaml/behaviors"
              mc:Ignorable="d" 
-             d:DesignHeight="450" d:DesignWidth="800">
+             d:DesignHeight="450" d:DesignWidth="800"
+             d:DataContext="{d:DesignInstance Type=vm:BitacoraViewModel}">
+
+    <i:Interaction.Triggers>
+        <i:EventTrigger EventName="Loaded">
+            <i:InvokeCommandAction Command="{Binding CargarDatosCommand}" />
+        </i:EventTrigger>
+    </i:Interaction.Triggers>
+
     <Grid>
-            
+        <materialDesign:Card Margin="16" Padding="16">
+            <TabControl Style="{StaticResource MaterialDesignNavigationRailTabControl}">
+                <!-- Pestaña 1: Definir Actividades -->
+                <TabItem Header="GESTIONAR ACTIVIDADES">
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="300"/>
+                            <!-- Formulario para nueva actividad -->
+                            <ColumnDefinition Width="*"/>
+                            <!-- Lista de actividades existentes -->
+                        </Grid.ColumnDefinitions>
+
+                        <!-- Formulario -->
+                        <StackPanel Grid.Column="0" Margin="10">
+                            <TextBlock Text="Nueva Actividad" Style="{StaticResource MaterialDesignHeadline6TextBlock}"/>
+                            <TextBox Text="{Binding NombreNuevaActividad}" Margin="0,10" 
+                             materialDesign:HintAssist.Hint="Nombre de la Actividad"/>
+                            <TextBox Text="{Binding AreaSeleccionada}" Margin="0,10" 
+                             materialDesign:HintAssist.Hint="Área Responsable"/>
+                            <!--<ComboBox ItemsSource="{Binding AreasDisponibles}" 
+                              SelectedItem="{Binding AreaSeleccionada}"
+                              materialDesign:HintAssist.Hint="Área Responsable"/>-->
+                            <Button Command="{Binding GuardarActividadCommand}" Content="REGISTRAR" Margin="0,20"/>
+                        </StackPanel>
+
+                        <!-- Tabla de actividades existentes -->
+                        <DataGrid Grid.Column="1" ItemsSource="{Binding ListaActividades}" 
+                          AutoGenerateColumns="False" IsReadOnly="True" Margin="10">
+                            <DataGrid.Columns>
+                                <DataGridTextColumn Header="Nombre" Binding="{Binding Tipo_Actividad}"/>
+                                <DataGridTextColumn Header="Área" Binding="{Binding Area}"/>
+                            </DataGrid.Columns>
+                        </DataGrid>
+                    </Grid>
+                </TabItem>
+
+                <!-- Pestaña 2: Bitácora General (Asistencias) -->
+                <TabItem Header="HISTORIAL GENERAL">
+                    <DataGrid ItemsSource="{Binding HistorialCompleto}" AutoGenerateColumns="False">
+                        <DataGrid.Columns>
+                            <DataGridTextColumn Header="Fecha" Binding="{Binding Fecha_Registro, StringFormat=d}"/>
+                            <DataGridTextColumn Header="Niño/a" Binding="{Binding BeneficiarioNombre}"/>
+                            <DataGridTextColumn Header="Actividad" Binding="{Binding ActividadNombre}"/>
+                            <DataGridTextColumn Header="Tutor/Responsable" Binding="{Binding Responsable}"/>
+                        </DataGrid.Columns>
+                    </DataGrid>
+                </TabItem>
+            </TabControl>
+        </materialDesign:Card>
     </Grid>
 </UserControl>

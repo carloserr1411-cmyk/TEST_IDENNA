@@ -1,5 +1,6 @@
 ﻿using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
+using CommunityToolkit.Mvvm.Messaging;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -8,8 +9,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Input;
-using TEST_IDENNA.Views;
+using TEST_IDENNA.Interfaces;
+using TEST_IDENNA.Services;
 using TEST_IDENNA.ViewModels;
+using TEST_IDENNA.Views;
 
 
 namespace TEST_IDENNA.ViewModels
@@ -31,6 +34,11 @@ namespace TEST_IDENNA.ViewModels
 
             CurrentView = new DashboardViewModel(_service);
 
+            WeakReferenceMessenger.Default.Register<NavegarMensaje>(this, (r, m) =>
+            {
+                CurrentView = m.Value; // El valor es el ViewModel que queremos mostrar
+            });
+
             ShowDashboard = new RelayCommand(_ =>
             {
                 CurrentView = new DashboardViewModel(_service);
@@ -38,7 +46,7 @@ namespace TEST_IDENNA.ViewModels
             ShowExpedientes = new RelayCommand(_ =>
             {
                 //CurrentView = new RegistroBeneficiarioViewModel(_service);
-                CurrentView = new ExpedientesViewModel(_repository);
+                CurrentView = new ExpedientesViewModel(_repository, _service);
             });
             ShowBitacora = new RelayCommand(_ => 
             {

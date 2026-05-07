@@ -13,24 +13,27 @@ namespace TEST_IDENNA.Models
         [Key]
         public int Id_Actividad { get; set; }
 
-        [Required]
-        public int Id_Usuario_Responsable { get; set; }
+        /*[Required]
+        public int Id_Usuario_Responsable { get; set; }*/
 
         [Required]
-        public DateTime Fecha { get; set; }
+        public DateTime Fecha_Registro { get; set; }
 
         [Required]
         public string Tipo_Actividad { get; set; } // Ejemplo: "Taller de Pintura"
 
-        public string Objetivos_Alcanzados { get; set; }
+        [Required]
+        public string Area { get; set; } // Ejemplo: "Desarrollo Cognitivo"
 
-        public string Observaciones_Generales { get; set; }
+        //public string Objetivos_Alcanzados { get; set; }
+
+        //public string Observaciones_Generales { get; set; }
 
         // Propiedades de Navegación
-        [ForeignKey("Id_Usuario_Responsable")]
-        public virtual Usuario UsuarioResponsable { get; set; }
+        /*[ForeignKey("Id_Usuario_Responsable")]
+        public virtual Usuario UsuarioResponsable { get; set; }*/
 
         // Una actividad tiene muchos beneficiarios asociados mediante la tabla de asistencia
-        public virtual ICollection<AsistenciaActividad> Asistentes { get; set; }
+        public virtual ICollection<AsistenciaActividad> Asistentes { get; set; } = new List<AsistenciaActividad>();
     }
 }

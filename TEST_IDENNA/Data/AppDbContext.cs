@@ -34,5 +34,27 @@ namespace TEST_IDENNA.Data
             }
             GC.SuppressFinalize(this);
         }
+
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            // 1. Dile a EF que ignore la lista de evoluciones en el Usuario
+            modelBuilder.Entity<Usuario>().Ignore(u => u.EvolucionesRegistradas);
+
+            modelBuilder.Entity<Evolucion>()
+                .HasKey(e => e.Id_Evolucion);
+            // Configuramos la relación entre Actividad y Asistencia
+            modelBuilder.Entity<AsistenciaActividad>()
+                .HasOne(a => a.Actividad)
+                .WithMany(act => act.Asistentes) // O el nombre que tengas en tu modelo Actividad
+                .HasForeignKey(a => a.Id_Actividad);
+
+            // Configuramos la relación entre Beneficiario (Niño) y Asistencia
+            modelBuilder.Entity<AsistenciaActividad>()
+                .HasOne(a => a.BeneficiarioAsistente)
+                .WithMany() // Si el niño no tiene una lista de asistencias en su modelo, déjalo vacío
+                .HasForeignKey(a => a.Id_Beneficiario);
+
+            base.OnModelCreating(modelBuilder);
+        }
     }
 }

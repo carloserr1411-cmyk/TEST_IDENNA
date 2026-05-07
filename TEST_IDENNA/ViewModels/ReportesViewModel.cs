@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Text;
+using TEST_IDENNA.Interfaces;
 
 namespace TEST_IDENNA.ViewModels
 {

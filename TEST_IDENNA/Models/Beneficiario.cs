@@ -12,6 +12,7 @@ namespace TEST_IDENNA.Models
     {
         [Key]
         public int Id_Beneficiario { get; set; }
+        public byte[]? Foto { get; set; }
         public string Nombres { get; set; }
         public string Apellidos { get; set; }
         public DateTime Fecha_Nacimiento { get; set; }
@@ -31,11 +32,19 @@ namespace TEST_IDENNA.Models
         public DateTime Fecha_Ingreso { get; set; }
         public string Observaciones { get; set; }
 
+        public Beneficiario Clonar()
+        {
+            // MemberwiseClone crea una copia de los valores (Cédula, Nombres, Foto, etc.)
+            return (Beneficiario)this.MemberwiseClone();
+        }
+
         // Relación: Un beneficiario tiene muchas evoluciones
-        public ICollection<Evolucion>? Evoluciones { get; set; }
+        // ICollection<Evolucion>? Evoluciones { get; set; }
     }
 
-    public class Evolucion
+
+
+    /*public class Evolucion
     {
         [Key]
         public int Id_Evolucion { get; set; }
@@ -46,5 +55,5 @@ namespace TEST_IDENNA.Models
 
         [ForeignKey("Id_Beneficiario")]
         public Beneficiario Beneficiario { get; set; }
-    }
+    }*/
 }

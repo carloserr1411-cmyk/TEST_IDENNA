@@ -5,20 +5,81 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
              xmlns:vm="clr-namespace:TEST_IDENNA.ViewModels"
+             xmlns:s="clr-namespace:TEST_IDENNA.Services"
              mc:Ignorable="d" 
              d:DesignHeight="600" d:DesignWidth="800"
              d:DataContext="{d:DesignInstance Type=vm:RegistroBeneficiarioViewModel}">
+
+    <UserControl.Resources>
+        <!-- Tu converter para mostrar la imagen -->
+        <s:BytesToImageConverter x:Key="BytesToImageConverter"/>
+
+        <!-- Estilo para el círculo de la foto -->
+        <Style x:Key="AvatarBorderStyle" TargetType="Border">
+            <Setter Property="Width" Value="120"/>
+            <Setter Property="Height" Value="120"/>
+            <Setter Property="CornerRadius" Value="60"/>
+            <Setter Property="BorderBrush" Value="{DynamicResource PrimaryHueMidBrush}"/>
+            <Setter Property="BorderThickness" Value="2"/>
+            <Setter Property="Background" Value="#F5F5F5"/>
+            <Setter Property="ClipToBounds" Value="True"/>
+        </Style>
+    </UserControl.Resources>
 
     <ScrollViewer VerticalScrollBarVisibility="Auto">
         <Grid Margin="30">
             <materialDesign:Card Padding="32" materialDesign:ElevationAssist.Elevation="Dp4" UniformCornerRadius="12">
                 <StackPanel>
+                    <Button Command="{Binding VolverCommand}"
+                        Style="{StaticResource MaterialDesignFlatButton}"
+                        HorizontalAlignment="Left"
+                        Margin="-10,10,0,0"
+                        Foreground="Gray">
+                        <StackPanel Orientation="Horizontal">
+                            <materialDesign:PackIcon Kind="ArrowLeft" Margin="0,0,8,0" VerticalAlignment="Center"/>
+                            <TextBlock Text="VOLVER A EXPEDIENTES" VerticalAlignment="Center" FontWeight="SemiBold"/>
+                        </StackPanel>
+                    </Button>
+
                     <StackPanel Orientation="Horizontal" Margin="0,0,0,30">
                         <materialDesign:PackIcon Kind="AccountPlus" Width="30" Height="30" Foreground="{DynamicResource PrimaryHueMidBrush}" VerticalAlignment="Center"/>
-                        <TextBlock Text="Registro de Nuevo Ingreso" 
+                        <TextBlock Text="{Binding TituloVista}" 
                                    Style="{StaticResource MaterialDesignHeadline5TextBlock}" 
                                    Margin="15,0,0,0" VerticalAlignment="Center" FontWeight="Bold"/>
                     </StackPanel>
+
+                    <!-- Sección de Foto de Perfil -->
+                    <Grid HorizontalAlignment="Center" Margin="0,0,0,30">
+                        <Border Style="{StaticResource AvatarBorderStyle}">
+                            <Grid>
+                                <!-- Icono de fondo si no hay foto -->
+                                <materialDesign:PackIcon Kind="Account" 
+                               Foreground="#BDBDBD" 
+                               Width="60" Height="60" 
+                               HorizontalAlignment="Center" 
+                               VerticalAlignment="Center"/>
+
+                                <!-- Círculo que usa la foto como "pintura" -->
+                                <Ellipse>
+                                    <Ellipse.Fill>
+                                        <ImageBrush ImageSource="{Binding FotoSeleccionada, Converter={StaticResource BytesToImageConverter}}"
+                            Stretch="UniformToFill"/>
+                                    </Ellipse.Fill>
+                                </Ellipse>
+                            </Grid>
+                        </Border>
+
+                        <!-- Botón Flotante para cambiar la foto -->
+                        <Button Command="{Binding SeleccionarFotoCommand}"
+                            Style="{StaticResource MaterialDesignFloatingActionMiniButton}"
+                            VerticalAlignment="Top" 
+                            HorizontalAlignment="Right"
+                            Width="40" Height="40"
+                            Margin="0,85,-5,0"
+                            ToolTip="Subir fotografía">
+                            <materialDesign:PackIcon Kind="CameraPlus" />
+                        </Button>
+                    </Grid>
 
                     <Grid>
                         <Grid.ColumnDefinitions>
@@ -30,22 +91,22 @@
                         <StackPanel Grid.Column="0">
                             <TextBox materialDesign:HintAssist.Hint="Nombres"
                                      Style="{StaticResource MaterialDesignFloatingHintTextBox}"
-                                     Text="{Binding NuevoBeneficiario.Nombres, UpdateSourceTrigger=PropertyChanged}"
+                                     Text="{Binding ModeloFormulario.Nombres, UpdateSourceTrigger=PropertyChanged}"
                                      Margin="0,0,0,20"/>
 
                             <TextBox materialDesign:HintAssist.Hint="Apellidos"
                                      Style="{StaticResource MaterialDesignFloatingHintTextBox}"
-                                     Text="{Binding NuevoBeneficiario.Apellidos, UpdateSourceTrigger=PropertyChanged}"
+                                     Text="{Binding ModeloFormulario.Apellidos, UpdateSourceTrigger=PropertyChanged}"
                                      Margin="0,0,0,20"/>
 
                             <TextBox materialDesign:HintAssist.Hint="Cedula"
                                      Style="{StaticResource MaterialDesignFloatingHintTextBox}"
-                                     Text="{Binding NuevoBeneficiario.Cedula, UpdateSourceTrigger=PropertyChanged}"
+                                     Text="{Binding ModeloFormulario.Cedula, UpdateSourceTrigger=PropertyChanged}"
                                      Margin="0,0,0,20"/>
 
                             <DatePicker materialDesign:HintAssist.Hint="Fecha de Nacimiento"
                                         Style="{StaticResource MaterialDesignFloatingHintDatePicker}"
-                                        SelectedDate="{Binding NuevoBeneficiario.Fecha_Nacimiento, UpdateSourceTrigger=PropertyChanged}"
+                                        SelectedDate="{Binding ModeloFormulario.Fecha_Nacimiento, UpdateSourceTrigger=PropertyChanged}"
                                         Margin="0,0,0,10"/>
                             <TextBlock Text="Dato requerido para el cálculo de edad" Style="{StaticResource MaterialDesignCaptionTextBlock}" Opacity="0.6"/>
                         </StackPanel>
@@ -53,7 +114,7 @@
                         <StackPanel Grid.Column="2">
                             <ComboBox materialDesign:HintAssist.Hint="Estatus Legal"
                                       Style="{StaticResource MaterialDesignFloatingHintComboBox}"
-                                      Text="{Binding NuevoBeneficiario.Estatus_Legal, UpdateSourceTrigger=PropertyChanged}"
+                                      Text="{Binding ModeloFormulario.Estatus_Legal, UpdateSourceTrigger=PropertyChanged}"
                                       Margin="0,0,0,20">
                                 <ComboBoxItem Content="En Proceso de Investigación"/>
                                 <ComboBoxItem Content="Bajo Medida de Protección"/>
@@ -64,12 +125,12 @@
 
                             <DatePicker materialDesign:HintAssist.Hint="Fecha de Ingreso al Centro"
                                         Style="{StaticResource MaterialDesignFloatingHintDatePicker}"
-                                        SelectedDate="{Binding NuevoBeneficiario.Fecha_Ingreso, UpdateSourceTrigger=PropertyChanged}"
+                                        SelectedDate="{Binding ModeloFormulario.Fecha_Ingreso, UpdateSourceTrigger=PropertyChanged}"
                                         Margin="0,0,0,20"/>
 
                             <TextBox materialDesign:HintAssist.Hint="Observaciones Iniciales (Opcional)"
                                      Style="{StaticResource MaterialDesignOutlinedTextBox}"
-                                     Text="{Binding NuevoBeneficiario.Observaciones, UpdateSourceTrigger=PropertyChanged}"
+                                     Text="{Binding ModeloFormulario.Observaciones, UpdateSourceTrigger=PropertyChanged}"
                                      AcceptsReturn="True"
                                      TextWrapping="Wrap"
                                      VerticalScrollBarVisibility="Auto"
@@ -83,13 +144,13 @@
 
                     <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
                         <Button Content="CANCELAR"
-                                Command="{Binding CancelarCommand}"
+                                Command="{Binding VolverCommand}"
                                 Style="{StaticResource MaterialDesignFlatButton}" 
                                 Margin="0,0,15,0" 
                                 Foreground="Gray"/>
 
-                        <Button Content="REGISTRAR BENEFICIARIO" 
-                                Command="{Binding RegistrarCommand}"
+                        <Button Content="{Binding BotonGuardarTexto}" 
+                                Command="{Binding GuardarCommand}"
                                 Width="220" Height="45"
                                 Style="{StaticResource MaterialDesignRaisedButton}"
                                 materialDesign:ButtonAssist.CornerRadius="20"/>

@@ -22,11 +22,16 @@ namespace TEST_IDENNA.Models
         // Aquí registras cómo le fue a ese niño específico en esa actividad
         public string Desempeño_Individual { get; set; }
 
+        public string Area { get; set; } // Psicología, Legal, etc. (opcional, pero útil para la línea de tiempo)
+
         // Propiedades de Navegación
         [ForeignKey("Id_Actividad")]
         public virtual Actividad ActividadAsociada { get; set; }
 
         [ForeignKey("Id_Beneficiario")]
         public virtual Beneficiario BeneficiarioAsistente { get; set; }
+
+        // PROPIEDAD DE NAVEGACIÓN: Esto permite que EF Core una las tablas
+        public virtual Actividad Actividad { get; set; }
     }
 }

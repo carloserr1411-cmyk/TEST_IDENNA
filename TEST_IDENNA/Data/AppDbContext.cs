@@ -11,6 +11,7 @@ namespace TEST_IDENNA.Data
         public DbSet<Actividad> Actividades { get; set; }
         public DbSet<Evolucion> Evoluciones { get; set; }
         public DbSet<AsistenciaActividad> Asistencia_Actividades { get; set; }
+        public DbSet<Egreso> Egresos { get; set; }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {

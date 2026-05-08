@@ -38,6 +38,8 @@ namespace TEST_IDENNA.Models
             return (Beneficiario)this.MemberwiseClone();
         }
 
+        public string Estatus { get; set; } = "Activo"; // Por defecto todos entran activos
+
         // Relación: Un beneficiario tiene muchas evoluciones
         // ICollection<Evolucion>? Evoluciones { get; set; }
     }

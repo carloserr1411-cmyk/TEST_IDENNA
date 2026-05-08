@@ -58,11 +58,12 @@ namespace TEST_IDENNA.Repositories
             return await _context.Beneficiarios
                 .Where(b =>
                     // Buscamos en Nombres
-                    b.Nombres.ToLower().Contains(busqueda) ||
+                    (b.Nombres.ToLower().Contains(busqueda) ||
                     // Buscamos en Apellidos
                     b.Apellidos.ToLower().Contains(busqueda) ||
                     // Concatenamos para permitir buscar "Nombre Apellido"
-                    (b.Nombres.ToLower() + " " + b.Apellidos.ToLower()).Contains(busqueda))
+                    (b.Nombres.ToLower() + " " + b.Apellidos.ToLower()).Contains(busqueda)) &&
+                    (b.Estatus == "Activo"))
                 .OrderBy(b => b.Nombres) // Ordenamos alfabéticamente
                 .Take(10) // Un límite mayor ayuda a la experiencia de usuario
                 .ToListAsync();

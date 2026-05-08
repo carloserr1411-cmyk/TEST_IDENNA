@@ -16,6 +16,7 @@
   <!-- PackageReference entries converted from the old project. Review versions and adjust as needed. -->
   <ItemGroup>
     <PackageReference Include="CommunityToolkit.Mvvm" Version="8.4.2" />
+    <PackageReference Include="LiveChartsCore.SkiaSharpView.WPF" Version="2.0.2" />
     <PackageReference Include="MaterialDesignColors" Version="5.3.1" />
     <PackageReference Include="MaterialDesignThemes" Version="5.3.1" />
     <PackageReference Include="Microsoft.Bcl.AsyncInterfaces" Version="10.0.7" />
@@ -38,6 +39,8 @@
     <PackageReference Include="Microsoft.IdentityModel.Abstractions" Version="8.17.0" />
     <PackageReference Include="Microsoft.Xaml.Behaviors.Wpf" Version="1.1.142" />
     <PackageReference Include="Newtonsoft.Json" Version="13.0.4" />
+    <PackageReference Include="SkiaSharp.NativeAssets.Win32" Version="3.119.2" />
+    <PackageReference Include="SkiaSharp.Views.WPF" Version="3.119.2" />
     <!-- Updated to match EF Core's transitive dependency and avoid NU1605 downgrade -->
     <PackageReference Include="SQLitePCLRaw.bundle_e_sqlite3" Version="2.1.11" />
     <PackageReference Include="SQLitePCLRaw.core" Version="3.0.2" />

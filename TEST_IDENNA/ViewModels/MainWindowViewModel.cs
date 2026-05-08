@@ -10,6 +10,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Input;
 using TEST_IDENNA.Interfaces;
+using TEST_IDENNA.Models;
 using TEST_IDENNA.Services;
 using TEST_IDENNA.ViewModels;
 using TEST_IDENNA.Views;
@@ -24,14 +25,16 @@ namespace TEST_IDENNA.ViewModels
 
         private readonly IIntervencionService _service;
         private readonly IBeneficiarioRepository _repository;
+        private readonly IEgresoRepository _egreso;
 
         // Crea instancias de tus otros ViewModels (asegúrate de tenerlos creados)
         //private readonly DashboardViewModel _dashboardVM = new();
-        public MainWindowViewModel(IIntervencionService service, IBeneficiarioRepository repository)
+        public MainWindowViewModel(IIntervencionService service, IBeneficiarioRepository repository, IEgresoRepository egresoRepository)
         {
             _service = service;
             _repository = repository;
-
+            _egreso = egresoRepository;
+            
             CurrentView = new DashboardViewModel(_service);
 
             WeakReferenceMessenger.Default.Register<NavegarMensaje>(this, (r, m) =>
@@ -54,7 +57,7 @@ namespace TEST_IDENNA.ViewModels
             });
             ShowReportes = new RelayCommand(_ => 
             { 
-                CurrentView = new ReportesViewModel(_service);
+                CurrentView = new ReportesViewModel(_repository, _egreso);
             });
             ShowArchivoHistorico = new RelayCommand(_ => 
             { 

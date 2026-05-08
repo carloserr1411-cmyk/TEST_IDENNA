@@ -1,12 +1,78 @@
 ﻿<UserControl x:Class="TEST_IDENNA.Views.ReportesView"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
-             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
-             xmlns:local="clr-namespace:TEST_IDENNA.Views"
-             mc:Ignorable="d" 
-             d:DesignHeight="450" d:DesignWidth="800">
-    <Grid>
-            
+             xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+             xmlns:lvc="clr-namespace:LiveChartsCore.SkiaSharpView.WPF;assembly=LiveChartsCore.SkiaSharpView.WPF"
+             Background="#F5F5F5">
+
+    <Grid Margin="20">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="150"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="200"/>
+        </Grid.RowDefinitions>
+
+        <StackPanel Orientation="Horizontal" Margin="0,0,0,20">
+            <DatePicker materialDesign:HintAssist.Hint="Desde" Width="150" Margin="0,0,10,0"/>
+            <DatePicker materialDesign:HintAssist.Hint="Hasta" Width="150" Margin="0,0,10,0"/>
+            <Button Command="{Binding CargarDatosCommand}" Content="FILTRAR" Style="{StaticResource MaterialDesignRaisedButton}"/>
+            <Button Command="{Binding ExportarPDFCommand}" Content="GENERAR PDF" Margin="10,0,0,0" Background="#27ae60" BorderBrush="#27ae60"/>
+        </StackPanel>
+
+        <UniformGrid Grid.Row="1" Columns="3">
+            <materialDesign:Card Margin="5" Background="#0b103d" Foreground="White">
+                <StackPanel VerticalAlignment="Center">
+                    <TextBlock Text="CASOS ACTIVOS" HorizontalAlignment="Center" FontSize="14"/>
+                    <TextBlock Text="{Binding TotalActivos}" HorizontalAlignment="Center" FontSize="40" FontWeight="Bold"/>
+                </StackPanel>
+            </materialDesign:Card>
+
+            <materialDesign:Card Margin="5" Background="#27ae60" Foreground="White">
+                <StackPanel VerticalAlignment="Center">
+                    <TextBlock Text="EGRESOS TOTALES" HorizontalAlignment="Center" FontSize="14"/>
+                    <TextBlock Text="{Binding TotalEgresados}" HorizontalAlignment="Center" FontSize="40" FontWeight="Bold"/>
+                </StackPanel>
+            </materialDesign:Card>
+
+            <materialDesign:Card Margin="5" Background="White">
+                <StackPanel VerticalAlignment="Center">
+                    <TextBlock Text="PENDIENTES" HorizontalAlignment="Center" FontSize="14" Foreground="Gray"/>
+                    <TextBlock Text="12" HorizontalAlignment="Center" FontSize="40" FontWeight="Bold" Foreground="#0b103d"/>
+                </StackPanel>
+            </materialDesign:Card>
+        </UniformGrid>
+
+        <Grid Grid.Row="2" Margin="0,20">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+
+            <materialDesign:Card Margin="5" Padding="10">
+                <StackPanel>
+                    <TextBlock Text="Distribución por Estatus Legal" FontWeight="Bold" Margin="0,0,0,10"/>
+                    <lvc:PieChart Series="{Binding SeriesEstatus}" Height="250"/>
+                </StackPanel>
+            </materialDesign:Card>
+
+            <materialDesign:Card Grid.Column="1" Margin="5" Padding="10">
+                <StackPanel>
+                    <TextBlock Text="Ingresos Mensuales" FontWeight="Bold" Margin="0,0,0,10"/>
+                    <lvc:CartesianChart Series="{Binding SeriesMensual}" XAxes="{Binding XAxes}" Height="250"/>
+                </StackPanel>
+            </materialDesign:Card>
+        </Grid>
+
+        <materialDesign:Card Grid.Row="3" Margin="5" VerticalAlignment="Stretch">
+            <DataGrid ItemsSource="{Binding ArchivoHistorico}" AutoGenerateColumns="False" IsReadOnly="True">
+                <DataGrid.Columns>
+                    <DataGridTextColumn Header="Beneficiario" Binding="{Binding NombreCompleto}"/>
+                    <DataGridTextColumn Header="Cédula" Binding="{Binding Cedula}"/>
+                    <DataGridTextColumn Header="Fecha Egreso" Binding="{Binding Fecha_Egreso, StringFormat=d}"/>
+                    <DataGridTextColumn Header="Motivo" Binding="{Binding Motivo_Egreso}"/>
+                </DataGrid.Columns>
+            </DataGrid>
+        </materialDesign:Card>
     </Grid>
 </UserControl>

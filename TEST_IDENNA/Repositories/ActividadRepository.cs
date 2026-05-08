@@ -4,9 +4,10 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using TEST_IDENNA.Data;
+using TEST_IDENNA.Interfaces;
 using TEST_IDENNA.Models;
 
-namespace TEST_IDENNA.Interfaces
+namespace TEST_IDENNA.Repositories
 {
 
     // 2. LA IMPLEMENTACIÓN (La Clase que EF Core usará)

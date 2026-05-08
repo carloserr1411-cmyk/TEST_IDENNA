@@ -30,6 +30,13 @@ namespace TEST_IDENNA
 
         private void ConfigureServices(IServiceCollection services)
         {
+            services.AddSingleton<IEgresoRepository, EgresoRepository>();
+
+            // También asegúrate de que el ViewModel esté registrado
+            services.AddTransient<ReportesViewModel>();
+            services.AddTransient<MainWindowViewModel>();
+
+            ServiceProvider = services.BuildServiceProvider();
             // 1. Base de Datos
             services.AddDbContext<AppDbContext>();
 

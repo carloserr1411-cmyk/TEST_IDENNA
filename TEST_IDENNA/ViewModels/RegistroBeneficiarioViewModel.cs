@@ -20,6 +20,7 @@ namespace TEST_IDENNA.ViewModels
     {
         private readonly IIntervencionService _service = service;
         private readonly IBeneficiarioRepository _repository = repository;
+        private bool _esEdicion = false;
 
         [ObservableProperty]
         private string _tituloVista = "Registrar Nuevo Beneficiario";
@@ -38,6 +39,7 @@ namespace TEST_IDENNA.ViewModels
             Fecha_Nacimiento = DateTime.Today.AddYears(-12),
             Fecha_Ingreso = DateTime.Now,
             Estatus_Legal = "En Proceso de Investigación",
+            Estatus = "Activo",
             Observaciones = string.Empty
         };
 
@@ -59,8 +61,6 @@ namespace TEST_IDENNA.ViewModels
             Observaciones = string.Empty
         };
 
-        private bool _esEdicion = false;
-
         // Método que recibe los datos cuando navegas hacia aquí
         public void ApplyQueryAttributes(IDictionary<string, object> query)
         {
@@ -77,22 +77,6 @@ namespace TEST_IDENNA.ViewModels
                 _esEdicion = false;
             }
         }
-
-        /*[RelayCommand]
-        public void SeleccionarFoto()
-        {
-            var openFileDialog = new Microsoft.Win32.OpenFileDialog
-            {
-                Filter = "Imágenes (*.jpg;*.jpeg;*.png)|*.jpg;*.jpeg;*.png",
-                Title = "Seleccionar foto del beneficiario"
-            };
-
-            if (openFileDialog.ShowDialog() == true)
-            {
-                // Convertimos el archivo de la ruta a un arreglo de bytes
-                FotoSeleccionada = System.IO.File.ReadAllBytes(openFileDialog.FileName);
-            }
-        }*/
 
         [RelayCommand]
         public void SeleccionarFoto()
@@ -116,7 +100,7 @@ namespace TEST_IDENNA.ViewModels
 
                     // Abrimos la ventana de recorte pasándole la imagen
                     // Nota: Asegúrate de tener el using de tu carpeta de Views
-                    var ventanaRecorte = new TEST_IDENNA.Views.RecortarImagenView(bitmap);
+                    var ventanaRecorte = new Views.RecortarImagenView(bitmap);
 
                     // Mostramos la ventana de forma modal
                     if (ventanaRecorte.ShowDialog() == true)
@@ -141,17 +125,21 @@ namespace TEST_IDENNA.ViewModels
             if (_esEdicion)
             {
                 await _repository.Actualizar(ModeloFormulario);
-                //MessageBox.Show("Beneficiario actualizado con éxito"); en la siguiente linea colocare el mismo mensaje pero con una forma mas elegante, como un dialogo o algo asi, para no usar MessageBox
                 var dialog = new Views.Dialogs.ExitoDialog("Beneficiario actualizado con éxito");
                 dialog.ShowDialog();
             }
             else
             {
-                //await _repository.Registrar(ModeloFormulario
-                await Registrar(); // Llamamos al método que ya tiene la lógica de registro
-                //MessageBox.Show("Beneficiario registrado con éxito");
-                var dialog = new Views.Dialogs.ExitoDialog("Beneficiario registrado con éxito");
-                dialog.ShowDialog();
+                // Forzamos el estatus activo por si acaso
+                ModeloFormulario.Estatus = "Activo";
+
+                // USAMOS EL SERVICIO para registrar lo que está en el formulario
+                bool exito = await _service.RegistrarNuevoIngreso(ModeloFormulario);
+
+                if (exito)
+                    new Views.Dialogs.ExitoDialog("Beneficiario registrado con éxito").ShowDialog();
+                else
+                    MessageBox.Show("Error al registrar en la base de datos");
             }
 
             Volver(); // Regresamos a la lista
@@ -182,16 +170,20 @@ namespace TEST_IDENNA.ViewModels
         [RelayCommand]
         private async Task Cancelar()
         {
-                // Lógica para cancelar el registro, por ejemplo, limpiar el formulario
-                NuevoBeneficiario = new Beneficiario
-                {
-                    Fecha_Nacimiento = DateTime.Today.AddYears(-12), // Fecha promedio
-                    Fecha_Ingreso = DateTime.Now,
-                    Estatus_Legal = "En Proceso de Investigación",
-                    Observaciones = string.Empty
-                };
+            // Lógica para cancelar el registro, por ejemplo, limpiar el formulario
+            /*NuevoBeneficiario = new Beneficiario
+            {
+                Fecha_Nacimiento = DateTime.Today.AddYears(-12), // Fecha promedio
+                Fecha_Ingreso = DateTime.Now,
+                Estatus_Legal = "En Proceso de Investigación",
+                Observaciones = string.Empty
+            };
 
+        FotoSeleccionada = null;*/
+
+            ModeloFormulario = GenerarNuevoBeneficiario();
             FotoSeleccionada = null;
+            Volver();
         }
 
         [RelayCommand]

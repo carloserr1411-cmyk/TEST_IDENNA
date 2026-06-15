@@ -31,7 +31,7 @@ namespace TEST_IDENNA.Repositories
                 {
                     Fecha_Registro = asist.Actividad.Fecha_Registro,
                     Actividad = asist.Actividad,
-                    //Especialista = asist.Actividad.UsuarioResponsable.Nombre_Usuario,
+                    Especialista = asist.Tutor,
                     Detalle = asist.Desempeño_Individual,
                     Beneficiario = asist.BeneficiarioAsistente
                 })
@@ -51,7 +51,12 @@ namespace TEST_IDENNA.Repositories
             {
                 Id_Actividad = actividadId,
                 Id_Beneficiario = beneficiarioId,
-                Desempeño_Individual = evolucionEspecifica
+                Desempeño_Individual = evolucionEspecifica,
+                Area = "Área por Definir", // Puedes ajustar esto según tu lógica de negocio
+                ActividadAsociada = await _context.Actividades.FindAsync(actividadId),
+                BeneficiarioAsistente = await _context.Beneficiarios.FindAsync(beneficiarioId),
+                Tutor = await _context.Tutores.FirstOrDefaultAsync(), // Asigna el tutor adecuado según tu lógica
+                Actividad = await _context.Actividades.FindAsync(actividadId) // Relación directa con la actividad
             };
 
             _context.Asistencia_Actividades.Add(asistencia);

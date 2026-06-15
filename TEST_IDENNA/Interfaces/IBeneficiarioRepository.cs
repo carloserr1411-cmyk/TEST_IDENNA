@@ -14,5 +14,7 @@ namespace TEST_IDENNA
         Task<List<Beneficiario>> ObtenerPorNombre(string searchText);
         Task Actualizar(Beneficiario beneficiario);
         //Task<IEnumerable<Evolucion>> ObtenerEvolucionesPorBeneficiario(int id_Beneficiario);
+        Task<Beneficiario?> ObtenerPorCedulaAsync(string cedula);
+        Task ActualizarUbicacionAsync(int id_Beneficiario, string ubicacionFinal);
     }
 }

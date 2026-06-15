@@ -17,15 +17,25 @@ namespace TEST_IDENNA.Models
 
         // Propiedad de Navegación (ESTO es lo que usa el Include)
         [ForeignKey("Id_Actividad")]
-        public virtual Actividad Actividad { get; set; }
+        [Required]
+        public virtual required Actividad Actividad { get; set; }
 
         public int Id_Beneficiario { get; set; }
 
         [ForeignKey("Id_Beneficiario")]
-        public virtual Beneficiario Beneficiario { get; set; }
+        [Required]
+        public virtual required Beneficiario Beneficiario { get; set; }
 
-        public string Detalle { get; set; }
-        public DateTime Fecha_Registro { get; set; }
-        public string Especialista { get; set; }
+        public string Detalle { get; set; } = "";
+
+        [Required]
+        public required DateTime Fecha_Registro { get; set; }
+        [Required]
+        public required Tutores Especialista { get; set; }
+
+        public string NombreYEspecialidad => $"{Especialista.NombreCompleto} - {Especialista.Cargo}";
+
+        public bool IsDeleted { get; set; } = false;
+        public DateTime? FechaEliminacion { get; set; }
     }
 }

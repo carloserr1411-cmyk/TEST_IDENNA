@@ -1,0 +1,116 @@
+﻿<UserControl x:Class="TEST_IDENNA.Views.GestionTutoresView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:TEST_IDENNA.Views"
+             xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+             xmlns:viewmodels="clr-namespace:TEST_IDENNA.ViewModels"
+             d:DataContext="{d:DesignInstance Type=viewmodels:GestionTutoresViewModel}"
+             mc:Ignorable="d" 
+             d:DesignHeight="450" d:DesignWidth="800"
+             Background="{DynamicResource FondoPrincipal}">
+
+    <UserControl.Resources>
+        <Style x:Key="EstiloCabeceraDataGrid" TargetType="DataGridColumnHeader" BasedOn="{StaticResource MaterialDesignDataGridColumnHeader}">
+            <Setter Property="Foreground" Value="{DynamicResource TextoSecundario}"/>
+            <Setter Property="Background" Value="Transparent"/>
+            <Setter Property="FontWeight" Value="SemiBold"/>
+        </Style>
+        <Style x:Key="EstiloTextoCeldaDataGrid" TargetType="TextBlock" BasedOn="{StaticResource MaterialDesignDataGridTextColumnStyle}">
+            <Setter Property="Foreground" Value="{DynamicResource TextoPrincipal}"/>
+        </Style>
+    </UserControl.Resources>
+
+    <Grid Margin="20">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="320"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+
+        <materialDesign:Card Grid.Column="0" 
+                             Padding="16" 
+                             Margin="0,0,20,0" 
+                             VerticalAlignment="Top"
+                             Background="{DynamicResource FondoTarjetas}"
+                             materialDesign:ElevationAssist.Elevation="Dp1"
+                             UniformCornerRadius="6">
+            <StackPanel>
+                <TextBlock Text="Registrar Nuevo Responsable" 
+                           Style="{StaticResource MaterialDesignHeadline6TextBlock}" 
+                           Foreground="{DynamicResource TextoPrincipal}"
+                           Margin="0,0,0,16"/>
+
+                <TextBox Text="{Binding NombreInput}" 
+                         materialDesign:HintAssist.Hint="Nombre Completo" 
+                         Style="{StaticResource MaterialDesignFloatingHintTextBox}" 
+                         Foreground="{DynamicResource TextoPrincipal}"
+                         materialDesign:HintAssist.Background="{DynamicResource FondoTarjetas}"
+                         Margin="0,0,0,12"/>
+
+                <TextBox Text="{Binding CargoInput}" 
+                         materialDesign:HintAssist.Hint="Cargo / Profesión" 
+                         Style="{StaticResource MaterialDesignFloatingHintTextBox}" 
+                         Foreground="{DynamicResource TextoPrincipal}"
+                         materialDesign:HintAssist.Background="{DynamicResource FondoTarjetas}"
+                         Margin="0,0,0,12"/>
+
+                <TextBox Text="{Binding CedulaInput}" 
+                         materialDesign:HintAssist.Hint="Cédula" 
+                         Style="{StaticResource MaterialDesignFloatingHintTextBox}" 
+                         Foreground="{DynamicResource TextoPrincipal}"
+                         materialDesign:HintAssist.Background="{DynamicResource FondoTarjetas}"
+                         Margin="0,0,0,16"/>
+
+                <CheckBox IsChecked="{Binding IsActivoInput}" 
+                          Content="Responsable Actualmente Activo" 
+                          Style="{StaticResource MaterialDesignCheckBox}" 
+                          Foreground="{DynamicResource TextoPrincipal}"
+                          Margin="0,0,0,20"/>
+
+                <Button Command="{Binding RegistrarTutorCommand}" 
+                        Content="{Binding TextoBotonFormulario}" 
+                        Style="{StaticResource MaterialDesignRaisedButton}"/>
+            </StackPanel>
+        </materialDesign:Card>
+
+        <materialDesign:Card Grid.Column="1" 
+                             Padding="16"
+                             Background="{DynamicResource FondoTarjetas}"
+                             materialDesign:ElevationAssist.Elevation="Dp1"
+                             UniformCornerRadius="6">
+
+            <DataGrid ItemsSource="{Binding Tutores}" 
+                      AutoGenerateColumns="False" 
+                      CanUserAddRows="False" 
+                      IsReadOnly="True"
+                      Style="{StaticResource MaterialDesignDataGrid}"
+                      ColumnHeaderStyle="{StaticResource EstiloCabeceraDataGrid}"
+                      Background="Transparent"
+                      HeadersVisibility="Column">
+                <DataGrid.Columns>
+                    <DataGridTextColumn Header="Nombre" Binding="{Binding NombreCompleto}" Width="*" ElementStyle="{StaticResource EstiloTextoCeldaDataGrid}"/>
+                    <DataGridTextColumn Header="Cargo" Binding="{Binding Cargo}" Width="200" ElementStyle="{StaticResource EstiloTextoCeldaDataGrid}"/>
+                    <DataGridTextColumn Header="Cédula" Binding="{Binding Cedula}" Width="100" ElementStyle="{StaticResource EstiloTextoCeldaDataGrid}"/>
+
+                    <DataGridCheckBoxColumn Header="Activo" Binding="{Binding IsActivo}" Width="80" ElementStyle="{StaticResource MaterialDesignDataGridCheckBoxColumnStyle}"/>
+
+                    <DataGridTemplateColumn Header="Acciones" Width="100">
+                        <DataGridTemplateColumn.CellTemplate>
+                            <DataTemplate>
+                                <Button Style="{StaticResource MaterialDesignIconButton}"
+                                        ToolTip="Editar Tutor"
+                                        Foreground="{DynamicResource ColorAdvertencia}"
+                                        Command="{Binding DataContext.CargarTutorParaEditarCommand, RelativeSource={RelativeSource AncestorType=DataGrid}}"
+                                        CommandParameter="{Binding}"
+                                        Width="30" Height="30">
+                                    <materialDesign:PackIcon Kind="Pencil" Width="18" Height="18"/>
+                                </Button>
+                            </DataTemplate>
+                        </DataGridTemplateColumn.CellTemplate>
+                    </DataGridTemplateColumn>
+                </DataGrid.Columns>
+            </DataGrid>
+        </materialDesign:Card>
+    </Grid>
+</UserControl>

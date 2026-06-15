@@ -1,30 +1,62 @@
 ﻿<UserControl x:Class="TEST_IDENNA.Views.ExpedientesView"
+             x:Name="VentanaExpedientes"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:TEST_IDENNA.Views"
              xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
-             xmlns:vm="clr-namespace:TEST_IDENNA.ViewModels" xmlns:i="http://schemas.microsoft.com/xaml/behaviors"
+             xmlns:vm="clr-namespace:TEST_IDENNA.ViewModels" 
+             xmlns:i="http://schemas.microsoft.com/xaml/behaviors"
              xmlns:s="clr-namespace:TEST_IDENNA.Services"
+             xmlns:helpers="clr-namespace:TEST_IDENNA.Helpers"
              mc:Ignorable="d" 
-             Background="White"
+             Background="{DynamicResource MaterialDesignPaper}"
              d:DesignHeight="700" d:DesignWidth="1000"
              d:DataContext="{d:DesignInstance Type=vm:ExpedientesViewModel}">
+
+    <i:Interaction.Triggers>
+        <i:EventTrigger EventName="Loaded">
+            <i:InvokeCommandAction Command="{Binding CargarActividadesCommand}" />
+            <i:InvokeCommandAction Command="{Binding CargarTutoresCommand}" />
+        </i:EventTrigger>
+    </i:Interaction.Triggers>
 
     <UserControl.Resources>
         <s:IntToBooleanConverter x:Key="IntToBooleanConverter"/>
         <s:BytesToImageConverter x:Key="BytesToImageConverter"/>
+        <helpers:ExtensionToIconConverter x:Key="ExtensionToIconConverter"/>
+        <helpers:FileToVisibilityConverter x:Key="FileToVisibilityConverter"/>
+        <BooleanToVisibilityConverter x:Key="BooleanToVisibilityConverter"/>
+
+        <Style x:Key="OcultarSiEsNull" TargetType="FrameworkElement">
+            <Setter Property="Visibility" Value="Visible"/>
+            <Style.Triggers>
+                <DataTrigger Binding="{Binding BeneficiarioActual}" Value="{x:Null}">
+                    <Setter Property="Visibility" Value="Collapsed"/>
+                </DataTrigger>
+            </Style.Triggers>
+        </Style>
+
+        <Style x:Key="MostrarSiEsNull" TargetType="FrameworkElement">
+            <Setter Property="Visibility" Value="Collapsed"/>
+            <Style.Triggers>
+                <DataTrigger Binding="{Binding BeneficiarioActual}" Value="{x:Null}">
+                    <Setter Property="Visibility" Value="Visible"/>
+                </DataTrigger>
+            </Style.Triggers>
+        </Style>
+
         <Style x:Key="SeccionHeaderStyle" TargetType="TextBlock">
             <Setter Property="FontSize" Value="16"/>
             <Setter Property="FontWeight" Value="SemiBold"/>
-            <Setter Property="Foreground" Value="#2C3E50"/>
+            <Setter Property="Foreground" Value="{DynamicResource SeccionHeaderForegroundBrush}"/>
             <Setter Property="Margin" Value="0,0,0,10"/>
         </Style>
 
         <Style x:Key="TimelineItemBorderStyle" TargetType="Border">
-            <Setter Property="Background" Value="White"/>
-            <Setter Property="BorderBrush" Value="#E0E0E0"/>
+            <Setter Property="Background" Value="{DynamicResource FondoTarjetas}"/>
+            <Setter Property="BorderBrush" Value="{DynamicResource MaterialDesignDivider}"/>
             <Setter Property="BorderThickness" Value="1"/>
             <Setter Property="CornerRadius" Value="10"/>
             <Setter Property="Padding" Value="15"/>
@@ -37,341 +69,729 @@
         </Style>
     </UserControl.Resources>
 
-        <!-- 1. Envolvemos todo en el DialogHost -->
-    <materialDesign:DialogHost IsOpen="{Binding IsEvolucionDialogOpen}" Identifier="AgregarEvolucionDialog">
+    <materialDesign:DialogHost IsOpen="{Binding IsLocationDialogOpen}" DialogTheme="Inherit">
 
-            <!-- 2. Definimos qué se verá DENTRO del diálogo (El Formulario) -->
+        <materialDesign:DialogHost.DialogContent>
+            <Border Background="{DynamicResource FondoTarjetas}" Padding="25" CornerRadius="8" Width="400">
+                <StackPanel>
+                    <TextBlock Text="ACTUALIZAR UBICACIÓN FÍSICA" FontSize="16" FontWeight="Bold" Foreground="{DynamicResource TextoPrincipal}" Margin="0,0,0,15"/>
+
+                    <TextBlock Text="Beneficiario:" FontSize="11" Foreground="{DynamicResource TextoSecundario}"/>
+                    <TextBlock Text="{Binding BeneficiarioActual.NombreCompleto}" FontSize="14" FontWeight="SemiBold" Foreground="{DynamicResource TextoPrincipal}" Margin="0,2,0,15"/>
+
+                    <TextBlock Text="Código de Expediente:" FontSize="11" Foreground="{DynamicResource TextoSecundario}"/>
+                    <TextBlock Text="{Binding BeneficiarioActual.Cedula}" FontSize="13" Foreground="{DynamicResource TextoPrincipal}" Margin="0,2,0,20"/>
+
+                    <TextBox Text="{Binding NuevaUbicacion, UpdateSourceTrigger=PropertyChanged}"
+                         materialDesign:HintAssist.Hint="Nueva ubicación (Ej: Estante B - Caja 12)"
+                         Style="{StaticResource MaterialDesignFloatingHintTextBox}"
+                         Foreground="{DynamicResource TextoPrincipal}"
+                         materialDesign:HintAssist.Background="{DynamicResource FondoTarjetas}"
+                         Margin="0,0,0,25"/>
+
+                    <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
+                        <Button Content="CANCELAR" 
+                            Style="{StaticResource MaterialDesignFlatButton}" 
+                            Command="{Binding CancelarEdicionUbicacionCommand}" 
+                            Margin="0,0,10,0"/>
+                        <Button Content="GUARDAR" 
+                            Style="{StaticResource MaterialDesignRaisedButton}" 
+                            Command="{Binding GuardarUbicacionCommand}"
+                            Background="{DynamicResource ColorComponentes}"
+                            Foreground="{DynamicResource TextoPrincipal}"/>
+                    </StackPanel>
+                </StackPanel>
+            </Border>
+        </materialDesign:DialogHost.DialogContent>
+        
+        <materialDesign:DialogHost IsOpen="{Binding IsEditarContactoDialogOpen}">
+        <materialDesign:DialogHost.DialogContent>
+            <StackPanel Margin="20" Width="400">
+                <TextBlock Text="Editar Contacto de Emergencia" Style="{StaticResource SeccionHeaderStyle}" Margin="0,0,0,20"/>
+                <TextBox Text="{Binding NombreContactoEdit}" 
+                         materialDesign:HintAssist.Hint="Nombre del contacto"
+                         Style="{StaticResource MaterialDesignFloatingHintTextBox}"
+                         Foreground="{DynamicResource TextoPrincipal}"/>
+                <TextBox Text="{Binding ParentescoContactoEdit}" 
+                         materialDesign:HintAssist.Hint="Parentesco"
+                         Style="{StaticResource MaterialDesignFloatingHintTextBox}" 
+                         Margin="0,20,0,0"
+                         Foreground="{DynamicResource TextoPrincipal}"/>
+                <TextBox Text="{Binding TelefonoContactoEdit}" 
+                         materialDesign:HintAssist.Hint="Número de teléfono"
+                         Style="{StaticResource MaterialDesignFloatingHintTextBox}" 
+                         Margin="0,20,0,0"
+                         Foreground="{DynamicResource TextoPrincipal}"/>
+                <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" Margin="0,20,0,0">
+                    <Button Command="{Binding CancelarEdicionContactoCommand}" Content="CANCELAR" Style="{StaticResource MaterialDesignFlatButton}" Foreground="Red" />
+                    <Button Command="{Binding GuardarCambiosContactoCommand}" Content="GUARDAR CAMBIOS" Margin="10,0,0,0" />
+                </StackPanel>
+            </StackPanel>
+        </materialDesign:DialogHost.DialogContent>
+
+        <materialDesign:DialogHost IsOpen="{Binding IsEditEvolucionVisible}" CloseOnClickAway="False">
             <materialDesign:DialogHost.DialogContent>
                 <StackPanel Margin="20" Width="400">
-                    <TextBlock Text="Nueva Actualización" Style="{StaticResource SeccionHeaderStyle}" Margin="0,0,0,20"/>
+                    <TextBlock Text="Editar Evolución Institucional" Style="{StaticResource SeccionHeaderStyle}" Margin="0,0,0,20"/>
 
-                    <!-- Selector de Actividad (Catálogo) -->
+                    <DatePicker Foreground="{DynamicResource TextoPrincipal}"
+                            materialDesign:HintAssist.Hint="Fecha de la Evolución"
+                            SelectedDate="{Binding FechaSeleccionadaEdit, UpdateSourceTrigger=PropertyChanged}"
+                            Language="es-VE"
+                            Margin="0,0,0,15"
+                            FontSize="14"/>
+
                     <ComboBox ItemsSource="{Binding ActividadesDisponibles}"
-                          SelectedItem="{Binding ActividadSeleccionada}"
+                          SelectedItem="{Binding ActividadSeleccionadaEdit}"
                           DisplayMemberPath="Tipo_Actividad"
-                          materialDesign:HintAssist.Hint="Seleccione la Actividad"
+                          materialDesign:HintAssist.Hint="Modificar Actividad"
+                              Foreground="{DynamicResource TextoPrincipal}"
                           Style="{StaticResource MaterialDesignFloatingHintComboBox}"/>
 
-                    <!-- Campo de texto para la evolución -->
-                    <TextBox Text="{Binding NuevaEvolucionTexto}"
+                    <ComboBox ItemsSource="{Binding TutoresDisponibles}"
+                          SelectedItem="{Binding TutorSeleccionadoEdit}"
+                          DisplayMemberPath="NombreCompleto"
+                              Foreground="{DynamicResource TextoPrincipal}"
+                          materialDesign:HintAssist.Hint="Modificar Especialista encargado"
+                          Style="{StaticResource MaterialDesignFloatingHintComboBox}"
+                          Margin="0,20,0,0"/>
+<!--CancelarEdicionCommand-->
+                    <TextBox Text="{Binding DescripcionEdit}"
+                             Foreground="{DynamicResource TextoPrincipal}"
                          Margin="0,20,0,0"
                          AcceptsReturn="True"
                          MinHeight="120"
                          VerticalScrollBarVisibility="Auto"
-                         materialDesign:HintAssist.Hint="Descripción de la actividad o progreso..."
+                         materialDesign:HintAssist.Hint="Modificar descripción..."
                          Style="{StaticResource MaterialDesignOutlinedTextBox}" 
                          TextWrapping="Wrap"/>
 
                     <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" Margin="0,20,0,0">
-                        <Button Command="{x:Static materialDesign:DialogHost.CloseDialogCommand}"
-                            Content="CANCELAR" Style="{StaticResource MaterialDesignFlatButton}" Foreground="Red" />
-                        <Button Command="{Binding GuardarEvolucionCommand}"
-                            Content="GUARDAR" Margin="10,0,0,0" />
+                        <Button Command="{Binding CancelarEdicionCommand}" Content="CANCELAR" Style="{StaticResource MaterialDesignFlatButton}" Foreground="Red" />
+                        <Button Command="{Binding GuardarCambiosEvolucionCommand}" Content="GUARDAR CAMBIOS" Margin="10,0,0,0" />
                     </StackPanel>
                 </StackPanel>
             </materialDesign:DialogHost.DialogContent>
 
-        <ScrollViewer VerticalScrollBarVisibility="Auto">
-            <Grid Margin="25">
-                <Grid.RowDefinitions>
-                    <RowDefinition Height="Auto"/>
-                    <RowDefinition Height="Auto"/>
-                    <RowDefinition Height="*"/>
-                </Grid.RowDefinitions>
+                <materialDesign:DialogHost IsOpen="{Binding IsEvolucionDialogOpen}">
+                    <materialDesign:DialogHost.DialogContent>
+                        <StackPanel Margin="20" Width="400">
+                            <TextBlock Text="Nueva Actualización" Style="{StaticResource SeccionHeaderStyle}" Margin="0,0,0,20"/>
 
-                <Grid Grid.Row="0" Margin="0,0,0,20">
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="*"/>
-                        <!-- Espacio para la búsqueda -->
-                        <ColumnDefinition Width="Auto"/>
-                        <!-- Espacio para el botón -->
-                    </Grid.ColumnDefinitions>
-                    <Border x:Name="SearchContainer" 
-                    Background="White" CornerRadius="8" 
-                    BorderBrush="#E0E0E0" BorderThickness="1" Padding="5,0">
-                        <Grid>
-                            <materialDesign:PackIcon Kind="Search" Foreground="Gray" VerticalAlignment="Center" Margin="10,0" Width="20" Height="20"/>
+                            <DatePicker Style="{StaticResource MaterialDesignFloatingHintDatePicker}"
+                                  materialDesign:HintAssist.Hint="Fecha de la Evolución"
+                                  SelectedDate="{Binding FechaSeleccionada, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                                  Language="es-VE"
+                                   Foreground="{DynamicResource TextoPrincipal}"
+                                  Margin="0,0,0,15"
+                                  FontSize="14"/>
 
-                            <TextBox x:Name="SearchBox" 
-                     materialDesign:HintAssist.Hint="Buscar Niño, Adolescente o Expediente..."
-                     BorderThickness="0"
-                     Margin="40,0,0,0"
-                     VerticalAlignment="Center"
-                     Text="{Binding SearchText, UpdateSourceTrigger=PropertyChanged}">
-                                <TextBox.InputBindings>
-                                    <KeyBinding Key="Enter" Command="{Binding BuscarBeneficiarioCommand}"/>
-                                </TextBox.InputBindings>
-                            </TextBox>
+                            <ComboBox ItemsSource="{Binding ActividadesDisponibles}"
+                                  Foreground="{DynamicResource TextoPrincipal}"
+                                  SelectedItem="{Binding ActividadSeleccionada}"
+                                  DisplayMemberPath="Tipo_Actividad"
+                                  materialDesign:HintAssist.Hint="Seleccione la Actividad"
+                                  Style="{StaticResource MaterialDesignFloatingHintComboBox}"/>
+
+                            <ComboBox ItemsSource="{Binding TutoresDisponibles}"
+                                  Foreground="{DynamicResource TextoPrincipal}"
+                                  SelectedItem="{Binding EspecialistaSeleccionado}"
+                                  DisplayMemberPath="NombreCompleto"
+                                  materialDesign:HintAssist.Hint="Seleccione el Especialista"
+                                  Style="{StaticResource MaterialDesignFloatingHintComboBox}"
+                                  Margin="0,20,0,0"/>
+
+                            <TextBox Text="{Binding NuevaEvolucionTexto}"
+                                 Foreground="{DynamicResource TextoPrincipal}"
+                                 Margin="0,20,0,0"
+                                 AcceptsReturn="True"
+                                 MinHeight="120"
+                                 VerticalScrollBarVisibility="Auto"
+                                 materialDesign:HintAssist.Hint="Descripción de la actividad..."
+                                 Style="{StaticResource MaterialDesignOutlinedTextBox}" 
+                                 TextWrapping="Wrap"/>
+
+                            <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" Margin="0,20,0,0">
+                                <Button Command="{Binding CancelarAgregarEvolucionCommand}" Content="CANCELAR" Style="{StaticResource MaterialDesignFlatButton}" Foreground="Red" />
+                                <Button Command="{Binding GuardarEvolucionCommand}" Content="GUARDAR" Margin="10,0,0,0" />
+                            </StackPanel>
+                        </StackPanel>
+                    </materialDesign:DialogHost.DialogContent>
+                    <Grid Background="{DynamicResource FondoPrincipal}">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="*"/>
+                        </Grid.RowDefinitions>
+
+                        <Grid Grid.Row="0" Margin="0,0,0,20">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="Auto"/>
+                            </Grid.ColumnDefinitions>
+                            <Border x:Name="SearchContainer" Background="{DynamicResource FondoTarjetas}" CornerRadius="8" BorderBrush="{DynamicResource MaterialDesignDivider}" BorderThickness="1" Padding="5,0">
+                                <Grid>
+                                    <materialDesign:PackIcon Kind="Search" Foreground="{DynamicResource TextoSecundario}" Opacity="0.6" VerticalAlignment="Center" Margin="10,0" Width="20" Height="20"/>
+                                    <TextBox x:Name="SearchBox" materialDesign:HintAssist.Hint="Buscar Niño, Adolescente o Expediente..." Foreground="{DynamicResource TextoPrincipal}" BorderThickness="0" Margin="40,0,0,0" VerticalAlignment="Center" Text="{Binding SearchText, UpdateSourceTrigger=PropertyChanged}">
+                                        <TextBox.InputBindings>
+                                            <KeyBinding Key="Enter" Command="{Binding BuscarBeneficiarioCommand}"/>
+                                        </TextBox.InputBindings>
+                                    </TextBox>
+                                </Grid>
+                            </Border>
+
+                            <Button Grid.Column="1" Style="{StaticResource MaterialDesignFloatingActionMiniSecondaryButton}" Margin="15,0,0,0" Width="40" Height="40" ToolTip="Registrar Nuevo Beneficiario" Command="{Binding NavegarARegistroCommand}">
+                                <materialDesign:PackIcon Kind="Plus" Height="24" Width="24" />
+                            </Button>
+
+                            <Popup IsOpen="{Binding ResultadosBusqueda.Count, Converter={StaticResource IntToBooleanConverter}, Mode=OneWay}" StaysOpen="False" PlacementTarget="{Binding ElementName=SearchContainer}" Placement="Bottom" AllowsTransparency="True">
+                                <materialDesign:Card Width="400" MaxHeight="300" Margin="5" materialDesign:ElevationAssist.Elevation="Dp8" Background="{DynamicResource FondoTarjetas}">
+                                    <ListBox ItemsSource="{Binding ResultadosBusqueda}">
+                                        <ListBox.ItemTemplate>
+                                            <DataTemplate>
+                                                <StackPanel Orientation="Horizontal" Margin="5">
+                                                    <Grid Width="35" Height="35" Margin="0,0,12,0">
+                                                        <Ellipse Fill="{DynamicResource MaterialDesignDivider}"/>
+                                                        <materialDesign:PackIcon Kind="Account" Foreground="{DynamicResource TextoSecundario}" Width="20" Height="20" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                                        <Ellipse>
+                                                            <Ellipse.Fill>
+                                                                <ImageBrush ImageSource="{Binding Foto, Converter={StaticResource BytesToImageConverter}}" Stretch="UniformToFill"/>
+                                                            </Ellipse.Fill>
+                                                        </Ellipse>
+                                                    </Grid>
+                                                    <StackPanel VerticalAlignment="Center">
+                                                        <TextBlock FontSize="14" Foreground="{DynamicResource TextoPrincipal}"
+                                                               s:HighlightService.HighlightForeground="{DynamicResource BusquedaHighlightFg}"
+                                                                s:HighlightService.HighlightBackground="{DynamicResource BusquedaHighlightBg}">
+                                        <s:HighlightService.FullText>
+                                            <MultiBinding StringFormat="{}{0} {1}">
+                                                <Binding Path="Nombres"/>
+                                                <Binding Path="Apellidos"/>
+                                            </MultiBinding>
+                                        </s:HighlightService.FullText>
+                                        <s:HighlightService.HighlightText>
+                                            <Binding Path="DataContext.SearchText" RelativeSource="{RelativeSource AncestorType=UserControl}"/>
+                                        </s:HighlightService.HighlightText>
+                                                        </TextBlock>
+                                                        <TextBlock Text="{Binding Cedula, StringFormat='V-{0}'}" FontSize="11" Foreground="{DynamicResource TextoSecundario}" Opacity="0.6"/>
+                                                    </StackPanel>
+                                                </StackPanel>
+                                            </DataTemplate>
+                                        </ListBox.ItemTemplate>
+                                        <i:Interaction.Triggers>
+                                            <i:EventTrigger EventName="SelectionChanged">
+                                                <i:InvokeCommandAction Command="{Binding SeleccionarBeneficiarioCommand}" CommandParameter="{Binding SelectedItem, RelativeSource={RelativeSource AncestorType=ListBox}}"/>
+                                            </i:EventTrigger>
+                                        </i:Interaction.Triggers>
+                                    </ListBox>
+                                </materialDesign:Card>
+                            </Popup>
                         </Grid>
-                    </Border>
 
-                    <!-- Botón de Acción Circular al lado de la barra -->
-                    <Button Grid.Column="1"
-                    Style="{StaticResource MaterialDesignFloatingActionMiniSecondaryButton}"
-                    Margin="15,0,0,0"
-                    Width="40" Height="40"
-                    ToolTip="Registrar Nuevo Beneficiario"
-                    Command="{Binding NavegarARegistroCommand}">
-                        <materialDesign:PackIcon Kind="Plus" Height="24" Width="24" />
-                    </Button>
+                        <Grid Grid.Row="1" Style="{StaticResource OcultarSiEsNull}">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="*"/>
+                            </Grid.RowDefinitions>
 
-                    <Popup IsOpen="{Binding ResultadosBusqueda.Count, Converter={StaticResource IntToBooleanConverter}, Mode=OneWay}" 
-                       StaysOpen="False" 
-                       PlacementTarget="{Binding ElementName=SearchContainer}"
-                       Placement="Bottom"
-                       AllowsTransparency="True">
-                        <materialDesign:Card Width="400" MaxHeight="300" Margin="5" materialDesign:ElevationAssist.Elevation="Dp8">
-                            <ListBox ItemsSource="{Binding ResultadosBusqueda}">
-                                <ListBox.ItemTemplate>
-                                    <DataTemplate>
-                                        <StackPanel Orientation="Horizontal" Margin="5">
-                                            <!-- Reemplazo del PackIcon por la Imagen Circular -->
-                                            <Grid Width="35" Height="35" Margin="0,0,12,0">
-                                                <!-- Círculo de fondo gris (por si no hay foto) -->
-                                                <Ellipse Fill="#E0E0E0"/>
-                                                <!-- Icono genérico de fondo -->
-                                                <materialDesign:PackIcon Kind="Account" 
-                                           Foreground="White" 
-                                           Width="20" Height="20" 
-                                           HorizontalAlignment="Center" 
-                                           VerticalAlignment="Center"/>
-                                                <!-- La foto real recortada en círculo -->
-                                                <Ellipse>
-                                                    <Ellipse.Fill>
-                                                        <ImageBrush ImageSource="{Binding Foto, Converter={StaticResource BytesToImageConverter}}"
-                                                         Stretch="UniformToFill"/>
-                                                    </Ellipse.Fill>
-                                                </Ellipse>
-                                            </Grid>
+                            <Border Grid.Row="0" Background="{DynamicResource HeaderBannerBackgroundBrush}" CornerRadius="12" Padding="20" Margin="0,0,0,20">
+                                <Grid>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="Auto"/>
+                                        <ColumnDefinition Width="20"/>
+                                        <ColumnDefinition Width="*"/>
+                                    </Grid.ColumnDefinitions>
 
-                                            <StackPanel VerticalAlignment="Center">
-                                                <!-- TextBlock con Resaltado Dinámico -->
-                                                <TextBlock FontSize="14">
-                                                    <s:HighlightService.FullText>
-                                                        <MultiBinding StringFormat="{}{0} {1}">
-                                                            <Binding Path="Nombres"/>
-                                                            <Binding Path="Apellidos"/>
-                                                        </MultiBinding>
-                                                    </s:HighlightService.FullText>
-                                                    <s:HighlightService.HighlightText>
-                                                        <Binding Path="DataContext.SearchText" RelativeSource="{RelativeSource AncestorType=UserControl}"/>
-                                                    </s:HighlightService.HighlightText>
-                                                </TextBlock>
-
-                                                <TextBlock Text="{Binding Cedula, StringFormat='V-{0}'}" 
-                                                   FontSize="11" 
-                                                   Foreground="Gray"/>
-                                            </StackPanel>
-                                        </StackPanel>
-                                    </DataTemplate>
-                                </ListBox.ItemTemplate>
-                                <i:Interaction.Triggers>
-                                    <i:EventTrigger EventName="SelectionChanged">
-                                        <i:InvokeCommandAction Command="{Binding SeleccionarBeneficiarioCommand}" 
-                                               CommandParameter="{Binding SelectedItem, RelativeSource={RelativeSource AncestorType=ListBox}}"/>
-                                    </i:EventTrigger>
-                                </i:Interaction.Triggers>
-                            </ListBox>
-                        </materialDesign:Card>
-                    </Popup>
-                </Grid>
-
-                <Border Grid.Row="1" Background="#0b103d" CornerRadius="12" Padding="20" Margin="0,0,0,20">
-                    <Grid>
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="Auto"/>
-                            <ColumnDefinition Width="20"/>
-                            <ColumnDefinition Width="*"/>
-                        </Grid.ColumnDefinitions>
-
-                        <!-- CONTENEDOR DE LA FOTO -->
-                        <Border Grid.Column="0" Width="90" Height="90" CornerRadius="45" 
-                            BorderBrush="White" BorderThickness="2" Background="#E0E0E0" 
-                            VerticalAlignment="Center">     
-                            <Grid>
-                                <materialDesign:PackIcon Kind="Account" Foreground="White" Width="50" Height="50" 
-                               HorizontalAlignment="Center" VerticalAlignment="Center"/>
-
-                                <Button x:Name="BtnFotoBeneficiario"
-                                    Command="{Binding SeleccionarFotoCommand}"
-                                    Padding="0" Width="86" Height="86"
-                                    Background="Transparent" BorderBrush="Transparent"
-                                    materialDesign:ButtonAssist.CornerRadius="43"
-                                    ToolTip="Click para cambiar foto">
-
-                                    <Button.Style>
-                                        <Style TargetType="Button" BasedOn="{StaticResource MaterialDesignFlatButton}">
-                                            <Setter Property="Background" Value="Transparent"/>
-                                        </Style>
-                                    </Button.Style>
-
-                                    <Button.Content>
+                                    <Border Grid.Column="0" Width="90" Height="90" CornerRadius="45" BorderBrush="{DynamicResource HeaderBannerForegroundBrush}" BorderThickness="2" Background="{DynamicResource MaterialDesignDivider}" VerticalAlignment="Center">
                                         <Grid>
-                                            <Ellipse Width="86" Height="86">
-                                                <Ellipse.Fill>
-                                                    <ImageBrush ImageSource="{Binding BeneficiarioActual.Foto, Converter={StaticResource BytesToImageConverter}}"
-                                        Stretch="UniformToFill"/>
-                                                </Ellipse.Fill>
-                                            </Ellipse>
+                                            <materialDesign:PackIcon Kind="Account" Foreground="{DynamicResource MaterialDesignPaper}" Width="50" Height="50" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                            <Button x:Name="BtnFotoBeneficiario" Command="{Binding SeleccionarFotoCommand}" Padding="0" Width="86" Height="86" Background="Transparent" BorderBrush="Transparent" materialDesign:ButtonAssist.CornerRadius="43" ToolTip="Click para cambiar foto">
+                                                <Button.Style>
+                                                    <Style TargetType="Button" BasedOn="{StaticResource MaterialDesignFlatButton}">
+                                                        <Setter Property="Background" Value="Transparent"/>
+                                                    </Style>
+                                                </Button.Style>
+                                                <Button.Content>
+                                                    <Grid>
+                                                        <Ellipse Width="86" Height="86">
+                                                            <Ellipse.Fill>
+                                                                <ImageBrush ImageSource="{Binding BeneficiarioActual.Foto, Converter={StaticResource BytesToImageConverter}}" Stretch="UniformToFill"/>
+                                                            </Ellipse.Fill>
+                                                        </Ellipse>
+                                                        <Border CornerRadius="43" Background="#AA000000">
+                                                            <Border.Style>
+                                                                <Style TargetType="Border">
+                                                                    <Setter Property="Opacity" Value="0"/>
+                                                                    <Style.Triggers>
+                                                                        <DataTrigger Binding="{Binding IsMouseOver, ElementName=BtnFotoBeneficiario}" Value="True">
+                                                                            <Setter Property="Opacity" Value="1"/>
+                                                                        </DataTrigger>
+                                                                    </Style.Triggers>
+                                                                </Style>
+                                                            </Border.Style>
+                                                            <TextBlock Text="EDITAR" Foreground="White" FontSize="11" FontWeight="Bold" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+                                                        </Border>
+                                                    </Grid>
+                                                </Button.Content>
+                                            </Button>
+                                        </Grid>
+                                    </Border>
+                                    <!-- EgresoDialog -->
+                                    <StackPanel Grid.Column="2" VerticalAlignment="Center">
+                                        <StackPanel Orientation="Horizontal">
+                                            <TextBlock FontSize="22" FontWeight="Bold" Foreground="{DynamicResource HeaderBannerForegroundBrush}">
+                                    <Run Text="{Binding BeneficiarioActual.Nombres}" FontWeight="Bold"/>
+                                    <Run Text="{Binding BeneficiarioActual.Apellidos}"/>
+                                            </TextBlock>
+                                            <Button Command="{Binding NavegarAEditarCommand}" Style="{StaticResource MaterialDesignFlatButton}" Foreground="{DynamicResource HeaderBannerForegroundBrush}" Margin="10,0,0,0" Padding="4" Width="35" Height="35" ToolTip="Editar datos personales">
+                                                <materialDesign:PackIcon Kind="Pencil" Width="20" Height="20"/>
+                                            </Button>
 
-                                            <Border CornerRadius="43" Background="#AA000000">
-                                                <Border.Style>
-                                                    <Style TargetType="Border">
-                                                        <Setter Property="Opacity" Value="0"/>
+                                            <ContentControl Content="{Binding BeneficiarioActual}">
+                                                <ContentControl.Style>
+                                                    <Style TargetType="ContentControl">
+                                                        <Setter Property="ContentTemplate">
+                                                            <Setter.Value>
+                                                                <DataTemplate>
+                                                                    <Button Style="{StaticResource MaterialDesignIconButton}" 
+                                                                        Command="{Binding DataContext.AbrirFormularioEgresoCommand, RelativeSource={RelativeSource AncestorType=UserControl}}" 
+                                                                        Foreground="White" Margin="5,0,0,0" Padding="4" Width="35" Height="35" 
+                                                                        ToolTip="Registrar Egreso (Cierre de Caso)">
+                                                                        <materialDesign:PackIcon Kind="AccountArrowRight" Width="20" Height="20" Foreground="#2ECC71"/>
+                                                                    </Button>
+                                                                </DataTemplate>
+                                                            </Setter.Value>
+                                                        </Setter>
+
                                                         <Style.Triggers>
-                                                            <DataTrigger Binding="{Binding IsMouseOver, ElementName=BtnFotoBeneficiario}" Value="True">
-                                                                <Setter Property="Opacity" Value="1"/>
+                                                            <DataTrigger Binding="{Binding BeneficiarioActual.Estatus_Legal}" Value="Egresado">
+                                                                <Setter Property="ContentTemplate">
+                                                                    <Setter.Value>
+                                                                        <DataTemplate>
+                                                                            <Button Style="{StaticResource MaterialDesignIconButton}" 
+                                                                                Command="{Binding DataContext.RevertirEgresoCommand, RelativeSource={RelativeSource AncestorType=UserControl}}" 
+                                                                                Foreground="White" Margin="5,0,0,0" Padding="4" Width="35" Height="35" 
+                                                                                ToolTip="REVERTIR EGRESO (Reabrir Expediente)">
+                                                                                <materialDesign:PackIcon Kind="History" Width="20" Height="20" Foreground="#E74C3C"/>
+                                                                            </Button>
+                                                                        </DataTemplate>
+                                                                    </Setter.Value>
+                                                                </Setter>
                                                             </DataTrigger>
                                                         </Style.Triggers>
                                                     </Style>
-                                                </Border.Style>
+                                                </ContentControl.Style>
+                                            </ContentControl>
 
-                                                <TextBlock Text="EDITAR" 
-                                                     Foreground="White" 
-                                                     FontSize="11" 
-                                                     FontWeight="Bold" 
-                                                     VerticalAlignment="Center" 
-                                                     HorizontalAlignment="Center"/> 
+                                            <Button Style="{StaticResource MaterialDesignIconButton}" 
+                                            Command="{Binding MoverBeneficiarioAPapeleraCommand}" 
+                                            CommandParameter="{Binding BeneficiarioActual}"
+                                            Foreground="White" Margin="0,0,0,0" Padding="4" Width="35" Height="35" ToolTip="Mover a la papelera">
+                                                <materialDesign:PackIcon Kind="TrashCan" Width="20" Height="20" Foreground="#E74C3C"/>
+                                            </Button>
+                                        </StackPanel>
+                                        <StackPanel Orientation="Horizontal" Margin="0,5,0,10">
+                                            <TextBlock Text="V-" FontSize="14" Foreground="{DynamicResource HeaderBannerForegroundBrush}" Opacity="0.8"/>
+                                            <TextBlock Text="{Binding BeneficiarioActual.Cedula}" FontSize="14" Foreground="{DynamicResource HeaderBannerForegroundBrush}" Opacity="0.8" Margin="0,0,15,0"/>
+                                            <TextBlock Text="{Binding BeneficiarioActual.Edad}" FontSize="14" Foreground="{DynamicResource HeaderBannerForegroundBrush}" Opacity="0.8"/>
+                                            <TextBlock Text=" años" FontSize="14" Foreground="{DynamicResource HeaderBannerForegroundBrush}" Opacity="0.8"/>
+                                        </StackPanel>
+                                        <StackPanel Orientation="Horizontal">
+                                            <TextBlock Text="Situación: " FontSize="14" Foreground="{DynamicResource HeaderBannerForegroundBrush}"/>
+                                            <Border Background="{Binding BeneficiarioActual.Estatus_Color, FallbackValue=#27AE60}" 
+                                        CornerRadius="4" 
+                                        Padding="8,3" 
+                                        Margin="5,0,0,0">
+                                                <TextBlock Text="{Binding BeneficiarioActual.Estatus_Legal}" 
+                                            FontSize="12" 
+                                            FontWeight="Bold" 
+                                            Foreground="White"/>
                                             </Border>
-                                        </Grid>
-                                    </Button.Content>
-                                </Button>
-                            </Grid>
-                        </Border>
+                                        </StackPanel>
+                                    </StackPanel>
+                                </Grid>
+                            </Border>
 
-                        <!-- INFORMACIÓN DEL BENEFICIARIO -->
-                        <StackPanel Grid.Column="2" VerticalAlignment="Center">
-                            <StackPanel Orientation="Horizontal">
-                                <TextBlock FontSize="22" FontWeight="Bold" Foreground="White">
-                                <Run Text="{Binding BeneficiarioActual.Nombres}" FontWeight="Bold"/>
-                                <!--<Run Text=" "/>-->
-                                <Run Text="{Binding BeneficiarioActual.Apellidos}"/>
-                                </TextBlock>
+                            <Grid Grid.Row="1">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="25"/>
+                                    <ColumnDefinition Width="290"/>
+                                </Grid.ColumnDefinitions>
 
-                                <Button Command="{Binding NavegarAEditarCommand}"
-                                    Style="{StaticResource MaterialDesignFlatButton}"
-                                    Foreground="White"
-                                    Margin="10,0,0,0"
-                                    Padding="4"
-                                    Width="35" Height="35"
-                                    ToolTip="Editar datos personales">
-                                    <materialDesign:PackIcon Kind="Pencil" Width="20" Height="20"/>
-                                </Button>
-                            </StackPanel>
-
-                            <StackPanel Orientation="Horizontal" Margin="0,5,0,10">
-                                <TextBlock Text="V-" FontSize="14" Foreground="White" Opacity="0.8"/>
-                                <TextBlock Text="{Binding BeneficiarioActual.Cedula}" FontSize="14" Foreground="White" Opacity="0.8" Margin="0,0,15,0"/>
-                                <TextBlock Text="{Binding BeneficiarioActual.Edad}" FontSize="14" Foreground="White" Opacity="0.8"/>
-                                <TextBlock Text=" años" FontSize="14" Foreground="White" Opacity="0.8"/>
-                            </StackPanel>
-
-                            <StackPanel Orientation="Horizontal">
-                                <TextBlock Text="Situación: " FontSize="14" Foreground="White"/>
-                                <Border Background="#27AE60" CornerRadius="4" Padding="8,3" Margin="5,0,0,0">
-                                    <TextBlock Text="{Binding BeneficiarioActual.Estatus_Legal}" FontSize="12" FontWeight="SemiBold" Foreground="White"/>
-                                </Border>
-                            </StackPanel>
-                        </StackPanel>
-                    </Grid>
-                </Border>
-
-                <Grid Grid.Row="2">
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="*"/>
-                        <ColumnDefinition Width="25"/>
-                        <ColumnDefinition Width="280"/>
-                    </Grid.ColumnDefinitions>
-
-                    <StackPanel Grid.Column="0">
-                        <TextBlock Text="Evolución y Bitácora Cruzada" Style="{StaticResource SeccionHeaderStyle}"/>
-
-                        <!-- Botón para agregar nueva evolución -->
-                        <Button Command="{x:Static materialDesign:DialogHost.OpenDialogCommand}"
-                            Style="{StaticResource MaterialDesignFlatButton}"
-                            HorizontalAlignment="Center" 
-                            Padding="20,0"
-                            Height="45"
-                            materialDesign:ButtonAssist.CornerRadius="22"
-                            Margin="0,10,0,20">
-                            <StackPanel Orientation="Horizontal">
-                                <materialDesign:PackIcon Kind="Plus" Margin="0,0,8,0" VerticalAlignment="Center"/>
-                                <TextBlock Text="AGREGAR NUEVA ACTUALIZACIÓN" FontWeight="Bold" VerticalAlignment="Center"/>
-                            </StackPanel>
-                        </Button>
-
-                        <ItemsControl ItemsSource="{Binding ListaEvoluciones}">
-                            <ItemsControl.ItemTemplate>
-                                <DataTemplate>
-                                    <Border Style="{StaticResource TimelineItemBorderStyle}">
-                                        <Grid>
-                                            <Grid.ColumnDefinitions>
-                                                <ColumnDefinition Width="Auto"/>
-                                                <ColumnDefinition Width="*"/>
-                                            </Grid.ColumnDefinitions>
-                                            <!--<materialDesign:PackIcon Kind="AccountTie" 
-                                             Foreground="{Binding ColorArea}" 
-                                             Width="18" Height="18"/>-->
-
-                                            <StackPanel Grid.Column="0" Width="60" Margin="0,0,15,0">
-                                                <TextBlock Text="{Binding Fecha_Registro, StringFormat=dd MMM}" FontSize="12" FontWeight="Bold" Foreground="#34495E" HorizontalAlignment="Center"/>
-                                                <TextBlock Text="{Binding Fecha_Registro, StringFormat=yyyy}" FontSize="11" Foreground="#7F8C8D" HorizontalAlignment="Center"/>
-
-                                                <Grid Margin="0,10,0,0">
-                                                    <Ellipse Width="10" Height="10" Fill="{DynamicResource PrimaryHueMidBrush}"/>
-                                                    <Rectangle Width="2" Fill="#E0E0E0" Height="50" HorizontalAlignment="Center" Margin="0,10,0,0"/>
-                                                </Grid>
+                                <TabControl Grid.Column="0" materialDesign:ColorZoneAssist.Mode="Standard" Style="{StaticResource MaterialDesignTabControl}">
+                                    <TabItem>
+                                        <TabItem.Header>
+                                            <StackPanel Orientation="Horizontal">
+                                                <materialDesign:PackIcon Kind="TimelineTextOutline" Width="18" Height="18" VerticalAlignment="Center" Foreground="{DynamicResource TextoPrincipal}"/>
+                                                <TextBlock Text="EVOLUCIONES Y BITÁCORA" Margin="8,0,0,0" VerticalAlignment="Center" FontWeight="SemiBold" Foreground="{DynamicResource TextoPrincipal}"/>
                                             </StackPanel>
+                                        </TabItem.Header>
+                                        <ScrollViewer VerticalScrollBarVisibility="Auto" Margin="0,15,0,0">
+                                            <StackPanel Margin="0,15,0,0">
+                                                <Button Command="{x:Static materialDesign:DialogHost.OpenDialogCommand}" Style="{StaticResource MaterialDesignFlatButton}" HorizontalAlignment="Center" Padding="20,0" Height="45" materialDesign:ButtonAssist.CornerRadius="22" Margin="0,10,0,20">
+                                                    <StackPanel Orientation="Horizontal">
+                                                        <materialDesign:PackIcon Kind="Plus" Margin="0,0,8,0" VerticalAlignment="Center"/>
+                                                        <TextBlock Text="AGREGAR NUEVA ACTUALIZACIÓN" FontWeight="Bold" VerticalAlignment="Center"/>
+                                                    </StackPanel>
+                                                </Button>
 
-                                            <Grid Grid.Column="1">
+                                                <ItemsControl ItemsSource="{Binding ListaEvoluciones}">
+                                                    <ItemsControl.ItemTemplate>
+                                                        <DataTemplate>
+                                                            <Border Style="{StaticResource TimelineItemBorderStyle}">
+                                                                <Grid>
+                                                                    <Grid.ColumnDefinitions>
+                                                                        <ColumnDefinition Width="Auto"/>
+                                                                        <ColumnDefinition Width="*"/>
+                                                                    </Grid.ColumnDefinitions>
+
+                                                                    <StackPanel Grid.Column="0" Width="60" Margin="0,0,15,0">
+                                                                        <TextBlock Text="{Binding Fecha_Registro, StringFormat=dd MMM}" FontSize="12" FontWeight="Bold" Foreground="{DynamicResource TextoPrincipal}" HorizontalAlignment="Center"/>
+                                                                        <TextBlock Text="{Binding Fecha_Registro, StringFormat=yyyy}" FontSize="11" Foreground="{DynamicResource TextoSecundario}" HorizontalAlignment="Center"/>
+                                                                        <Grid Margin="0,10,0,0">
+                                                                            <Ellipse Width="10" Height="10" Fill="{DynamicResource PrimaryHueMidBrush}"/>
+                                                                            <Rectangle Width="2" Fill="{DynamicResource MaterialDesignDivider}" Height="50" HorizontalAlignment="Center" Margin="0,10,0,0"/>
+                                                                        </Grid>
+                                                                    </StackPanel>
+
+                                                                    <Grid Grid.Column="1" Margin="0,0,75,0">
+                                                                        <Grid.RowDefinitions>
+                                                                            <RowDefinition Height="Auto"/>
+                                                                            <RowDefinition Height="Auto"/>
+                                                                        </Grid.RowDefinitions>
+                                                                        <StackPanel Grid.Row="0" Orientation="Horizontal" Margin="0,0,0,8">
+                                                                            <materialDesign:PackIcon Kind="CommentTextOutline" Foreground="{DynamicResource TextoPrincipal}" Width="18" Height="18" VerticalAlignment="Center"/>
+                                                                            <TextBlock Text="{Binding Actividad.Tipo_Actividad}" FontSize="14" FontWeight="SemiBold" Foreground="{DynamicResource TextoPrincipal}" Margin="10,0"/>
+                                                                            <TextBlock Text="{Binding NombreYEspecialidad}" FontSize="13" Foreground="{DynamicResource TextoSecundario}" VerticalAlignment="Center"/>
+                                                                        </StackPanel>
+                                                                        <TextBlock Grid.Row="1" Text="{Binding Detalle}" FontSize="13" Foreground="{DynamicResource TextoPrincipal}" TextWrapping="Wrap"/>
+                                                                    </Grid>
+
+                                                                    <StackPanel Grid.Column="1" Orientation="Horizontal" HorizontalAlignment="Right" VerticalAlignment="Top" Margin="0,-5,-5,0">
+                                                                        <Button Style="{StaticResource MaterialDesignIconButton}" 
+                                                    Command="{Binding DataContext.AbrirEditorEvolucionCommand, RelativeSource={RelativeSource AncestorType=UserControl}}" 
+                                                    CommandParameter="{Binding}" Width="30" Height="30">
+                                                                            <materialDesign:PackIcon Kind="Pencil" Width="18" Height="18" Foreground="{DynamicResource WarningActionBrush}"/>
+                                                                        </Button>
+
+                                                                        <Button Style="{StaticResource MaterialDesignIconButton}" 
+                                                    Command="{Binding DataContext.MoverEvolucionAPapeleraCommand, ElementName=VentanaExpedientes}" 
+                                                    CommandParameter="{Binding}" Width="30" Height="30" Margin="5,0,0,0">
+                                                                            <materialDesign:PackIcon Kind="TrashCan" Width="18" Height="18" Foreground="{DynamicResource MaterialDesignValidationErrorBrush}"/>
+                                                                        </Button>
+                                                                    </StackPanel>
+                                                                </Grid>
+                                                            </Border>
+                                                        </DataTemplate>
+                                                    </ItemsControl.ItemTemplate>
+                                                </ItemsControl>
+                                            </StackPanel>
+                                        </ScrollViewer>
+                                    </TabItem>
+
+                                    <TabItem>
+                                        <TabItem.Header>
+                                            <StackPanel Orientation="Horizontal">
+                                                <materialDesign:PackIcon Kind="FolderFileOutline" Width="18" Height="18" VerticalAlignment="Center" Foreground="{DynamicResource TextoPrincipal}"/>
+                                                <TextBlock Text="EXPEDIENTE DIGITAL" Margin="8,0,0,0" VerticalAlignment="Center" FontWeight="SemiBold" Foreground="{DynamicResource TextoPrincipal}"/>
+                                            </StackPanel>
+                                        </TabItem.Header>
+                                        <ScrollViewer VerticalScrollBarVisibility="Auto" Margin="0,15,0,0">
+                                            <Grid Margin="0,15,0,0">
                                                 <Grid.RowDefinitions>
                                                     <RowDefinition Height="Auto"/>
-                                                    <RowDefinition Height="Auto"/>
+                                                    <RowDefinition Height="*"/>
                                                 </Grid.RowDefinitions>
 
-                                                <StackPanel Grid.Row="0" Orientation="Horizontal" Margin="0,0,0,8">
-                                                    <materialDesign:PackIcon Kind="CommentTextOutline" Foreground="{DynamicResource PrimaryHueMidBrush}" Width="18" Height="18" VerticalAlignment="Center"/>
-                                                    <TextBlock Text="{Binding Actividad.Tipo_Actividad}" FontSize="14" FontWeight="SemiBold" Foreground="#2C3E50" Margin="10,0"/>
-                                                    <TextBlock Text="{Binding Especialista}" FontSize="13" Foreground="#7F8C8D" VerticalAlignment="Center"/>
+                                                <StackPanel Grid.Row="0" Orientation="Horizontal" Margin="0,10,0,20">
+                                                    <Button Command="{Binding DigitalizarDocumentoCommand}" Style="{StaticResource MaterialDesignRaisedButton}" Padding="15,0" Height="40" materialDesign:ButtonAssist.CornerRadius="6" Margin="0,0,12,0">
+                                                        <StackPanel Orientation="Horizontal">
+                                                            <materialDesign:PackIcon Kind="Scanner" Margin="0,0,8,0" VerticalAlignment="Center" Width="20" Height="20"/>
+                                                            <TextBlock Text="DIGITALIZAR POR OCR (IMAGEN)" FontWeight="Bold" VerticalAlignment="Center"/>
+                                                        </StackPanel>
+                                                    </Button>
+                                                    <Button Command="{Binding AdjuntarDocumentoDigitalCommand}" Style="{StaticResource MaterialDesignOutlinedButton}" Padding="15,0" Height="40" materialDesign:ButtonAssist.CornerRadius="6">
+                                                        <StackPanel Orientation="Horizontal">
+                                                            <materialDesign:PackIcon Kind="FilePlus" Margin="0,0,8,0" VerticalAlignment="Center" Width="20" Height="20"/>
+                                                            <TextBlock Text="ADJUNTAR DOCUMENTO DIGITAL (.PDF, .DOCX)" FontWeight="Bold" VerticalAlignment="Center"/>
+                                                        </StackPanel>
+                                                    </Button>
                                                 </StackPanel>
 
-                                                <TextBlock Grid.Row="1" Text="{Binding Detalle}" FontSize="13" Foreground="#34495E" TextWrapping="Wrap"/>
+                                                <ItemsControl Grid.Row="1" ItemsSource="{Binding ListaDocumentos}">
+                                                    <ItemsControl.ItemTemplate>
+                                                        <DataTemplate>
+                                                            <Border Style="{StaticResource TimelineItemBorderStyle}">
+                                                                <Grid Background="Transparent" Cursor="Hand">
+                                                                    <Grid.InputBindings>
+                                                                        <MouseBinding MouseAction="LeftDoubleClick" Command="{Binding DataContext.AbrirDocumentoCommand, RelativeSource={RelativeSource AncestorType=UserControl}}" CommandParameter="{Binding}"/>
+                                                                    </Grid.InputBindings>
+                                                                    <Grid.ToolTip>
+                                                                        <ToolTip Background="{DynamicResource MaterialDesignPaper}" BorderBrush="{DynamicResource PrimaryHueMidBrush}" BorderThickness="1" Padding="12">
+                                                                            <StackPanel Width="280">
+                                                                                <TextBlock Text="VISTA PREVIA DEL DOCUMENTO" FontWeight="Bold" FontSize="12" Margin="0,0,0,8" Foreground="{DynamicResource TextoPrincipal}"/>
+                                                                                <Border BorderBrush="{DynamicResource MaterialDesignDivider}" BorderThickness="1" CornerRadius="4" Margin="0,0,0,10" Background="{DynamicResource MaterialDesignTextFieldBoxBackground}" Visibility="{Binding NombreArchivo, Converter={StaticResource FileToVisibilityConverter}, ConverterParameter=Imagen}">
+                                                                                    <Image Source="{Binding ArchivoBytes, Converter={StaticResource BytesToImageConverter}}" MaxHeight="150" Stretch="Uniform" RenderOptions.BitmapScalingMode="HighQuality"/>
+                                                                                </Border>
+                                                                                <Border BorderBrush="{DynamicResource MaterialDesignDivider}" BorderThickness="1" CornerRadius="4" Margin="0,0,0,10" Background="{DynamicResource MaterialDesignTextFieldBoxBackground}" Padding="15" Visibility="{Binding NombreArchivo, Converter={StaticResource FileToVisibilityConverter}, ConverterParameter=Documento}">
+                                                                                    <StackPanel HorizontalAlignment="Center">
+                                                                                        <materialDesign:PackIcon Kind="FileDocumentOutline" Width="40" Height="40" Foreground="{DynamicResource TextoSecundario}" HorizontalAlignment="Center"/>
+                                                                                        <TextBlock Text="Documento Digitalizado" FontSize="11" Foreground="{DynamicResource TextoSecundario}" HorizontalAlignment="Center" Margin="0,5,0,0"/>
+                                                                                    </StackPanel>
+                                                                                </Border>
+                                                                                <Separator Margin="0,0,0,8" Background="{DynamicResource MaterialDesignDivider}"/>
+                                                                                <TextBlock Text="Texto extraído (OCR):" Opacity="0.6" FontSize="11" FontWeight="SemiBold" Margin="0,0,0,2" Foreground="{DynamicResource TextoPrincipal}"/>
+                                                                                <TextBlock Text="{Binding TextoOcr}" TextWrapping="Wrap" MaxHeight="60" FontSize="11" FontStyle="Italic" TextTrimming="CharacterEllipsis" Foreground="{DynamicResource TextoPrincipal}"/>
+                                                                                <TextBlock Text="💡 Doble clic para abrir el archivo procesado" Foreground="{DynamicResource SuccessActionBrush}" FontSize="10" FontWeight="SemiBold" Margin="0,10,0,0" HorizontalAlignment="Center"/>
+                                                                            </StackPanel>
+                                                                        </ToolTip>
+                                                                    </Grid.ToolTip>
+
+                                                                    <Grid.ColumnDefinitions>
+                                                                        <ColumnDefinition Width="Auto"/>
+                                                                        <ColumnDefinition Width="*"/>
+                                                                        <ColumnDefinition Width="Auto"/>
+                                                                        <ColumnDefinition Width="Auto"/>
+                                                                        <ColumnDefinition Width="Auto"/>
+                                                                        <ColumnDefinition Width="Auto"/>
+                                                                    </Grid.ColumnDefinitions>
+
+                                                                    <materialDesign:PackIcon Grid.Column="0" Kind="{Binding NombreArchivo, Converter={StaticResource ExtensionToIconConverter}}" Foreground="{DynamicResource TextoPrincipal}" Width="32" Height="32" VerticalAlignment="Center" Margin="5,0,15,0"/>
+
+                                                                    <StackPanel Grid.Column="1" VerticalAlignment="Center" Margin="0,0,15,0">
+                                                                        <TextBlock Text="{Binding NombreArchivo}" FontSize="15" FontWeight="SemiBold" Foreground="{DynamicResource TextoPrincipal}"/>
+                                                                        <TextBlock Text="📄 Documento guardado e indexado en el expediente." FontSize="12" Foreground="{DynamicResource TextoSecundario}" Margin="0,4,0,0"/>
+                                                                    </StackPanel>
+
+                                                                    <Button Grid.Column="2" Style="{StaticResource MaterialDesignIconButton}" ToolTip="Ver captura o imagen original completa" Command="{Binding DataContext.AbrirDocumentoCommand, RelativeSource={RelativeSource AncestorType=UserControl}}" CommandParameter="{Binding}" Visibility="{Binding NombreArchivo, Converter={StaticResource FileToVisibilityConverter}, ConverterParameter=Imagen}" Width="38" Height="38" Margin="0,0,10,0" VerticalAlignment="Center">
+                                                                        <materialDesign:PackIcon Kind="Eye" Width="22" Height="22" Foreground="{DynamicResource TextoPrincipal}"/>
+                                                                    </Button>
+
+                                                                    <Button Grid.Column="3" Style="{StaticResource MaterialDesignIconButton}" ToolTip="Abrir documento digitalizado generado (PDF/Word)" Command="{Binding DataContext.AbrirDocumentoDigitalizadoCommand, RelativeSource={RelativeSource AncestorType=UserControl}}" CommandParameter="{Binding}" Visibility="{Binding NombreArchivo, Converter={StaticResource FileToVisibilityConverter}, ConverterParameter=Imagen}" Width="38" Height="38" Margin="0,0,10,0" VerticalAlignment="Center">
+                                                                        <materialDesign:PackIcon Kind="FileEyeOutline" Width="22" Height="22" Foreground="{DynamicResource SuccessActionBrush}"/>
+                                                                    </Button>
+
+                                                                    <Button Grid.Column="3" Style="{StaticResource MaterialDesignIconButton}" ToolTip="Abrir archivo original (Word / PDF)" Command="{Binding DataContext.AbrirDocumentoCommand, RelativeSource={RelativeSource AncestorType=UserControl}}" CommandParameter="{Binding}" Visibility="{Binding NombreArchivo, Converter={StaticResource FileToVisibilityConverter}, ConverterParameter=Documento}" Width="38" Height="38" Margin="0,0,10,0" VerticalAlignment="Center">
+                                                                        <materialDesign:PackIcon Kind="FileEyeOutline" Width="22" Height="22" Foreground="{DynamicResource SuccessActionBrush}"/>
+                                                                    </Button>
+
+                                                                    <Button Grid.Column="4" Style="{StaticResource MaterialDesignIconButton}" ToolTip="Mover a la papelera"
+                                                Command="{Binding DataContext.MoverDocumentoAPapeleraCommand, RelativeSource={RelativeSource AncestorType=UserControl}}" 
+                                                CommandParameter="{Binding}" Width="38" Height="38" Margin="0,0,15,0" VerticalAlignment="Center">
+                                                                        <materialDesign:PackIcon Kind="TrashCan" Width="22" Height="22" Foreground="{DynamicResource MaterialDesignValidationErrorBrush}"/>
+                                                                    </Button>
+
+                                                                    <StackPanel Grid.Column="5" VerticalAlignment="Center" HorizontalAlignment="Right">
+                                                                        <materialDesign:PackIcon Kind="CalendarClock" Foreground="{DynamicResource TextoSecundario}" Width="16" Height="16" HorizontalAlignment="Center"/>
+                                                                        <TextBlock Text="{Binding FechaRegistro, StringFormat='dd/MM/yyyy'}" FontSize="11" Foreground="{DynamicResource TextoSecundario}" Margin="0,2,0,0"/>
+                                                                        <TextBlock Text="{Binding FechaRegistro, StringFormat='hh:mm tt'}" FontSize="10" Foreground="{DynamicResource TextoSecundario}" HorizontalAlignment="Center"/>
+                                                                    </StackPanel>
+                                                                </Grid>
+                                                            </Border>
+                                                        </DataTemplate>
+                                                    </ItemsControl.ItemTemplate>
+                                                </ItemsControl>
+
+                                                <Grid Grid.Row="0" Grid.RowSpan="2" Panel.ZIndex="99" Background="{DynamicResource ProgressOverlayBrush}" Visibility="{Binding IsOcrProcesando, Converter={StaticResource BooleanToVisibilityConverter}}">
+                                                    <materialDesign:Card UniformCornerRadius="12" Padding="30" VerticalAlignment="Center" HorizontalAlignment="Center" materialDesign:ElevationAssist.Elevation="Dp6">
+                                                        <StackPanel HorizontalAlignment="Center" Width="280">
+                                                            <ProgressBar IsIndeterminate="True" Style="{StaticResource MaterialDesignLinearProgressBar}" Margin="0,0,0,15"/>
+                                                            <TextBlock Text="Ejecutando Tesseract OCR..." HorizontalAlignment="Center" FontSize="15" FontWeight="SemiBold" Foreground="{DynamicResource MaterialDesignBody}"/>
+                                                            <TextBlock Text="Analizando el texto de la imagen, por favor espere." HorizontalAlignment="Center" FontSize="12" Foreground="{DynamicResource MaterialDesignSecondaryText}" Margin="0,5,0,0" TextAlignment="Center" TextWrapping="Wrap"/>
+                                                        </StackPanel>
+                                                    </materialDesign:Card>
+                                                </Grid>
                                             </Grid>
-                                        </Grid>
+                                        </ScrollViewer>
+                                    </TabItem>
+                                </TabControl>
+
+                                <StackPanel Grid.Column="2">
+                                    <Border Background="{DynamicResource FondoTarjetas}" CornerRadius="10" Padding="18" Margin="0,0,0,15">
+                                        <Border.Effect>
+                                            <DropShadowEffect BlurRadius="10" ShadowDepth="1" Opacity="0.05"/>
+                                        </Border.Effect>
+                                        <StackPanel>
+                                            <Grid>
+                                                <Grid.ColumnDefinitions>
+                                                    <ColumnDefinition Width="*"/>
+                                                    <ColumnDefinition Width="Auto"/>
+                                                </Grid.ColumnDefinitions>
+                                                <StackPanel Orientation="Horizontal" Grid.Column="0">
+                                                    <materialDesign:PackIcon Kind="CommentTextMultipleOutline" Foreground="{DynamicResource TextoPrincipal}" Width="18" Height="18" VerticalAlignment="Center" Margin="0,0,8,0"/>
+                                                    <TextBlock Text="Observaciones de Registro" Style="{StaticResource SeccionHeaderStyle}" Margin="0" VerticalAlignment="Center"/>
+                                                </StackPanel>
+                                                <Button Grid.Column="1" Style="{StaticResource MaterialDesignIconButton}" 
+                                                Command="{Binding DataContext.EditarObservacionesCommand, RelativeSource={RelativeSource AncestorType=UserControl}}" 
+                                                CommandParameter="{Binding}" Width="30" Height="30">
+                                                    <materialDesign:PackIcon Kind="Pencil" Width="18" Height="18" Foreground="{DynamicResource WarningActionBrush}"/>
+                                                </Button>
+                                            </Grid>
+
+                                            <Separator Background="{DynamicResource MaterialDesignDivider}" Margin="0,10"/>
+                                            <TextBlock Text="{Binding BeneficiarioActual.Observaciones, FallbackValue='Sin observaciones registradas al momento del ingreso.'}" 
+                                            FontSize="13" Foreground="{DynamicResource TextoSecundario}" TextWrapping="Wrap" LineHeight="18" FontStyle="Italic" TextAlignment="Justify"/>
+                                        </StackPanel>
                                     </Border>
-                                </DataTemplate>
-                            </ItemsControl.ItemTemplate>
-                        </ItemsControl>
-                    </StackPanel>
 
-                    <StackPanel Grid.Column="2">
+                                    <Border Background="{DynamicResource FondoTarjetas}" CornerRadius="10" Padding="18">
+                                        <Border.Effect>
+                                            <DropShadowEffect BlurRadius="10" ShadowDepth="1" Opacity="0.05"/>
+                                        </Border.Effect>
+                                        <StackPanel>
+                                            <Grid>
+                                                <Grid.ColumnDefinitions>
+                                                    <ColumnDefinition Width="*"/>
+                                                    <ColumnDefinition Width="Auto"/>
+                                                </Grid.ColumnDefinitions>
+                                                <StackPanel Orientation="Horizontal" Grid.Column="0">
+                                                    <materialDesign:PackIcon Kind="ShieldAccountOutline" Foreground="{DynamicResource TextoPrincipal}" Width="18" Height="18" VerticalAlignment="Center" Margin="0,0,8,0"/>
+                                                    <TextBlock Text="Representante / Tutor" Style="{StaticResource SeccionHeaderStyle}" Margin="0" VerticalAlignment="Center"/>
+                                                </StackPanel>
+                                                <Button Grid.Column="1" Style="{StaticResource MaterialDesignIconButton}" 
+                                                Command="{Binding DataContext.AbrirDialogoContactoCommand, RelativeSource={RelativeSource AncestorType=UserControl}}" 
+                                                CommandParameter="{Binding}" Width="30" Height="30">
+                                                    <materialDesign:PackIcon Kind="Pencil" Width="18" Height="18" Foreground="{DynamicResource WarningActionBrush}"/>
+                                                </Button>
+                                            </Grid>
 
-                        <Border Background="White" CornerRadius="10" Padding="18" Margin="0,0,0,15">
-                            <Border.Effect>
-                                <DropShadowEffect BlurRadius="10" ShadowDepth="1" Opacity="0.05"/>
-                            </Border.Effect>
-                            <StackPanel>
-                                <TextBlock Text="Alertas &amp; Archivo" Style="{StaticResource SeccionHeaderStyle}" Margin="0"/>
-                                <Separator Background="#F0F0F0" Margin="0,10"/>
-                                <TextBlock Text="Alertas Activas: 0" FontSize="14" Foreground="#7F8C8D"/>
+                                            <Separator Background="{DynamicResource MaterialDesignDivider}" Margin="0,10"/>
+
+                                            <StackPanel Orientation="Horizontal" Margin="0,0,0,8">
+                                                <materialDesign:PackIcon Kind="Account" Foreground="{DynamicResource TextoSecundario}" Width="16" Height="16" VerticalAlignment="Center" Margin="0,0,8,0"/>
+                                                <TextBlock Text="{Binding BeneficiarioActual.NombreContacto, TargetNullValue='No asignado', FallbackValue='No asignado'}" FontSize="14" Foreground="{DynamicResource TextoSecundario}" FontWeight="SemiBold" VerticalAlignment="Center"/>
+                                            </StackPanel>
+
+                                            <StackPanel Orientation="Horizontal" Margin="0,0,0,8">
+                                                <materialDesign:PackIcon Kind="AccountHeartOutline" Foreground="{DynamicResource TextoSecundario}" Width="16" Height="16" VerticalAlignment="Center" Margin="0,0,8,0"/>
+                                                <TextBlock Text="{Binding BeneficiarioActual.ParentescoContacto, TargetNullValue='--', FallbackValue='--'}" FontSize="13" Foreground="{DynamicResource TextoSecundario}" VerticalAlignment="Center"/>
+                                            </StackPanel>
+
+                                            <StackPanel Orientation="Horizontal" Margin="0,0,0,4">
+                                                <materialDesign:PackIcon Kind="Phone" Foreground="{DynamicResource SuccessActionBrush}" Width="16" Height="16" VerticalAlignment="Center" Margin="0,0,8,0"/>
+                                                <TextBlock Text="{Binding BeneficiarioActual.TelefonoContacto, TargetNullValue='Sin teléfono', FallbackValue='Sin teléfono'}" FontSize="13" Foreground="{DynamicResource SuccessActionBrush}" FontWeight="SemiBold" VerticalAlignment="Center"/>
+                                            </StackPanel>
+                                        </StackPanel>
+                                    </Border>
+
+                                    <Border Background="{DynamicResource FondoTarjetas}" CornerRadius="10" Padding="18" Margin="0,15,0,15">
+                                        <Border.Effect>
+                                            <DropShadowEffect BlurRadius="10" ShadowDepth="1" Opacity="0.05"/>
+                                        </Border.Effect>
+                                        <StackPanel>
+                                            <Grid>
+                                                <Grid.ColumnDefinitions>
+                                                    <ColumnDefinition Width="*"/>
+                                                    <ColumnDefinition Width="Auto"/>
+                                                </Grid.ColumnDefinitions>
+                                                <StackPanel Orientation="Horizontal" Grid.Column="0">
+                                                    <materialDesign:PackIcon Kind="BoxLocation" Foreground="{DynamicResource TextoPrincipal}" Width="18" Height="18" VerticalAlignment="Center" Margin="0,0,8,0"/>
+                                                    <TextBlock Text="Ubicación Física de Archivos" Style="{StaticResource SeccionHeaderStyle}" Margin="0" VerticalAlignment="Center"/>
+                                                </StackPanel>
+                                                <Button Grid.Column="1" Style="{StaticResource MaterialDesignIconButton}" 
+                                                 Command="{Binding EditarUbicacionCommand}"  
+                                                 CommandParameter="{Binding BeneficiarioActual}" Width="30" Height="30">
+                                                    <materialDesign:PackIcon Kind="Pencil" Width="18" Height="18" Foreground="{DynamicResource WarningActionBrush}"/>
+                                                </Button>
+                                            </Grid>
+
+                                            <Separator Background="{DynamicResource MaterialDesignDivider}" Margin="0,10"/>
+                                            <TextBlock Text="{Binding BeneficiarioActual.UbicacionFisica, UpdateSourceTrigger=PropertyChanged, FallbackValue='Ubicación no registrada.'}" 
+                                        FontSize="13" Foreground="{DynamicResource TextoSecundario}" TextWrapping="Wrap" LineHeight="18" FontStyle="Italic" TextAlignment="Justify"/>
+                                        </StackPanel>
+                                    </Border>
+                                </StackPanel>
+
+                                <Grid Grid.Row="0" Grid.RowSpan="2" Panel.ZIndex="100" Background="{DynamicResource ModalBackdropBrush}" Visibility="{Binding IsEgresoDialogOpen, Converter={StaticResource BooleanToVisibilityConverter}}">
+                                    <materialDesign:Card UniformCornerRadius="12" Padding="25" VerticalAlignment="Center" HorizontalAlignment="Center" Width="450" Background="{DynamicResource MaterialDesignCardBackground}" materialDesign:ElevationAssist.Elevation="Dp24">
+                                        <StackPanel>
+                                            <StackPanel Orientation="Horizontal" Margin="0,0,0,15">
+                                                <materialDesign:PackIcon Kind="AccountArrowRight" Foreground="{DynamicResource SuccessActionBrush}" Width="26" Height="26" VerticalAlignment="Center" Margin="0,0,10,0"/>
+                                                <TextBlock Text="Registrar Egreso Legal" FontSize="18" FontWeight="Bold" Foreground="{DynamicResource TextoPrincipal}" VerticalAlignment="Center"/>
+                                            </StackPanel>
+
+                                            <TextBlock Text="Al procesar el egreso, el expediente pasará a un estado inactivo. Complete la información legal requerida:" FontSize="12" Foreground="{DynamicResource TextoPrincipal}" TextWrapping="Wrap" Margin="0,0,0,20"/>
+                                            <Separator Background="{DynamicResource MaterialDesignDivider}" Margin="0,0,0,15"/>
+
+                                            <DatePicker materialDesign:HintAssist.Hint="Fecha Efectiva de Salida" Style="{StaticResource MaterialDesignFloatingHintDatePicker}" Foreground="{DynamicResource TextoPrincipal}" SelectedDate="{Binding FechaEgresoForm, UpdateSourceTrigger=PropertyChanged}" Margin="0,0,0,20"/>
+                                            <ComboBox materialDesign:HintAssist.Hint="Motivo Legal del Egreso" Foreground="{DynamicResource TextoPrincipal}" Style="{StaticResource MaterialDesignFloatingHintComboBox}" ItemsSource="{Binding ListaMotivosEgreso}" SelectedItem="{Binding MotivoEgresoSeleccionado, UpdateSourceTrigger=PropertyChanged}" Margin="0,0,0,20"/>
+                                            <TextBox materialDesign:HintAssist.Hint="Observaciones y Detalles del Egreso" Foreground="{DynamicResource TextoPrincipal}" Style="{StaticResource MaterialDesignOutlinedTextBox}" Text="{Binding ObservacionesEgresoForm, UpdateSourceTrigger=PropertyChanged}" AcceptsReturn="True" TextWrapping="Wrap" Height="90" VerticalScrollBarVisibility="Auto" Margin="0,0,0,25"/>
+
+                                            <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
+                                                <Button Command="{Binding CancelarEgresoCommand}" Style="{StaticResource MaterialDesignFlatButton}" Content="CANCELAR" Foreground="{DynamicResource TextoSecundario}" Margin="0,0,10,0"/>
+                                                <Button Command="{Binding GuardarEgresoCommand}" Style="{StaticResource MaterialDesignRaisedButton}" Content="PROCESAR EGRESO" Background="{DynamicResource SuccessActionBrush}" BorderBrush="{DynamicResource SuccessActionBrush}" Width="160"/>
+                                            </StackPanel>
+                                        </StackPanel>
+                                    </materialDesign:Card>
+                                </Grid>
+                            </Grid>
+                        </Grid>
+
+                        <Border Grid.Row="1" 
+                        Style="{StaticResource MostrarSiEsNull}" 
+                        Background="{DynamicResource EmptyStateBackgroundBrush}" 
+                        CornerRadius="12" 
+                        BorderBrush="{DynamicResource CustomBorderBrush}" 
+                        BorderThickness="1">
+                            <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center" Margin="30">
+
+                                <materialDesign:PackIcon Kind="FolderAccountOutline" 
+                                             Foreground="{DynamicResource PrimaryTextBrush}" 
+                                             Opacity="0.15" 
+                                             Width="120" 
+                                             Height="120" 
+                                             HorizontalAlignment="Center"/>
+
+                                <TextBlock Text="Módulo de Expedientes Digitales" 
+                               FontSize="22" 
+                               FontWeight="Bold" 
+                               Foreground="{DynamicResource PrimaryTextBrush}" 
+                               HorizontalAlignment="Center" 
+                               Margin="0,20,0,10"/>
+
+                                <TextBlock Text="Consulta el historial evolutivo, bitácoras y documentación legal de cada Beneficiario." 
+                               FontSize="14" 
+                               Foreground="{DynamicResource SecondaryTextBrush}" 
+                               HorizontalAlignment="Center" 
+                               Margin="0,0,0,30" 
+                               TextAlignment="Center"/>
+
+                                <Separator Width="200" 
+                               Background="{DynamicResource CustomBorderBrush}" 
+                               Margin="0,0,0,30"/>
+
+                                <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                                    <StackPanel Orientation="Horizontal" Margin="0,0,25,0">
+                                        <materialDesign:PackIcon Kind="Search" 
+                                                     Foreground="{DynamicResource TertiaryTextBrush}" 
+                                                     Width="20" 
+                                                     Height="20" 
+                                                     VerticalAlignment="Center" 
+                                                     Margin="0,0,8,0"/>
+                                        <TextBlock Text="Escribe en la barra superior para buscar" 
+                                       FontSize="13" 
+                                       Foreground="{DynamicResource TertiaryTextBrush}" 
+                                       VerticalAlignment="Center"/>
+                                    </StackPanel>
+
+                                    <StackPanel Orientation="Horizontal">
+                                        <materialDesign:PackIcon Kind="PlusCircleOutline" 
+                                                     Foreground="{DynamicResource SuccessAccentBrush}" 
+                                                     Width="20" 
+                                                     Height="20" 
+                                                     VerticalAlignment="Center" 
+                                                     Margin="0,0,8,0"/>
+                                        <TextBlock Text="Usa el botón '+' para registrar uno nuevo" 
+                                       FontSize="13" 
+                                       Foreground="{DynamicResource TertiaryTextBrush}" 
+                                       VerticalAlignment="Center"/>
+                                    </StackPanel>
+                                </StackPanel>
                             </StackPanel>
                         </Border>
-
-                        <Border Background="White" CornerRadius="10" Padding="18">
-                            <Border.Effect>
-                                <DropShadowEffect BlurRadius="10" ShadowDepth="1" Opacity="0.05"/>
-                            </Border.Effect>
-                            <StackPanel>
-                                <TextBlock Text="Archivo Físico Histórico" Style="{StaticResource SeccionHeaderStyle}" Margin="0"/>
-                                <Separator Background="#F0F0F0" Margin="0,10"/>
-                                <TextBlock Text="Caja 12, Carpeta D" FontSize="14" Foreground="#34495E" FontWeight="SemiBold"/>
-                                <TextBlock Text="(Ubicación: Sede Central)" FontSize="13" Foreground="#7F8C8D"/>
-                            </StackPanel>
-                        </Border>
-
-                    </StackPanel>
-                </Grid>
-            </Grid>
-    </ScrollViewer>
+                    </Grid>
+                </materialDesign:DialogHost>
+            </materialDesign:DialogHost>
+        </materialDesign:DialogHost>
     </materialDesign:DialogHost>
 </UserControl>

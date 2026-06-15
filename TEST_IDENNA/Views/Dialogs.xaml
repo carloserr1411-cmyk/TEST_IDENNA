@@ -5,14 +5,15 @@
         WindowStyle="None" 
         AllowsTransparency="True" 
         Background="Transparent"
-        Width="350" Height="200" 
+        SizeToContent="WidthAndHeight"
         WindowStartupLocation="CenterScreen"
         Topmost="True">
 
-    <Border Background="#d9d9d9" CornerRadius="15" BorderThickness="1" BorderBrush="#E0E0E0">
-        <Border.Effect>
-            <DropShadowEffect BlurRadius="15" Direction="0" ShadowDepth="0" Opacity="0.2"/>
-        </Border.Effect>
+    <materialDesign:Card UniformCornerRadius="15" 
+                         Background="White"
+                         materialDesign:ElevationAssist.Elevation="Dp8"
+                         Margin="20"
+                         Width="350">
 
         <Grid Margin="20">
             <Grid.RowDefinitions>
@@ -34,16 +35,17 @@
                        TextWrapping="Wrap" 
                        TextAlignment="Center" 
                        VerticalAlignment="Center"
-                       Foreground="#333333"/>
+                       Foreground="#333333"
+                       Margin="0,10"/>
 
             <Button Grid.Row="2" 
-        Content="ACEPTAR"
-        Click="Aceptar_Click"
-        Style="{StaticResource MaterialDesignRaisedButton}" 
-        Background="#325b8a"
-        BorderBrush="#325b8a"
-        materialDesign:ButtonAssist.CornerRadius="20"
-        Width="120"/>
+                    Content="ACEPTAR"
+                    Click="Aceptar_Click"
+                    Style="{StaticResource MaterialDesignRaisedButton}" 
+                    Background="#325b8a"
+                    BorderBrush="#325b8a"
+                    materialDesign:ButtonAssist.CornerRadius="20"
+                    Width="120"/>
         </Grid>
-    </Border>
+    </materialDesign:Card>
 </Window>

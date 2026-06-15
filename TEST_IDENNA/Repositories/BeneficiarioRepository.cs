@@ -15,6 +15,22 @@ namespace TEST_IDENNA.Repositories
             _context = context;
         }
 
+        public async Task ActualizarUbicacionAsync(int id_Beneficiario, string ubicacionFinal)
+        {
+            var beneficiario = await _context.Beneficiarios
+                .FirstOrDefaultAsync(b => b.Id_Beneficiario == id_Beneficiario);
+            if (beneficiario != null)
+            {
+                beneficiario.UbicacionFisica = ubicacionFinal;
+                beneficiario.FechaModificacion = DateTime.Now; // Actualizamos la fecha de modificación
+                await _context.SaveChangesAsync();
+            }
+        }
+        public async Task<Beneficiario?> ObtenerPorCedulaAsync(string cedula)
+        {
+            return await _context.Beneficiarios
+                .FirstOrDefaultAsync(b => b.Cedula == cedula);
+        }
         public async Task Registrar(Beneficiario beneficiario)
         {
             // EF Core marca el objeto como "Added"

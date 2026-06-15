@@ -11,11 +11,13 @@
     <PlatformTarget>x86</PlatformTarget>
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
+    <ApplicationIcon>bin\Release\net10.0-windows\publish\logo_idenna.ico</ApplicationIcon>
   </PropertyGroup>
 
   <!-- PackageReference entries converted from the old project. Review versions and adjust as needed. -->
   <ItemGroup>
     <PackageReference Include="CommunityToolkit.Mvvm" Version="8.4.2" />
+    <PackageReference Include="DocX" Version="1.8.0" />
     <PackageReference Include="LiveChartsCore.SkiaSharpView.WPF" Version="2.0.2" />
     <PackageReference Include="MaterialDesignColors" Version="5.3.1" />
     <PackageReference Include="MaterialDesignThemes" Version="5.3.1" />
@@ -39,6 +41,7 @@
     <PackageReference Include="Microsoft.IdentityModel.Abstractions" Version="8.17.0" />
     <PackageReference Include="Microsoft.Xaml.Behaviors.Wpf" Version="1.1.142" />
     <PackageReference Include="Newtonsoft.Json" Version="13.0.4" />
+    <PackageReference Include="QuestPDF" Version="2026.6.0" />
     <PackageReference Include="SkiaSharp.NativeAssets.Win32" Version="3.119.2" />
     <PackageReference Include="SkiaSharp.Views.WPF" Version="3.119.2" />
     <!-- Updated to match EF Core's transitive dependency and avoid NU1605 downgrade -->
@@ -51,6 +54,7 @@
     <PackageReference Include="System.IO.Pipelines" Version="10.0.6" />
     <PackageReference Include="System.Security.Cryptography.Pkcs" Version="10.0.6" />
     <PackageReference Include="System.Text.Json" Version="10.0.6" />
+    <PackageReference Include="Tesseract" Version="5.2.0" />
   </ItemGroup>
 
   <!-- Preserve explicit generated/metadata files -->
@@ -62,11 +66,43 @@
 
   <!-- Preserve resources/fonts explicitly -->
   <ItemGroup>
+    <Resource Include="Resources\fondo_login.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Resources\logo_idenna.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
     <Resource Include="Resources\\Noto\\NotoSans-Bold.ttf" />
     <Resource Include="Resources\\Noto\\NotoSans-BoldItalic.ttf" />
     <Resource Include="Resources\\Noto\\NotoSans-Italic.ttf" />
     <Resource Include="Resources\\Noto\\NotoSans-Regular.ttf" />
     <Resource Include="Resources\\Roboto\\**\\*.ttf" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="Resources\fondo_login.jpg" />
+    <None Remove="Resources\logo_idenna.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="bin\Release\net10.0-windows\publish\logo_idenna.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="tessdata\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Update="Properties\Settings.Designer.cs">
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Update="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <None Update="tessdata\spa.traineddata">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
   </ItemGroup>
 
   <!-- If you have custom props/targets from legacy packages, add conditional imports here. -->

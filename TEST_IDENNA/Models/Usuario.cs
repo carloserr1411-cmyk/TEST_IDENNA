@@ -10,19 +10,21 @@ namespace TEST_IDENNA.Models
     public class Usuario
     {
         [Key]
-        public int Id_Usuario { get; set; }
+        public int Id { get; set; }
 
         [Required]
         [MaxLength(50)]
-        public string Nombre_Usuario { get; set; }
+        public string NombreUsuario { get; set; }
 
         [Required]
-        public string Password_Hash { get; set; }
+        public string PasswordHash { get; set; }
 
         [Required]
-        public string Rol { get; set; } // Ejemplo: "Psicólogo", "Educador"
+        public string Rol { get; set; } // Ej: "Administrador", "TrabajadorSocial", "Psicologo"
 
-        public string Especialidad { get; set; }
+        public string NombreCompleto { get; set; } = string.Empty;
+
+        public bool Activo { get; set; } = true;
 
         // Propiedades de Navegación
         // Un usuario (profesional) puede registrar muchas actividades

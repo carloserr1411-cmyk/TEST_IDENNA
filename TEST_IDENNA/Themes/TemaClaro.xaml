@@ -1,0 +1,45 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+
+    <SolidColorBrush x:Key="FondoPrincipal" Color="#F5F6FA"/>
+    <SolidColorBrush x:Key="FondoTarjetas" Color="#FFFFFF"/>
+    <SolidColorBrush x:Key="TextoPrincipal" Color="#2F3640"/>
+    <SolidColorBrush x:Key="TextoSecundario" Color="#626f80"/>
+    <!--<SolidColorBrush x:Key="ColorComponentes" Color="#DCDDE1"/>-->
+    <SolidColorBrush x:Key="ColorComponentes" Color="#E0E0E0"/>
+    <SolidColorBrush x:Key="FondoTrackProgressBar" Color="#ECF0F1"/>
+    <SolidColorBrush x:Key="ColorEnfoqueInput" Color="#3498DB"/>
+    <SolidColorBrush x:Key="ColorExito" Color="#27AE60"/>
+    <SolidColorBrush x:Key="ColorTarjetaOscura" Color="#0b103d"/>
+    <SolidColorBrush x:Key="ColorAdvertencia" Color="#F39C12"/>
+    <SolidColorBrush x:Key="ColorError" Color="#DC2626"/>
+    <!--<SolidColorBrush x:Key="ColorExito" Color="#16A34A"/>-->
+    <SolidColorBrush x:Key="FondoErrorSoft" Color="#FEF2F2"/>
+    <SolidColorBrush x:Key="BordeErrorSoft" Color="#FEE2E2"/>
+    <SolidColorBrush x:Key="TextoErrorSoft" Color="#991B1B"/>
+    <SolidColorBrush x:Key="SeccionHeaderForegroundBrush" Color="#2C3E50"/>
+    <SolidColorBrush x:Key="HeaderBannerBackgroundBrush" Color="#0B103D"/>
+    <SolidColorBrush x:Key="HeaderBannerForegroundBrush" Color="#FFFFFF"/>
+    <SolidColorBrush x:Key="SuccessActionBrush" Color="#2E7D32"/>
+    <SolidColorBrush x:Key="WarningActionBrush" Color="#F39C12"/>
+    <SolidColorBrush x:Key="ProgressOverlayBrush" Color="#A6FFFFFF"/>
+    <SolidColorBrush x:Key="ModalBackdropBrush" Color="#A6000000"/>
+    <SolidColorBrush x:Key="EmptyStateBackgroundBrush" Color="#F5F7FA"/>
+    <SolidColorBrush x:Key="CustomBorderBrush" Color="#E0E0E0"/>
+    <SolidColorBrush x:Key="PrimaryTextBrush" Color="#0b103d"/>
+    <SolidColorBrush x:Key="SecondaryTextBrush" Color="#7F8C8D"/>
+    <SolidColorBrush x:Key="TertiaryTextBrush" Color="#2C3E50"/>
+    <SolidColorBrush x:Key="SuccessAccentBrush" Color="#27AE60"/>
+    <SolidColorBrush x:Key="BusquedaHighlightFg" Color="#0b103d"/>
+    <SolidColorBrush x:Key="BusquedaHighlightBg" Color="#FFE082"/>
+    <SolidColorBrush x:Key="MaterialDesignValidationErrorBrush" Color="#DC2626"/>
+    <SolidColorBrush x:Key="FondoAvatarDefecto" Color="#cccccc"/>
+    <SolidColorBrush x:Key="FondoFilaSeleccionada" Color="#cfeeff"/>
+
+    <Color x:Key="FondoDatePickerColor">#e2e2e2</Color>
+    <Color x:Key="BlancoANegroColor">#000000</Color>
+
+    <SolidColorBrush x:Key="MaterialDesign.Brush.Surface" Color="#e2e2e2" />
+    <SolidColorBrush x:Key="MaterialDesign.Brush.Background" Color="#e2e2e2" />
+    <SolidColorBrush x:Key="MaterialDesign.Brush.Text.Primary" Color="#000000" />
+</ResourceDictionary>

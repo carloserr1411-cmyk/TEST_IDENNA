@@ -8,33 +8,32 @@
              xmlns:s="clr-namespace:TEST_IDENNA.Services"
              mc:Ignorable="d" 
              d:DesignHeight="600" d:DesignWidth="800"
+             Background="{DynamicResource FondoPrincipal}"
              d:DataContext="{d:DesignInstance Type=vm:RegistroBeneficiarioViewModel}">
 
     <UserControl.Resources>
-        <!-- Tu converter para mostrar la imagen -->
         <s:BytesToImageConverter x:Key="BytesToImageConverter"/>
 
-        <!-- Estilo para el círculo de la foto -->
         <Style x:Key="AvatarBorderStyle" TargetType="Border">
             <Setter Property="Width" Value="120"/>
             <Setter Property="Height" Value="120"/>
             <Setter Property="CornerRadius" Value="60"/>
             <Setter Property="BorderBrush" Value="{DynamicResource PrimaryHueMidBrush}"/>
             <Setter Property="BorderThickness" Value="2"/>
-            <Setter Property="Background" Value="#F5F5F5"/>
+            <Setter Property="Background" Value="{DynamicResource FondoAvatarDefecto}"/>
             <Setter Property="ClipToBounds" Value="True"/>
         </Style>
     </UserControl.Resources>
 
-    <ScrollViewer VerticalScrollBarVisibility="Auto">
+    <ScrollViewer VerticalScrollBarVisibility="Auto" Background="{DynamicResource FondoPrincipal}">
         <Grid Margin="30">
-            <materialDesign:Card Padding="32" materialDesign:ElevationAssist.Elevation="Dp4" UniformCornerRadius="12">
+            <materialDesign:Card Padding="32" materialDesign:ElevationAssist.Elevation="Dp4" UniformCornerRadius="12" Background="{DynamicResource FondoPrincipal}">
                 <StackPanel>
                     <Button Command="{Binding VolverCommand}"
-                        Style="{StaticResource MaterialDesignFlatButton}"
-                        HorizontalAlignment="Left"
-                        Margin="-10,10,0,0"
-                        Foreground="Gray">
+                            Style="{StaticResource MaterialDesignFlatButton}"
+                            HorizontalAlignment="Left"
+                            Margin="-10,10,0,0"
+                            Foreground="{DynamicResource TextoSecundario}">
                         <StackPanel Orientation="Horizontal">
                             <materialDesign:PackIcon Kind="ArrowLeft" Margin="0,0,8,0" VerticalAlignment="Center"/>
                             <TextBlock Text="VOLVER A EXPEDIENTES" VerticalAlignment="Center" FontWeight="SemiBold"/>
@@ -42,41 +41,36 @@
                     </Button>
 
                     <StackPanel Orientation="Horizontal" Margin="0,0,0,30">
-                        <materialDesign:PackIcon Kind="AccountPlus" Width="30" Height="30" Foreground="{DynamicResource PrimaryHueMidBrush}" VerticalAlignment="Center"/>
+                        <materialDesign:PackIcon Kind="AccountPlus" Width="30" Height="30" Foreground="{DynamicResource TextoPrincipal}" VerticalAlignment="Center"/>
                         <TextBlock Text="{Binding TituloVista}" 
                                    Style="{StaticResource MaterialDesignHeadline5TextBlock}" 
-                                   Margin="15,0,0,0" VerticalAlignment="Center" FontWeight="Bold"/>
+                                   Margin="15,0,0,0" VerticalAlignment="Center" FontWeight="Bold" Foreground="{DynamicResource TextoPrincipal}"/>
                     </StackPanel>
 
-                    <!-- Sección de Foto de Perfil -->
                     <Grid HorizontalAlignment="Center" Margin="0,0,0,30">
                         <Border Style="{StaticResource AvatarBorderStyle}">
                             <Grid>
-                                <!-- Icono de fondo si no hay foto -->
                                 <materialDesign:PackIcon Kind="Account" 
-                               Foreground="#BDBDBD" 
-                               Width="60" Height="60" 
-                               HorizontalAlignment="Center" 
-                               VerticalAlignment="Center"/>
+                                                       Foreground="{DynamicResource IconoAvatarDefecto}" Width="60" Height="60" 
+                                                       HorizontalAlignment="Center" 
+                                                       VerticalAlignment="Center"/>
 
-                                <!-- Círculo que usa la foto como "pintura" -->
                                 <Ellipse>
                                     <Ellipse.Fill>
                                         <ImageBrush ImageSource="{Binding FotoSeleccionada, Converter={StaticResource BytesToImageConverter}}"
-                            Stretch="UniformToFill"/>
+                                                    Stretch="UniformToFill"/>
                                     </Ellipse.Fill>
                                 </Ellipse>
                             </Grid>
                         </Border>
 
-                        <!-- Botón Flotante para cambiar la foto -->
                         <Button Command="{Binding SeleccionarFotoCommand}"
-                            Style="{StaticResource MaterialDesignFloatingActionMiniButton}"
-                            VerticalAlignment="Top" 
-                            HorizontalAlignment="Right"
-                            Width="40" Height="40"
-                            Margin="0,85,-5,0"
-                            ToolTip="Subir fotografía">
+                                Style="{StaticResource MaterialDesignFloatingActionMiniButton}"
+                                VerticalAlignment="Top" 
+                                HorizontalAlignment="Right"
+                                Width="40" Height="40"
+                                Margin="0,85,-5,0"
+                                ToolTip="Subir fotografía">
                             <materialDesign:PackIcon Kind="CameraPlus" />
                         </Button>
                     </Grid>
@@ -92,41 +86,199 @@
                             <TextBox materialDesign:HintAssist.Hint="Nombres"
                                      Style="{StaticResource MaterialDesignFloatingHintTextBox}"
                                      Text="{Binding ModeloFormulario.Nombres, UpdateSourceTrigger=PropertyChanged}"
-                                     Margin="0,0,0,20"/>
+                                     Margin="0,0,0,20" Foreground="{DynamicResource TextoPrincipal}"/>
 
                             <TextBox materialDesign:HintAssist.Hint="Apellidos"
                                      Style="{StaticResource MaterialDesignFloatingHintTextBox}"
                                      Text="{Binding ModeloFormulario.Apellidos, UpdateSourceTrigger=PropertyChanged}"
-                                     Margin="0,0,0,20"/>
+                                     Margin="0,0,0,20" Foreground="{DynamicResource TextoPrincipal}"/>
 
-                            <TextBox materialDesign:HintAssist.Hint="Cedula"
+                            <TextBox materialDesign:HintAssist.Hint="Cédula"
                                      Style="{StaticResource MaterialDesignFloatingHintTextBox}"
                                      Text="{Binding ModeloFormulario.Cedula, UpdateSourceTrigger=PropertyChanged}"
-                                     Margin="0,0,0,20"/>
+                                     Margin="0,0,0,20" Foreground="{DynamicResource TextoPrincipal}"/>
 
                             <DatePicker materialDesign:HintAssist.Hint="Fecha de Nacimiento"
                                         Style="{StaticResource MaterialDesignFloatingHintDatePicker}"
                                         SelectedDate="{Binding ModeloFormulario.Fecha_Nacimiento, UpdateSourceTrigger=PropertyChanged}"
-                                        Margin="0,0,0,10"/>
-                            <TextBlock Text="Dato requerido para el cálculo de edad" Style="{StaticResource MaterialDesignCaptionTextBlock}" Opacity="0.6"/>
+                                        Margin="0,0,0,10" Foreground="{DynamicResource TextoPrincipal}"/>
+                            <TextBlock Text="Dato requerido para el cálculo de edad" Style="{StaticResource MaterialDesignCaptionTextBlock}" Opacity="0.6" Foreground="{DynamicResource TextoSecundario}"/>
                         </StackPanel>
 
                         <StackPanel Grid.Column="2">
-                            <ComboBox materialDesign:HintAssist.Hint="Estatus Legal"
-                                      Style="{StaticResource MaterialDesignFloatingHintComboBox}"
-                                      Text="{Binding ModeloFormulario.Estatus_Legal, UpdateSourceTrigger=PropertyChanged}"
-                                      Margin="0,0,0,20">
-                                <ComboBoxItem Content="En Proceso de Investigación"/>
-                                <ComboBoxItem Content="Bajo Medida de Protección"/>
-                                <ComboBoxItem Content="Colocación Familiar"/>
-                                <ComboBoxItem Content="Entidad de Atención"/>
-                                <ComboBoxItem Content="Situación de Calle"/>
-                            </ComboBox>
+                            <TextBox materialDesign:HintAssist.Hint="Estatus Legal (Ejm: En Proceso de Investigación)"
+                                     Text="{Binding ModeloFormulario.Estatus_Legal, UpdateSourceTrigger=PropertyChanged}"
+                                     Margin="0,0,0,15" Foreground="{DynamicResource TextoPrincipal}">
+                                <TextBox.Style>
+                                    <Style TargetType="TextBox" BasedOn="{StaticResource MaterialDesignFloatingHintTextBox}">
+                                        <Setter Property="IsReadOnly" Value="False"/>
+                                        <Style.Triggers>
+                                            <DataTrigger Binding="{Binding EsEgresadoOriginal}" Value="True">
+                                                <Setter Property="IsReadOnly" Value="True"/>
+                                                <Setter Property="Foreground" Value="{DynamicResource TextoDeshabilitado}"/>
+                                            </DataTrigger>
+                                        </Style.Triggers>
+                                    </Style>
+                                </TextBox.Style>
+                            </TextBox>
+
+                            <StackPanel Orientation="Horizontal" Margin="0,5,0,15" VerticalAlignment="Center">
+                                <Border Background="{Binding ModeloFormulario.Estatus_Color, FallbackValue=#27AE60, TargetNullValue=#27AE60}" 
+                                        CornerRadius="6" 
+                                        Padding="10,4" 
+                                        Margin="10,0,0,0"
+                                        VerticalAlignment="Center">
+                                    <TextBlock Text="{Binding ModeloFormulario.Estatus_Legal, FallbackValue='Sin especificar', TargetNullValue='Sin especificar'}" 
+                                               FontSize="12" 
+                                               FontWeight="SemiBold" 
+                                               Foreground="White"
+                                               VerticalAlignment="Center"/>
+                                </Border>
+
+                                <ListBox SelectedValue="{Binding ModeloFormulario.Estatus_Color, UpdateSourceTrigger=PropertyChanged}"
+                                         SelectedValuePath="Tag"
+                                         Background="Transparent"
+                                         BorderThickness="0"
+                                         Margin="10,0,0,0" 
+                                         VerticalAlignment="Center"
+                                         ScrollViewer.HorizontalScrollBarVisibility="Disabled">
+
+                                    <ListBox.Style>
+                                        <Style TargetType="ListBox">
+                                            <Setter Property="IsEnabled" Value="True"/>
+                                            <Style.Triggers>
+                                                <DataTrigger Binding="{Binding EsEgresadoOriginal}" Value="True">
+                                                    <Setter Property="IsEnabled" Value="False"/>
+                                                    <Setter Property="Opacity" Value="0.6"/>
+                                                    <Setter Property="ToolTip" Value="No se puede cambiar el color de un expediente egresado."/>
+                                                </DataTrigger>
+                                            </Style.Triggers>
+                                        </Style>
+                                    </ListBox.Style>
+
+                                    <ListBox.ItemsPanel>
+                                        <ItemsPanelTemplate>
+                                            <StackPanel Orientation="Horizontal"/>
+                                        </ItemsPanelTemplate>
+                                    </ListBox.ItemsPanel>
+
+                                    <ListBox.ItemContainerStyle>
+                                        <Style TargetType="ListBoxItem">
+                                            <Setter Property="Background" Value="Transparent"/>
+                                            <Setter Property="Padding" Value="0"/>
+                                            <Setter Property="Margin" Value="0,0,-5,0"/>
+                                            <Setter Property="Template">
+                                                <Setter.Value>
+                                                    <ControlTemplate TargetType="ListBoxItem">
+                                                        <Border x:Name="SelectionRing" 
+                                                                Width="28" 
+                                                                Height="28" 
+                                                                CornerRadius="14" 
+                                                                BorderThickness="2" 
+                                                                BorderBrush="Transparent"
+                                                                Background="Transparent"
+                                                                RenderTransformOrigin="0.5,0.5">
+                                                            <Border.RenderTransform>
+                                                                <ScaleTransform ScaleX="1" ScaleY="1"/>
+                                                            </Border.RenderTransform>
+
+                                                            <Border Width="12" 
+                                                                    Height="12" 
+                                                                    CornerRadius="9" 
+                                                                    Background="{Binding Tag, RelativeSource={RelativeSource TemplatedParent}}" 
+                                                                    HorizontalAlignment="Center" 
+                                                                    VerticalAlignment="Center"/>
+                                                        </Border>
+
+                                                        <ControlTemplate.Triggers>
+                                                            <Trigger Property="IsMouseCaptured" Value="True">
+                                                                <Setter TargetName="SelectionRing" Property="RenderTransform">
+                                                                    <Setter.Value>
+                                                                        <ScaleTransform ScaleX="0.9" ScaleY="0.9"/>
+                                                                    </Setter.Value>
+                                                                </Setter>
+                                                            </Trigger>
+
+                                                            <Trigger Property="IsSelected" Value="True">
+                                                                <Setter TargetName="SelectionRing" Property="BorderBrush" Value="{DynamicResource PrimaryHueMidBrush}"/>
+                                                                <Setter TargetName="SelectionRing" Property="BorderThickness" Value="3"/>
+                                                                <Setter TargetName="SelectionRing" Property="RenderTransform">
+                                                                    <Setter.Value>
+                                                                        <ScaleTransform ScaleX="1.2" ScaleY="1.2"/>
+                                                                    </Setter.Value>
+                                                                </Setter>
+                                                            </Trigger>
+
+                                                            <Trigger Property="IsMouseOver" Value="True">
+                                                                <Setter Property="Cursor" Value="Hand"/>
+                                                            </Trigger>
+                                                        </ControlTemplate.Triggers>
+                                                    </ControlTemplate>
+                                                </Setter.Value>
+                                            </Setter>
+                                        </Style>
+                                    </ListBox.ItemContainerStyle>
+
+                                    <ListBoxItem Tag="#27AE60" ToolTip="Verde"/>
+                                    <ListBoxItem Tag="#E74C3C" ToolTip="Rojo"/>
+                                    <ListBoxItem Tag="#3498DB" ToolTip="Azul"/>
+                                    <ListBoxItem Tag="#F1C40F" ToolTip="Amarillo"/>
+                                    <ListBoxItem Tag="#9B59B6" ToolTip="Violeta"/>
+                                    <ListBoxItem Tag="#2effc7" ToolTip="Turquesa"/>
+                                    <ListBoxItem Tag="#E67E22" ToolTip="Naranja"/>
+                                    <ListBoxItem Tag="#E91E63" ToolTip="Rosa"/>
+                                    <ListBoxItem Tag="#3F51B5" ToolTip="Índigo"/>
+                                    <ListBoxItem Tag="#8BC34A" ToolTip="Verde Lima"/>
+                                    <ListBoxItem Tag="#607D8B" ToolTip="Gris Azulado"/>
+                                    <ListBoxItem Tag="#8D6E63" ToolTip="Marrón"/>
+                                    </ListBox>
+                            </StackPanel>
+
+                            <Border CornerRadius="8" 
+                                    Background="{DynamicResource AlertaEgresadoBg}" 
+                                    BorderBrush="{DynamicResource AlertaEgresadoBorder}" 
+                                    BorderThickness="1" 
+                                    Padding="12" 
+                                    Margin="0,10,0,15">
+
+                                <Border.Style>
+                                    <Style TargetType="Border">
+                                        <Setter Property="Visibility" Value="Collapsed"/>
+                                        <Style.Triggers>
+                                            <DataTrigger Binding="{Binding EsEgresadoOriginal}" Value="True">
+                                                <Setter Property="Visibility" Value="Visible"/>
+                                            </DataTrigger>
+                                        </Style.Triggers>
+                                    </Style>
+                                </Border.Style>
+
+                                <Grid>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="Auto"/>
+                                        <ColumnDefinition Width="*"/>
+                                    </Grid.ColumnDefinitions>
+
+                                    <materialDesign:PackIcon Kind="AlertCircle" 
+                                                             Foreground="{DynamicResource AlertaEgresadoBorder}" 
+                                                             Width="20" 
+                                                             Height="20" 
+                                                             VerticalAlignment="Top" 
+                                                             Margin="0,2,8,0"/>
+
+                                    <TextBlock Grid.Column="1" 
+                                               Text="El estatus legal de este beneficiario no se puede modificar porque el caso ya se encuentra Egresado. Si necesita editar esta información, primero debe regresar al expediente y Revertir el Egreso." 
+                                               FontSize="12" 
+                                               FontWeight="Medium"
+                                               Foreground="{DynamicResource AlertaEgresadoFg}" 
+                                               TextWrapping="Wrap" 
+                                               LineHeight="16"/>
+                                </Grid>
+                            </Border>
 
                             <DatePicker materialDesign:HintAssist.Hint="Fecha de Ingreso al Centro"
                                         Style="{StaticResource MaterialDesignFloatingHintDatePicker}"
                                         SelectedDate="{Binding ModeloFormulario.Fecha_Ingreso, UpdateSourceTrigger=PropertyChanged}"
-                                        Margin="0,0,0,20"/>
+                                        Margin="0,10,0,20" Foreground="{DynamicResource TextoPrincipal}"/>
 
                             <TextBox materialDesign:HintAssist.Hint="Observaciones Iniciales (Opcional)"
                                      Style="{StaticResource MaterialDesignOutlinedTextBox}"
@@ -136,24 +288,22 @@
                                      VerticalScrollBarVisibility="Auto"
                                      Height="80"
                                      materialDesign:TextFieldAssist.CharacterCounterVisibility="Visible"
-                                     MaxLength="200"/>
+                                     MaxLength="200" Foreground="{DynamicResource TextoPrincipal}"/>
                         </StackPanel>
                     </Grid>
 
-                    <Separator Margin="0,30,0,20" Background="#EEEEEE"/>
-
+                    <Separator Margin="0,30,0,20" Background="{DynamicResource SeparadorColor}"/>
                     <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
                         <Button Content="CANCELAR"
-                                Command="{Binding VolverCommand}"
+                                Command="{Binding CancelarCommand}"
                                 Style="{StaticResource MaterialDesignFlatButton}" 
                                 Margin="0,0,15,0" 
-                                Foreground="Gray"/>
-
+                                Foreground="{DynamicResource TextoSecundario}"/>
                         <Button Content="{Binding BotonGuardarTexto}" 
                                 Command="{Binding GuardarCommand}"
                                 Width="220" Height="45"
                                 Style="{StaticResource MaterialDesignRaisedButton}"
-                                materialDesign:ButtonAssist.CornerRadius="20"/>
+                                materialDesign:ButtonAssist.CornerRadius="20" Click="Button_Click"/>
                     </StackPanel>
                 </StackPanel>
             </materialDesign:Card>

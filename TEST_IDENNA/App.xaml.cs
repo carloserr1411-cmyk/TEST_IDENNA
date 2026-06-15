@@ -1,22 +1,18 @@
-﻿using Microsoft.Extensions.DependencyInjection;
+﻿using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.DependencyInjection;
+using QuestPDF.Infrastructure;
 using System;
-using System.Collections.Generic;
-using System.Configuration;
-using System.Data;
-using System.Linq;
-using System.Threading.Tasks;
 using System.Windows;
 using TEST_IDENNA.Data;
-using TEST_IDENNA.Repositories;
 using TEST_IDENNA.Interfaces;
+using TEST_IDENNA.Models;
+using TEST_IDENNA.Repositories;
 using TEST_IDENNA.Services;
 using TEST_IDENNA.ViewModels;
+using TEST_IDENNA.Views; // <--- Asegúrate de incluir tus vistas
 
 namespace TEST_IDENNA
 {
-    /// <summary>
-    /// Lógica de interacción para App.xaml
-    /// </summary>
     public partial class App : Application
     {
         public static IServiceProvider? ServiceProvider { get; private set; }
@@ -30,56 +26,71 @@ namespace TEST_IDENNA
 
         private void ConfigureServices(IServiceCollection services)
         {
-            services.AddSingleton<IEgresoRepository, EgresoRepository>();
-
-            // También asegúrate de que el ViewModel esté registrado
-            services.AddTransient<ReportesViewModel>();
-            services.AddTransient<MainWindowViewModel>();
-
-            ServiceProvider = services.BuildServiceProvider();
             // 1. Base de Datos
             services.AddDbContext<AppDbContext>();
 
-            // 2. Repositorios y Servicios
-            // ✅ CORRECCIÓN: Interfaz vinculada a su Clase Real
+            // 2. Servicios de Utilidad generales
+            services.AddSingleton<OcrService>();
+
+            // 3. Repositorios y Servicios de Negocio
+            services.AddScoped<IEgresoRepository, EgresoRepository>();
             services.AddScoped<IBeneficiarioRepository, BeneficiarioRepository>();
             services.AddScoped<IActividadRepository, ActividadRepository>();
-
+            services.AddScoped<ITutorRepository, TutorRepository>();
             services.AddScoped<IIntervencionService, IntervencionService>();
+            services.AddScoped<IArchivoService, ArchivoService>();
+            services.AddScoped<IAuditoriaService, AuditoriaService>();
 
-            // Ventana Principal
-            services.AddSingleton<MainWindow>();
-
-            // 3. ViewModels
+            // 4. ViewModels
             services.AddTransient<MainWindowViewModel>();
             services.AddTransient<RegistroBeneficiarioViewModel>();
             services.AddTransient<DashboardViewModel>();
             services.AddTransient<BitacoraViewModel>();
-            services.AddTransient<ArchivosViewModel>();
+            services.AddTransient<AuditoriasViewModel>();
             services.AddTransient<ReportesViewModel>();
-
-            // ✅ IMPORTANTE: Añade este, es el que controla la vista de la imagen
+            services.AddTransient<DigitalizarDocumentosViewModel>();
             services.AddTransient<ExpedientesViewModel>();
+            services.AddTransient<LoginViewModel>();
+
+            // 5. Ventanas (¡AGREGAMOS LOGINWINDOW AQUÍ!)
+            services.AddSingleton<MainWindow>();
+            services.AddTransient<LoginWindow>(); // <--- CLAVE: Registrada en el contenedor
         }
+
         protected override void OnStartup(StartupEventArgs e)
         {
-            base.OnStartup(e);
-            //DatabaseConfig.InitializeDatabase(); // Crea la DB al iniciar
-            /*var registroVm = new RegistroViewModel();
-            registroVm.CargarDatos();*/
+            QuestPDF.Settings.License = LicenseType.Community;
 
-            using (var db = new AppDbContext())
+            base.OnStartup(e);
+
+            using (var scope = ServiceProvider!.CreateScope())
             {
-                // Esto crea la base de datos y las tablas si no existen
+                var db = scope.ServiceProvider.GetRequiredService<AppDbContext>();
                 db.Database.EnsureCreated();
+
+                // Verificamos si la tabla de usuarios está vacía
+                if (!db.Usuarios.Any())
+                {
+                    var admin = new Usuario
+                    {
+                        NombreUsuario = "admin",
+                        PasswordHash = "hash123", // Cambia esto por tu contraseña de prueba
+                        NombreCompleto = "Administrador del Sistema",
+                        Rol = "Administrador",
+                        Activo = true
+                    };
+
+                    db.Usuarios.Add(admin);
+                    db.SaveChanges();
+                }
             }
 
-            // 2. PEDIR la ventana al ServiceProvider
-            // Esto resuelve: MainWindow -> MainWindowViewModel -> IntervencionService -> Repositorios
-            var mainWindow = ServiceProvider.GetRequiredService<MainWindow>();
-
-            // 3. Mostrar la ventana
-            mainWindow.Show();
+            // =========================================================================
+            // CAMBIO AQUÍ: En lugar de pedir MainWindow, pedimos el LoginWindow
+            // =========================================================================
+            var loginWindow = ServiceProvider!.GetRequiredService<LoginWindow>();
+            loginWindow.Show();
+            // =========================================================================
         }
     }
 }

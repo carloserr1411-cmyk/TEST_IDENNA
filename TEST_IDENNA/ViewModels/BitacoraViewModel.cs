@@ -10,9 +10,10 @@ using TEST_IDENNA.Services;
 
 namespace TEST_IDENNA.ViewModels
 {
-    public partial class BitacoraViewModel(IIntervencionService service) : ObservableObject
+    public partial class BitacoraViewModel(IIntervencionService service, IAuditoriaService auditoriaService) : ObservableObject
     {
         private readonly IIntervencionService _service = service;
+        private readonly IAuditoriaService _auditoriaService = auditoriaService;
 
         [ObservableProperty]
         private ObservableCollection<Actividad> _listaActividades = new();
@@ -42,6 +43,13 @@ namespace TEST_IDENNA.ViewModels
             if (string.IsNullOrWhiteSpace(NombreNuevaActividad) || string.IsNullOrWhiteSpace(AreaSeleccionada)) return;
 
             await _service.CrearNuevaActividad(NombreNuevaActividad, AreaSeleccionada);
+
+            await _auditoriaService.RegistrarAccionAsync(
+                accion: "GUARDAR",
+                modulo: "Bitácora de Actividades",
+                detalles: $"Se guardó la nueva actividad: {NombreNuevaActividad}"
+            );
+
             await CargarDatos(); // Refrescar lista
             NombreNuevaActividad = string.Empty;
             AreaSeleccionada = string.Empty;

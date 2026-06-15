@@ -15,6 +15,8 @@ namespace TEST_IDENNA.Models
         public byte[]? Foto { get; set; }
         public string Nombres { get; set; }
         public string Apellidos { get; set; }
+
+        public string NombreCompleto => $"{Nombres} {Apellidos}".Trim();
         public DateTime Fecha_Nacimiento { get; set; }
         public string Cedula { get; set; }
         public int Edad {
@@ -29,6 +31,7 @@ namespace TEST_IDENNA.Models
             }
         }
         public string Estatus_Legal { get; set; }
+        public string Estatus_Color { get; set; } // 👈 Aquí guardaremos el Hexadecimal (ej: "#E74C3C")
         public DateTime Fecha_Ingreso { get; set; }
         public string Observaciones { get; set; }
 
@@ -40,22 +43,14 @@ namespace TEST_IDENNA.Models
 
         public string Estatus { get; set; } = "Activo"; // Por defecto todos entran activos
 
-        // Relación: Un beneficiario tiene muchas evoluciones
-        // ICollection<Evolucion>? Evoluciones { get; set; }
+        public DateTime? FechaEliminacion { get; set; } // Fecha en que se eliminó el beneficiario (si es que se eliminó)}
+
+        public string? NombreContacto { get; set; }
+        public string? ParentescoContacto { get; set; }
+        public string? TelefonoContacto { get; set; }
+
+        public DateTime? FechaModificacion { get; set; } // Para rastrear cuándo se modificó por última vez el registro
+
+        public string? UbicacionFisica { get; set; } // Campo para guardar la ubicación física del expediente (estante, caja, etc.)
     }
-
-
-
-    /*public class Evolucion
-    {
-        [Key]
-        public int Id_Evolucion { get; set; }
-        public int Id_Beneficiario { get; set; }
-        public string Area { get; set; }
-        public string Descripcion { get; set; }
-        public DateTime Fecha_Registro { get; set; }
-
-        [ForeignKey("Id_Beneficiario")]
-        public Beneficiario Beneficiario { get; set; }
-    }*/
 }

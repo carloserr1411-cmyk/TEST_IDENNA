@@ -14,11 +14,11 @@ using System.Windows.Shapes;
 namespace TEST_IDENNA.Views
 {
     /// <summary>
-    /// Lógica de interacción para ArchivosView.xaml
+    /// Lógica de interacción para UsuariosView.xaml
     /// </summary>
-    public partial class ArchivosView : UserControl
+    public partial class UsuariosView : UserControl
     {
-        public ArchivosView()
+        public UsuariosView()
         {
             InitializeComponent();
         }

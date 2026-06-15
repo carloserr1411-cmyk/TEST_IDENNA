@@ -4,66 +4,206 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:TEST_IDENNA"
+             xmlns:b="http://schemas.microsoft.com/xaml/behaviors"
              xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
-             xmlns:vm="clr-namespace:TEST_IDENNA.ViewModels" xmlns:i="http://schemas.microsoft.com/xaml/behaviors"
+             xmlns:vm="clr-namespace:TEST_IDENNA.ViewModels" 
+             xmlns:i="http://schemas.microsoft.com/xaml/behaviors"
              mc:Ignorable="d" 
-             d:DesignHeight="450" d:DesignWidth="800"
+             d:DesignHeight="550" d:DesignWidth="900"
              d:DataContext="{d:DesignInstance Type=vm:BitacoraViewModel}">
 
     <i:Interaction.Triggers>
-        <i:EventTrigger EventName="Loaded">
-            <i:InvokeCommandAction Command="{Binding CargarDatosCommand}" />
-        </i:EventTrigger>
+        <b:EventTrigger EventName="Loaded">
+            <b:InvokeCommandAction Command="{Binding CargarDatosCommand}" />
+        </b:EventTrigger>
     </i:Interaction.Triggers>
 
-    <Grid>
-        <materialDesign:Card Margin="16" Padding="16">
-            <TabControl Style="{StaticResource MaterialDesignNavigationRailTabControl}">
-                <!-- Pestaña 1: Definir Actividades -->
-                <TabItem Header="GESTIONAR ACTIVIDADES">
-                    <Grid>
+    <Grid Background="{DynamicResource FondoPrincipal}">
+        <materialDesign:Card Margin="16" 
+                             Background="{DynamicResource FondoTarjetas}" 
+                             materialDesign:ElevationAssist.Elevation="Dp2" 
+                             UniformCornerRadius="12">
+
+            <materialDesign:Card.Resources>
+                <StaticResource x:Key="PrimaryHueMidBrush" ResourceKey="ColorEnfoqueInput"/>
+            </materialDesign:Card.Resources>
+
+            <TabControl Style="{StaticResource MaterialDesignNavigationRailTabControl}" 
+                        Background="Transparent" 
+                        UseLayoutRounding="True">
+
+                <TabItem>
+                    <TabItem.Header>
+                        <StackPanel Margin="0,10">
+                            <materialDesign:PackIcon Kind="FormatListGroup" Width="24" Height="24" HorizontalAlignment="Center" Foreground="{DynamicResource TextoPrincipal}"/>
+                            <TextBlock Text="ACTIVIDADES" FontSize="11" FontWeight="Bold" Margin="0,4,0,0" HorizontalAlignment="Center" Foreground="{DynamicResource TextoPrincipal}"/>
+                        </StackPanel>
+                    </TabItem.Header>
+
+                    <Grid Margin="24">
                         <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="300"/>
-                            <!-- Formulario para nueva actividad -->
+                            <ColumnDefinition Width="320"/>
                             <ColumnDefinition Width="*"/>
-                            <!-- Lista de actividades existentes -->
                         </Grid.ColumnDefinitions>
 
-                        <!-- Formulario -->
-                        <StackPanel Grid.Column="0" Margin="10">
-                            <TextBlock Text="Nueva Actividad" Style="{StaticResource MaterialDesignHeadline6TextBlock}"/>
-                            <TextBox Text="{Binding NombreNuevaActividad}" Margin="0,10" 
-                             materialDesign:HintAssist.Hint="Nombre de la Actividad"/>
-                            <TextBox Text="{Binding AreaSeleccionada}" Margin="0,10" 
-                             materialDesign:HintAssist.Hint="Área Responsable"/>
-                            <!--<ComboBox ItemsSource="{Binding AreasDisponibles}" 
-                              SelectedItem="{Binding AreaSeleccionada}"
-                              materialDesign:HintAssist.Hint="Área Responsable"/>-->
-                            <Button Command="{Binding GuardarActividadCommand}" Content="REGISTRAR" Margin="0,20"/>
+                        <Border Grid.Column="0" BorderBrush="{DynamicResource ColorComponentes}" BorderThickness="0,0,1,0" Padding="0,0,24,0">
+                            <StackPanel>
+                                <TextBlock Text="Nueva Actividad" FontSize="18" FontWeight="Bold" Foreground="{DynamicResource TextoPrincipal}" Margin="0,0,0,4"/>
+                                <TextBlock Text="Registra los tipos de atención o talleres que se imparten en la institución." FontSize="12" Foreground="{DynamicResource TextoSecundario}" Margin="0,0,0,20" TextWrapping="Wrap"/>
+
+                                <TextBox Text="{Binding NombreNuevaActividad, UpdateSourceTrigger=PropertyChanged}" 
+                                         Margin="0,0,0,16" 
+                                         materialDesign:HintAssist.Hint="Nombre de la Actividad"
+                                         Style="{StaticResource MaterialDesignOutlinedTextBox}"
+                                         materialDesign:TextFieldAssist.HasClearButton="True"
+                                         Foreground="{DynamicResource TextoPrincipal}"
+                                         materialDesign:HintAssist.Background="{DynamicResource FondoTarjetas}"/>
+
+                                <TextBox Text="{Binding AreaSeleccionada, UpdateSourceTrigger=PropertyChanged}" 
+                                         Margin="0,0,0,24" 
+                                         materialDesign:HintAssist.Hint="Área Responsable"
+                                         Style="{StaticResource MaterialDesignOutlinedTextBox}"
+                                         materialDesign:TextFieldAssist.HasClearButton="True"
+                                         Foreground="{DynamicResource TextoPrincipal}"
+                                         materialDesign:HintAssist.Background="{DynamicResource FondoTarjetas}"/>
+
+                                <Button Command="{Binding GuardarActividadCommand}" 
+                                        Style="{StaticResource MaterialDesignRaisedButton}"
+                                        materialDesign:ButtonAssist.CornerRadius="8"
+                                        Height="45">
+                                    <StackPanel Orientation="Horizontal">
+                                        <materialDesign:PackIcon Kind="Plus" Width="18" Height="18" VerticalAlignment="Center" Margin="0,0,8,0"/>
+                                        <TextBlock Text="REGISTRAR ACTIVIDAD" FontWeight="Bold" VerticalAlignment="Center"/>
+                                    </StackPanel>
+                                </Button>
+                            </StackPanel>
+                        </Border>
+
+                        <Grid Grid.Column="1" Margin="24,0,0,0">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="*"/>
+                            </Grid.RowDefinitions>
+
+                            <TextBlock Grid.Row="0" Text="Listado de Actividades Vigentes" FontSize="14" FontWeight="SemiBold" Foreground="{DynamicResource TextoPrincipal}" Margin="0,0,0,12"/>
+
+                            <DataGrid Grid.Row="1" 
+                                      ItemsSource="{Binding ListaActividades}" 
+                                      AutoGenerateColumns="False" 
+                                      IsReadOnly="True"
+                                      Style="{StaticResource MaterialDesignDataGrid}"
+                                      Background="{DynamicResource FondoTarjetas}"
+                                      HeadersVisibility="Column">
+
+                                <DataGrid.ColumnHeaderStyle>
+                                    <Style TargetType="DataGridColumnHeader" BasedOn="{StaticResource MaterialDesignDataGridColumnHeader}">
+                                        <Setter Property="Foreground" Value="{DynamicResource TextoSecundario}"/>
+                                        <Setter Property="Background" Value="Transparent"/>
+                                        <Setter Property="FontWeight" Value="SemiBold"/>
+                                    </Style>
+                                </DataGrid.ColumnHeaderStyle>
+
+                                <DataGrid.Columns>
+                                    <DataGridTextColumn Header="Nombre de Actividad" Binding="{Binding Tipo_Actividad}" Width="*" FontWeight="Medium">
+                                        <DataGridTextColumn.ElementStyle>
+                                            <Style TargetType="TextBlock" BasedOn="{StaticResource MaterialDesignDataGridTextColumnStyle}">
+                                                <Setter Property="Foreground" Value="{DynamicResource TextoPrincipal}"/>
+                                            </Style>
+                                        </DataGridTextColumn.ElementStyle>
+                                    </DataGridTextColumn>
+
+                                    <DataGridTextColumn Header="Área" Binding="{Binding Area}" Width="150">
+                                        <DataGridTextColumn.ElementStyle>
+                                            <Style TargetType="TextBlock" BasedOn="{StaticResource MaterialDesignDataGridTextColumnStyle}">
+                                                <Setter Property="Foreground" Value="{DynamicResource TextoPrincipal}"/>
+                                            </Style>
+                                        </DataGridTextColumn.ElementStyle>
+                                    </DataGridTextColumn>
+                                </DataGrid.Columns>
+                            </DataGrid>
+                        </Grid>
+                    </Grid>
+                </TabItem>
+
+                <TabItem>
+                    <TabItem.Header>
+                        <StackPanel Margin="0,10">
+                            <materialDesign:PackIcon Kind="History" Width="24" Height="24" HorizontalAlignment="Center" Foreground="{DynamicResource TextoPrincipal}"/>
+                            <TextBlock Text="HISTORIAL" FontSize="11" FontWeight="Bold" Margin="0,4,0,0" HorizontalAlignment="Center" Foreground="{DynamicResource TextoPrincipal}"/>
+                        </StackPanel>
+                    </TabItem.Header>
+
+                    <Grid Margin="24">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="*"/>
+                        </Grid.RowDefinitions>
+
+                        <StackPanel Grid.Row="0" Margin="0,0,0,16">
+                            <TextBlock Text="Historial General de Evoluciones" FontSize="18" FontWeight="Bold" Foreground="{DynamicResource TextoPrincipal}"/>
+                            <TextBlock Text="Registro cronológico completo de asistencias, actividades y especialistas encargados." FontSize="12" Foreground="{DynamicResource TextoSecundario}" Margin="0,2,0,0"/>
                         </StackPanel>
 
-                        <!-- Tabla de actividades existentes -->
-                        <DataGrid Grid.Column="1" ItemsSource="{Binding ListaActividades}" 
-                          AutoGenerateColumns="False" IsReadOnly="True" Margin="10">
+                        <DataGrid Grid.Row="1" 
+                                  ItemsSource="{Binding HistorialCompleto}" 
+                                  AutoGenerateColumns="False" 
+                                  IsReadOnly="True"
+                                  Style="{StaticResource MaterialDesignDataGrid}"
+                                  Background="{DynamicResource FondoTarjetas}">
+
+                            <DataGrid.ColumnHeaderStyle>
+                                <Style TargetType="DataGridColumnHeader" BasedOn="{StaticResource MaterialDesignDataGridColumnHeader}">
+                                    <Setter Property="Foreground" Value="{DynamicResource TextoSecundario}"/>
+                                    <Setter Property="Background" Value="Transparent"/>
+                                    <Setter Property="FontWeight" Value="SemiBold"/>
+                                </Style>
+                            </DataGrid.ColumnHeaderStyle>
+
                             <DataGrid.Columns>
-                                <DataGridTextColumn Header="Nombre" Binding="{Binding Tipo_Actividad}"/>
-                                <DataGridTextColumn Header="Área" Binding="{Binding Area}"/>
+
+                                <DataGridTemplateColumn Header="Fecha" Width="130">
+                                    <DataGridTemplateColumn.CellTemplate>
+                                        <DataTemplate>
+                                            <StackPanel Orientation="Horizontal">
+                                                <materialDesign:PackIcon Kind="CalendarBlankOutline" Width="16" Height="16" Foreground="{DynamicResource TextoSecundario}" VerticalAlignment="Center" Margin="0,0,6,0"/>
+                                                <TextBlock Text="{Binding Fecha_Registro, StringFormat=d}" Foreground="{DynamicResource TextoPrincipal}" VerticalAlignment="Center" FontWeight="Medium"/>
+                                            </StackPanel>
+                                        </DataTemplate>
+                                    </DataGridTemplateColumn.CellTemplate>
+                                </DataGridTemplateColumn>
+
+                                <DataGridTextColumn Header="Niño / Cuidado" Binding="{Binding Beneficiario.Nombres}" Width="*" FontWeight="SemiBold">
+                                    <DataGridTextColumn.ElementStyle>
+                                        <Style TargetType="TextBlock" BasedOn="{StaticResource MaterialDesignDataGridTextColumnStyle}">
+                                            <Setter Property="Foreground" Value="{DynamicResource TextoPrincipal}"/>
+                                        </Style>
+                                    </DataGridTextColumn.ElementStyle>
+                                </DataGridTextColumn>
+
+                                <DataGridTextColumn Header="Actividad Ejecutada" Binding="{Binding Actividad.Tipo_Actividad}" Width="*">
+                                    <DataGridTextColumn.ElementStyle>
+                                        <Style TargetType="TextBlock" BasedOn="{StaticResource MaterialDesignDataGridTextColumnStyle}">
+                                            <Setter Property="Foreground" Value="{DynamicResource TextoPrincipal}"/>
+                                        </Style>
+                                    </DataGridTextColumn.ElementStyle>
+                                </DataGridTextColumn>
+
+                                <DataGridTemplateColumn Header="Tutor / Responsable" Width="220">
+                                    <DataGridTemplateColumn.CellTemplate>
+                                        <DataTemplate>
+                                            <StackPanel Orientation="Horizontal">
+                                                <materialDesign:PackIcon Kind="AccountTieOutline" Width="16" Height="16" Foreground="{DynamicResource PrimaryHueMidBrush}" VerticalAlignment="Center" Margin="0,0,6,0"/>
+                                                <TextBlock Text="{Binding Especialista.NombreCompleto}" Foreground="{DynamicResource TextoPrincipal}" VerticalAlignment="Center"/>
+                                            </StackPanel>
+                                        </DataTemplate>
+                                    </DataGridTemplateColumn.CellTemplate>
+                                </DataGridTemplateColumn>
+
                             </DataGrid.Columns>
                         </DataGrid>
                     </Grid>
                 </TabItem>
 
-                <!-- Pestaña 2: Bitácora General (Asistencias) -->
-                <TabItem Header="HISTORIAL GENERAL">
-                    <DataGrid ItemsSource="{Binding HistorialCompleto}" AutoGenerateColumns="False">
-                        <DataGrid.Columns>
-                            <DataGridTextColumn Header="Fecha" Binding="{Binding Fecha_Registro, StringFormat=d}"/>
-                            <DataGridTextColumn Header="Niño/a" Binding="{Binding BeneficiarioNombre}"/>
-                            <DataGridTextColumn Header="Actividad" Binding="{Binding ActividadNombre}"/>
-                            <DataGridTextColumn Header="Tutor/Responsable" Binding="{Binding Responsable}"/>
-                        </DataGrid.Columns>
-                    </DataGrid>
-                </TabItem>
             </TabControl>
         </materialDesign:Card>
     </Grid>

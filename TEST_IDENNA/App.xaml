@@ -6,6 +6,7 @@
     <Application.Resources>
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="Themes/TemaClaro.xaml"/>
                 <materialDesign:BundledTheme BaseTheme="Light" 
                                              PrimaryColor="Indigo" 
                                              SecondaryColor="Amber" />
@@ -44,6 +45,9 @@
                 <Setter Property="Foreground" Value="#2C3E50"/>
                 <Setter Property="HorizontalAlignment" Value="Center"/>
             </Style>
+
+            <SolidColorBrush x:Key="FondoDatePicker" Color="{DynamicResource FondoDatePickerColor}" />
+            <SolidColorBrush x:Key="BlancoANegro" Color="{DynamicResource BlancoANegroColor}" />
 
         </ResourceDictionary>
     </Application.Resources>

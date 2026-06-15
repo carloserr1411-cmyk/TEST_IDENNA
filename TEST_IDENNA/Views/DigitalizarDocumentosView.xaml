@@ -1,0 +1,173 @@
+﻿<UserControl x:Class="TEST_IDENNA.Views.DigitalizarDocumentosView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:TEST_IDENNA.Views" 
+             xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes" 
+             xmlns:viewmodels="clr-namespace:TEST_IDENNA.ViewModels"
+             xmlns:services="clr-namespace:TEST_IDENNA.Services"
+             mc:Ignorable="d"
+             Background="{DynamicResource FondoPrincipal}"
+             d:DesignHeight="550" d:DesignWidth="850"
+             d:DataContext="{d:DesignInstance Type=viewmodels:DigitalizarDocumentosViewModel}">
+
+    <UserControl.Resources>
+        <BooleanToVisibilityConverter x:Key="BoolToVis"/>
+        <materialDesign:BooleanToVisibilityConverter x:Key="InverseBoolToVis" FalseValue="Visible" TrueValue="Collapsed"/>
+        <services:BytesToImageConverter x:Key="BytesToImageConverter"/>
+    </UserControl.Resources>
+
+    <Grid Margin="24">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <StackPanel Grid.Row="0" Margin="0,0,0,20">
+            <TextBlock Text="Módulo de Digitalización Automatizada" 
+                       Style="{StaticResource MaterialDesignHeadline4TextBlock}" 
+                       Foreground="{DynamicResource TextoPrincipal}"
+                       FontWeight="Bold"/>
+            <TextBlock Text="El sistema procesará el archivo y permitirá indexarlo a uno o múltiples expedientes digitales." 
+                       Foreground="{DynamicResource TextoSecundario}"/>
+            <Separator Margin="0,10,0,0"/>
+        </StackPanel>
+
+        <Grid Grid.Row="1">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="380"/>
+            </Grid.ColumnDefinitions>
+
+            <materialDesign:Card Grid.Column="0" Margin="0,0,12,0" UniformCornerRadius="12"
+                                 AllowDrop="True"
+                                 DragOver="Card_DragOver"
+                                 Drop="Card_Drop"
+                                 MouseDoubleClick="Card_MouseDoubleClick"
+                                 Cursor="Hand"
+                                 Background="{DynamicResource FondoTarjetas}"
+                                 materialDesign:ElevationAssist.Elevation="Dp1"
+                                 BorderThickness="2" BorderBrush="{DynamicResource PrimaryHueLightBrush}">
+
+                <Grid>
+                    <StackPanel VerticalAlignment="Center" HorizontalAlignment="Center">
+                        <StackPanel.Style>
+                            <Style TargetType="StackPanel">
+                                <Setter Property="Visibility" Value="Collapsed"/>
+                                <Style.Triggers>
+                                    <MultiDataTrigger>
+                                        <MultiDataTrigger.Conditions>
+                                            <Condition Binding="{Binding IsProcessing}" Value="False"/>
+                                            <Condition Binding="{Binding DocumentoReconocido}" Value="False"/>
+                                        </MultiDataTrigger.Conditions>
+                                        <Setter Property="Visibility" Value="Visible"/>
+                                    </MultiDataTrigger>
+                                </Style.Triggers>
+                            </Style>
+                        </StackPanel.Style>
+                        <materialDesign:PackIcon Kind="CloudUpload" Width="80" Height="80" HorizontalAlignment="Center" Opacity="0.6" Foreground="{DynamicResource PrimaryHueMidBrush}"/>
+                        <TextBlock Text="Arrastra y suelta la Ficha o Cédula aquí" Foreground="{DynamicResource TextoPrincipal}" FontSize="16" FontWeight="SemiBold" Margin="0,12,0,0" HorizontalAlignment="Center"/>
+                        <TextBlock Text="💡 O haz doble click para buscar manualmente" Foreground="{DynamicResource TextoPrincipal}" HorizontalAlignment="Center" Margin="0,6,0,0" FontSize="12" FontWeight="SemiBold"/>
+                        <TextBlock Text="Formatos admitidos: PNG, JPG, JPEG, DOCX, PDF, TXT." Foreground="{DynamicResource TextoSecundario}" HorizontalAlignment="Center" Margin="0,4,0,0" FontSize="11"/>
+                    </StackPanel>
+
+                    <Grid Margin="16">
+                        <Grid.Style>
+                            <Style TargetType="Grid">
+                                <Setter Property="Visibility" Value="Collapsed"/>
+                                <Style.Triggers>
+                                    <MultiDataTrigger>
+                                        <MultiDataTrigger.Conditions>
+                                            <Condition Binding="{Binding IsProcessing}" Value="False"/>
+                                            <Condition Binding="{Binding DocumentoReconocido}" Value="True"/>
+                                        </MultiDataTrigger.Conditions>
+                                        <Setter Property="Visibility" Value="Visible"/>
+                                    </MultiDataTrigger>
+                                </Style.Triggers>
+                            </Style>
+                        </Grid.Style>
+
+                        <Border BorderBrush="{DynamicResource TextoSecundario}" BorderThickness="1" CornerRadius="8" Background="{DynamicResource FondoPrincipal}" Padding="4">
+                            <Image Source="{Binding ArchivoBytes, Converter={StaticResource BytesToImageConverter}}" 
+                                   Stretch="Uniform" 
+                                   VerticalAlignment="Center" 
+                                   HorizontalAlignment="Center"
+                                   RenderOptions.BitmapScalingMode="HighQuality"/>
+                        </Border>
+                    </Grid>
+
+                    <StackPanel VerticalAlignment="Center" HorizontalAlignment="Center"
+                                Visibility="{Binding IsProcessing, Converter={StaticResource BoolToVis}}">
+                        <ProgressBar Style="{StaticResource MaterialDesignCircularProgressBar}" Value="0" IsIndeterminate="True" Width="60" Height="60"/>
+                        <TextBlock Text="Procesando documento y extrayendo texto..." Foreground="{DynamicResource TextoSecundario}" Margin="0,16,0,0" FontSize="14" FontStyle="Italic"/>
+                    </StackPanel>
+                </Grid>
+            </materialDesign:Card>
+
+            <materialDesign:Card Grid.Column="1" Margin="12,0,0,0" Padding="16" Background="{DynamicResource FondoTarjetas}" materialDesign:ElevationAssist.Elevation="Dp1" UniformCornerRadius="12">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="Auto"/>
+                    </Grid.RowDefinitions>
+
+                    <TextBlock Grid.Row="0" Text="Resultado del Escaneo" Style="{StaticResource MaterialDesignHeadline6TextBlock}" Foreground="{DynamicResource TextoPrincipal}" Margin="0,0,0,5"/>
+                    <TextBlock Grid.Row="1" Text="{Binding MensajeEstado}" TextWrapping="Wrap" Margin="0,0,0,15" Foreground="{DynamicResource TextoPrincipal}" FontWeight="SemiBold"/>
+
+                    <ScrollViewer Grid.Row="2" VerticalScrollBarVisibility="Auto" Margin="0,0,0,15">
+                        <StackPanel Visibility="{Binding DocumentoReconocido, Converter={StaticResource BoolToVis}}">
+
+                            <TextBox materialDesign:HintAssist.Hint="Cédula Detectada automáticamente" 
+                                     Text="{Binding CedulaExtraida, Mode=OneWay}" 
+                                     Style="{StaticResource MaterialDesignFloatingHintTextBox}" 
+                                     Foreground="{DynamicResource TextoPrincipal}"
+                                     materialDesign:HintAssist.Background="{DynamicResource FondoTarjetas}"
+                                     Margin="0,0,0,15" IsReadOnly="True" FontWeight="Bold"/>
+
+                            <Separator Margin="0,5,0,10"/>
+
+                            <TextBlock Text="Expediente(s) Destino:" Foreground="{DynamicResource TextoSecundario}" FontSize="12" FontWeight="SemiBold"/>
+
+                            <TextBlock Text="{Binding NombresBeneficiariosAsignados}" 
+                                       TextWrapping="Wrap" 
+                                       FontWeight="Bold" 
+                                       FontSize="14" 
+                                       Foreground="{DynamicResource TextoPrincipal}" 
+                                       Margin="0,4,0,10"/>
+
+                            <Button Content="Asignar / Cambiar Beneficiarios" 
+                                    Style="{StaticResource MaterialDesignOutlinedButton}"
+                                    Command="{Binding AbrirSelectorManualCommand}"
+                                    HorizontalAlignment="Left"
+                                    Height="32" Padding="10,0" Margin="0,0,0,15"/>
+
+                            <Separator Margin="0,5,0,10"/>
+
+                            <TextBlock Text="Contenido del Documento (Editable):" Foreground="{DynamicResource TextoSecundario}" Margin="0,0,0,5" FontSize="12" FontWeight="SemiBold"/>
+
+                            <TextBox Text="{Binding TextoOcrResult, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                                     Style="{StaticResource MaterialDesignOutlinedTextBox}"
+                                     TextWrapping="Wrap" 
+                                     AcceptsReturn="True"
+                                     Foreground="{DynamicResource TextoPrincipal}"
+                                     materialDesign:HintAssist.Background="{DynamicResource FondoTarjetas}"
+                                     Height="140" 
+                                     FontSize="12"
+                                     VerticalScrollBarVisibility="Auto"
+                                     materialDesign:HintAssist.Hint="Verifique y corrija el texto extraído aquí antes de guardar..."/>
+                        </StackPanel>
+                    </ScrollViewer>
+
+                    <Button Grid.Row="3" 
+                            Content="Guardar en Expediente(s)" 
+                            Style="{StaticResource MaterialDesignRaisedButton}"
+                            Command="{Binding VerificarYEnrutarCommand}"
+                            IsEnabled="{Binding DocumentoReconocido}"/>
+                </Grid>
+            </materialDesign:Card>
+        </Grid>
+    </Grid>
+</UserControl>
